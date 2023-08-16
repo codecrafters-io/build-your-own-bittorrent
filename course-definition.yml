@@ -1,14 +1,14 @@
 # Used in your course's URL: https://app.codecrafters.io/courses/<slug>
 # Example: "redis"
-slug: "your_course_slug"
+slug: "bittorrent"
 
 # The name of your course. This will be displayed in the course catalog, and on other course pages.
 # Example: "Build your own Redis"
-name: "Build your own something"
+name: "Build your own BitTorrent"
 
 # A short name for your course, this'll be used in copy like emails. 
 # Example: "Redis"
-short_name: "dummy"
+short_name: "BitTorrent"
 
 # The release status for your course. 
 #
@@ -30,7 +30,9 @@ release_status: "alpha"
 # > In this challenge, you'll build a toy Redis clone that's capable of handling basic commands like PING, GET
 # > and SET. Along the way, we'll learn about event loops, the Redis Protocol and more.
 description_md: |
-  Add a description for your course here.
+  In this challenge, you’ll build a BitTorrent client that's capable of parsing a .torrent file and downloading a file from a peer.
+
+  Along the way, we’ll learn about how torrent files are structured, BitTorrent’s Peer Protocol and more.
 
 # This is shown on the catalog. Plaintext only, recommended length ~10 words.
 # 
@@ -44,7 +46,7 @@ description_md: |
 # 
 # **TODO**: Remove _md suffix since markdown isn't supported
 short_description_md: |
-  Add a short description for your course here.
+  Learn about .torrent files, the BitTorrent Peer Protocol and more
 
 # The percentage of users who complete your course. We'll calculate this automatically in the future, safe to ignore for now.
 completion_percentage: 15
@@ -65,15 +67,15 @@ marketing:
   # - "hard": > 6h of work for an experienced developer
   #
   # Allowed values: "easy", "medium", "hard"
-  difficulty: medium
+  difficulty: hard
 
   # This is shown as an example when users suggest extensions to your course.
   # Example: "Persistence" (from the Redis challenge)
-  sample_extension_idea_title: "My course extension idea"
+  sample_extension_idea_title: "Multiple Peers"
 
   # This is shown as an example when users suggest extensions to your course.
   # Example: "A Redis server that can read and write .rdb files" (from the Redis challenge)
-  sample_extension_idea_description: "A description for my course extension idea"
+  sample_extension_idea_description: "A bittorrent client that can download a file by combining pieces from multiple peers"
 
   # These are some default testimonials that you can use. Feel free to switch these out with your own.
   testimonials:
