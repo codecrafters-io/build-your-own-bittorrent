@@ -1,0 +1,128 @@
+# Used in your course's URL: https://app.codecrafters.io/courses/<slug>
+# Example: "redis"
+slug: "your_course_slug"
+
+# The name of your course. This will be displayed in the course catalog, and on other course pages.
+# Example: "Build your own Redis"
+name: "Build your own something"
+
+# A short name for your course, this'll be used in copy like emails. 
+# Example: "Redis"
+short_name: "dummy"
+
+# The release status for your course. 
+#
+# - alpha: Only visible to yourself and CodeCrafters staff. 
+# - beta: Visible to all CodeCrafters users, but with a "beta" label.
+# - live: Visible to all CodeCrafters users, no label.
+# 
+# Allowed values: "alpha", "beta", "live"
+release_status: "alpha"
+
+# This is shown on the course overview page. Markdown supported, recommended length ~30 words.
+# 
+# Recommended format: 
+# 
+# > In this challenge, you'll build ABC that's capable of D, E, F and G. Along the way, we'll learn about X, Y, Z and more.
+# 
+# Example:
+# 
+# > In this challenge, you'll build a toy Redis clone that's capable of handling basic commands like PING, GET
+# > and SET. Along the way, we'll learn about event loops, the Redis Protocol and more.
+description_md: |
+  Add a description for your course here.
+
+# This is shown on the catalog. Plaintext only, recommended length ~10 words.
+# 
+# Recommended format: 
+# 
+# > Learn about X, Y, Z and more
+# 
+# Example: 
+#
+# > Learn about TCP servers, the Redis protocol and more
+# 
+# **TODO**: Remove _md suffix since markdown isn't supported
+short_description_md: |
+  Add a short description for your course here.
+
+# The percentage of users who complete your course. We'll calculate this automatically in the future, safe to ignore for now.
+completion_percentage: 15
+
+# The languages that your course supports.
+languages:
+  - slug: "go"
+  - slug: "python"
+  - slug: "rust"
+
+marketing:
+  # Shown in the catalog. 
+  # 
+  # Recommended guidelines:
+  # 
+  # - "easy": < 2h of work for an experienced developer
+  # - "medium": > 6h of work for an experienced developer
+  # - "hard": > 6h of work for an experienced developer
+  #
+  # Allowed values: "easy", "medium", "hard"
+  difficulty: medium
+
+  # This is shown as an example when users suggest extensions to your course.
+  # Example: "Persistence" (from the Redis challenge)
+  sample_extension_idea_title: "My course extension idea"
+
+  # This is shown as an example when users suggest extensions to your course.
+  # Example: "A Redis server that can read and write .rdb files" (from the Redis challenge)
+  sample_extension_idea_description: "A description for my course extension idea"
+
+  # These are some default testimonials that you can use. Feel free to switch these out with your own.
+  testimonials:
+    - author_name: "Ananthalakshmi Sankar"
+      author_description: "Automation Engineer at Apple"
+      author_avatar: "https://codecrafters.io/images/external/testimonials/oxta.jpeg"
+      link: "https://github.com/anu294"
+      text: "There are few sites I like as much that have a step by step guide. The real-time feedback is so good, it's creepy!"
+
+    - author_name: "Patrick Burris"
+      author_description: "Senior Software Developer, CenturyLink"
+      author_avatar: "https://codecrafters.io/images/external/testimonials/patrick-burris.jpeg"
+      link: "https://github.com/Jumballaya"
+      text: |
+        I think the instant feedback right there in the git push is really cool.
+        Didn't even know that was possible!
+
+stages:
+  - slug: "init" # A identifier for this stage, needs to be unique within a course.
+
+    # The name of the stage. This is shown in the course catalog, and on other course pages.
+    name: "The first stage"
+
+    # The difficulty of this stage. 
+    # 
+    # Recommended guidelines, based on how long the stage will take an experienced developer to complete:
+    # 
+    # - Very Easy (< 5 minutes) 
+    # - Easy (5-10 minutes) 
+    # - Medium (30m-1h) 
+    # - Hard (> 1h)
+    # 
+    # Allowed values: "very_easy", "easy", "medium", "hard"
+    difficulty: very_easy
+
+    # The instructions for your stage. Markdown supported. Shown on the course page.
+    description_md: |
+      In this stage, we'll do XYZ
+
+      **Example:** ABC
+
+      Your program will be executed like this: 
+
+      ```bash
+      $ echo "apple" | ./your_executable.sh -E "a"
+      ```
+
+      You program must ABCD.
+
+    # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
+    marketing_md: |
+      In this stage, we'll do XYZ.
