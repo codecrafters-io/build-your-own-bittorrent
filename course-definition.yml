@@ -32,7 +32,7 @@ release_status: "alpha"
 description_md: |
   In this challenge, you’ll build a BitTorrent client that's capable of parsing a .torrent file and downloading a file from a peer.
 
-  Along the way, we’ll learn about how torrent files are structured, BitTorrent’s Peer Protocol and more.
+  Along the way, we’ll learn about how torrent files are structured, HTTP trackers, BitTorrent’s Peer Protocol, pipelining and more.
 
 # This is shown on the catalog. Plaintext only, recommended length ~10 words.
 # 
@@ -67,7 +67,7 @@ marketing:
   # - "hard": > 6h of work for an experienced developer
   #
   # Allowed values: "easy", "medium", "hard"
-  difficulty: hard
+  difficulty: medium
 
   # This is shown as an example when users suggest extensions to your course.
   # Example: "Persistence" (from the Redis challenge)
@@ -94,10 +94,10 @@ marketing:
         Didn't even know that was possible!
 
 stages:
-  - slug: "init" # A identifier for this stage, needs to be unique within a course.
+  - slug: "bencode-string" # A identifier for this stage, needs to be unique within a course.
 
     # The name of the stage. This is shown in the course catalog, and on other course pages.
-    name: "The first stage"
+    name: "Decode bencoded strings"
 
     # The difficulty of this stage. 
     # 
@@ -113,7 +113,7 @@ stages:
 
     # The instructions for your stage. Markdown supported. Shown on the course page.
     description_md: |
-      In this stage, we'll do XYZ
+      In this stage, we'll do XYZ.
 
       **Example:** ABC
 
@@ -127,4 +127,67 @@ stages:
 
     # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
     marketing_md: |
-      In this stage, we'll do XYZ.
+		[Bencode](https://en.wikipedia.org/wiki/Bencode) is a binary serialization format used in BitTorrent protocol. In this stage, you’ll decode a bencoded string value.
+
+  - slug: "bencode-int"
+    name: "Decode bencoded integers"
+    difficulty: very_easy
+    description_md:
+    marketing_md: |
+		In this stage, you’ll decode a bencoded integer value.
+
+  - slug: "bencode-list"
+    name: "Decode bencoded lists"
+    difficulty: very_easy
+    description_md:
+    marketing_md: |
+		In this stage, you’ll decode a bencoded list value.
+
+  - slug: "bencode-dict"
+    name: "Decode bencoded dictionaries"
+    difficulty: very_easy
+    description_md:
+    marketing_md: |
+		In this stage, you’ll decode a bencoded dictionary value.
+
+  - slug: "parse-torrent"
+    name: "Parse torrent file"
+    difficulty: easy
+    description_md:
+    marketing_md: |
+		In this stage, you’ll parse a .torrent file and extract information about the torrent
+
+  - slug: "infohash"
+    name: "Calculate info hash"
+    difficulty: easy
+    description_md:
+    marketing_md: |
+		In this stage, you’ll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers
+
+  - slug: "tracker-get"
+    name: "Fetch peers list"
+    difficulty: medium
+    description_md:
+    marketing_md: |
+		In this stage, you’ll interact with a tracker, a central server that maintains information about peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers that you can download the file from.
+
+  - slug: "bitfield"
+    name: "Peer handshake"
+    difficulty: medium
+    description_md:
+    marketing_md: |
+		In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
+
+  - slug: "dl-piece"
+    name: "Download a piece"
+    difficulty: hard
+    description_md:
+    marketing_md: |
+		In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, combine them and check the integrity using a hash value. For improved performance, you can pipeline your network requests.
+
+  - slug: "dl-file"
+    name: "Download the whole file"
+    difficulty: hard
+    description_md:
+    marketing_md: |
+		In the final stage, you'll download the whole file. You'll download all the pieces, check their integrity and save them to disk. For improved performance, you can download from multiple peers.
