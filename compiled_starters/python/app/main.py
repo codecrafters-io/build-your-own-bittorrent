@@ -1,32 +1,25 @@
+import json
 import sys
 
 # import pyparsing - available if you need it!
 # import lark - available if you need it!
 
-
-def match_pattern(input_line, pattern):
-    if len(pattern) == 1:
-        return pattern in input_line
+def decode_bencode(bencoded_string):
+    if bencoded_string[0] == "s":
+        length, remaining_contents = bencoded_string.split(":", 1)
+        return remaining_contents[:int(length)]
     else:
-        raise RuntimeError(f"Unhandled pattern: {pattern}")
+        raise NotImplementedError("Only strings are supported at the moment")
 
 
 def main():
-    pattern = sys.argv[2]
-    input_line = sys.stdin.read()
-
-    if sys.argv[1] != "-E":
-        print("Expected first argument to be '-E'")
-        exit(1)
+    bencoded_string = sys.argv[1]
 
     # You can use print statements as follows for debugging, they'll be visible when running tests.
     print("Logs from your program will appear here!")
 
     # Uncomment this block to pass the first stage
-    # if match_pattern(input_line, pattern):
-    #     exit(0)
-    # else:
-    #     exit(1)
+    # print(json.dumps(decode_bencode(bencoded_string))
 
 
 if __name__ == "__main__":
