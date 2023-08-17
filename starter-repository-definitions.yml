@@ -54,10 +54,10 @@
       target: go.mod
     - source: starter_templates/go/go.sum
       target: go.sum
-    - source: starter_templates/go/cmd/mygrep/main.go
-      target: cmd/mygrep/main.go
+    - source: starter_templates/go/cmd/mybittorrent/main.go
+      target: cmd/mybittorrent/main.go
     - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
     required_executable: "go (1.19)"
-    user_editable_file: "cmd/mygrep/main.go"
+    user_editable_file: "cmd/mybittorrent/main.go"
