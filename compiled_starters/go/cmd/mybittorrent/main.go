@@ -11,7 +11,7 @@ import (
 
 // Example:
 // - 5:hello -> hello
-// - 10:hello1234 -> hello1234
+// - 10:hello12345 -> hello12345
 func decodeBencode(bencodedString string) (interface{}, error) {
 	if unicode.IsDigit(rune(bencodedString[0])) {
 		var firstColonIndex int

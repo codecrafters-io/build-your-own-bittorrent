@@ -10,7 +10,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
     }
 }
 
-// Usage: echo <input_text> | your_grep.sh -E <pattern>
+// Usage: echo <input_text> | your_bittorrent.sh -E <pattern>
 fn main() {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     println!("Logs from your program will appear here!");
