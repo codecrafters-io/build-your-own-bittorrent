@@ -171,12 +171,19 @@ stages:
     marketing_md: |
         In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
-  - slug: "bitfield"
+  - slug: "handshake"
     name: "Peer handshake"
     difficulty: medium
     description_md:
     marketing_md: |
         In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
+
+  - slug: "hashes"
+    name: "Piece hashes"
+    difficulty: easy
+    description_md:
+    marketing_md: |
+        In this stage, you’ll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
   - slug: "dl-piece"
     name: "Download a piece"
