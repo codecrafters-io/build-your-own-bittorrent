@@ -249,10 +249,26 @@ stages:
     marketing_md: |
         In this stage, you’ll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
-  - slug: "tracker-get"
+  - slug: "peers"
     name: "Discover peers"
     difficulty: medium
-    description_md:
+    description_md: |
+    Trackers are central servers that maintain information about peers participating in the sharing and downloading of a torrent. BitTorrent protocol supports two types of trackers: [HTTP trackers](https://www.bittorrent.org/beps/bep_0003.html#trackers) and [UDP](https://www.bittorrent.org/beps/bep_0015.html) trackers. Over time, the protocol has evolved to support other mechanisms such as [Distributed Hash Tables (DHT)](http://bittorrent.org/beps/bep_0005.html) and [Peer Exchange (PEX)](http://bittorrent.org/beps/bep_0011.html) to allow peer discovery without relying on central trackers.
+
+    In this stage, you’ll be interacting with an HTTP tracker. You’ll make a GET request to a HTTP tracker to discover peers to download the file from. See [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for an explanation of keys that need to be included in your GET request. The response will be a bencoded dictionary with two keys: __interval__ and __peers__
+
+    Trackers use a [compact representation](https://www.bittorrent.org/beps/bep_0023.html) of the peer list by default where the value of the **peers** key is a bencoded string rather than a bencoded list.
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh peers test.torrent
+    ```
+    and here’s the output it expects:
+    ```
+    188.119.61.177:6881
+    71.224.0.29:51414
+    62.153.208.98:3652
+    ```
     marketing_md: |
         In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
