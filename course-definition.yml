@@ -306,7 +306,7 @@ stages:
 
     In a torrent, a file is conceptually split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size, so a large file could be made up of thousands of pieces. See _piece length_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary).
 
-    If you open a torrent file with a text editor, you’ll see a big binary blob. This is a bencoded string containing concatenated SHA-1 hash values of each piece. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download. See _pieces_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary). 
+    If you open a torrent file with a text editor, you’ll see a big binary blob. This is a bencoded string containing concatenated SHA-1 hash values of each piece. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download. See _pieces_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary).
 
     Your program will print piece length and piece hashes (in hexadecimal format).
 
@@ -332,7 +332,29 @@ stages:
   - slug: "dl-piece"
     name: "Download a piece"
     difficulty: hard
-    description_md:
+    description_md: |
+    In this stage, you’ll download one piece of the file and save it to disk.
+
+    To download a piece of the file from a peer, first you’ll need to establish a TCP connection and complete a handshake with the peer. After that, you’ll be sending and receiving [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages). Peer messages consist of a message length prefix (4 bytes), message id (1 byte) and a payload (variable size).
+
+    You’ll first receive a `bitfield` message indicating which pieces your peer has. Peers will have all the pieces downloaded during this challenge so you can read and ignore this message for now.
+
+    You’ll send an `interest` message and wait until you receive an unchoke message back from your peer. Once you receive an `unchoke` message, you can start sending `request` messages as described in [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages). To learn more about choking, a mechanism used to control the number of simultaneous downloads, please refer to the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol).
+
+    To request a piece, we’ll need to break it down into parts called __blocks__. The default recommended block size is 16 kb. So to download a piece that is 128 kb in size, you would need to make 8 requests because our block size is 16 kb.
+
+    Once you receive all the blocks and combine them, you’ll want to check the integrity of the piece. You can compare the piece hash specified in the torrent file with the hash value you calculate for the bytes you’ve downloaded.
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 test.torrent 0
+    ```
+    and here’s the output it expects:
+    ```
+    Piece 0 downloaded to /tmp/test-piece-0.
+    ```
+
+    To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent. For example, after requesting the first block, instead of waiting for the block to arrive before requesting the next block, try making 5 requests for blocks at once and every time a block arrives, a new request can be sent.
     marketing_md: |
         In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
