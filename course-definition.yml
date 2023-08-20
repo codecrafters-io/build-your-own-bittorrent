@@ -146,7 +146,7 @@ stages:
 
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
-        You're encouraged to use a library to decode bencoded content. Feel free to create your own parser too.
+        You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
 
         Here’s how the tester will execute your program:
         ```
@@ -168,7 +168,7 @@ stages:
 
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
-        You can create your own parser or use a library to decode bencoded content.
+        You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
 
         Here’s how the tester will execute your program:
         ```
