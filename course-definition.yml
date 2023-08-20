@@ -301,7 +301,31 @@ stages:
   - slug: "hashes"
     name: "Piece hashes"
     difficulty: easy
-    description_md:
+    description_md: |
+    In this stage, you’ll extract piece length and piece hashes from the torrent file.
+
+    In a torrent, a file is conceptually split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size, so a large file could be made up of thousands of pieces. See _piece length_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary).
+
+    If you open a torrent file with a text editor, you’ll see a big binary blob. This is a bencoded string containing concatenated SHA-1 hash values of each piece. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download. See _pieces_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary). 
+
+    Your program will print piece length and piece hashes (in hexadecimal format).
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh info test.torrent
+    ```
+    and here’s the output it expects:
+    ```
+    Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
+    Length: 1048500
+    Info Hash: 6d4795dee70aeb88e03e5336ca7c9fcf0a1e206d
+    Piece Length: 262144
+    Piece Hashes:
+    ddf33172599fda84f0a209a3034f79f0b8aa5e22
+    795a618a1ee5275e952843b01a56ae4e142752ef
+    cdae2ef532d611a46b2cf7b64d578c09b3ac0b6e
+    098dadc0c19436f1927ea27b90eb18b1a2820a23
+    ```
     marketing_md: |
         In this stage, you’ll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
