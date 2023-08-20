@@ -162,7 +162,7 @@ stages:
     description_md: |
         In this stage, you’ll decode a bencoded list value.
 
-        A list of values is encoded as **l**_\<contents\>_**e** . The contents consist of bencoded elements of the list.
+        A list of values is encoded as **l**&lt;*contents*&gt;**e** . The contents consist of bencoded elements of the list.
 
         For example, a list consisting of the string "hello" and the number 52 would be encoded as: `l5:helloi52ee`. Note the absence of separators between elements.
 
@@ -184,7 +184,7 @@ stages:
     description_md: |
         In this stage, you’ll decode a bencoded dictionary value.
 
-        A dictionary is encoded as **d**_\<contents>_**e** . The elements of the dictionary are encoded with each key immediately followed by its value. All keys must be strings in lexicographical order.
+        A dictionary is encoded as **d**&lt;*contents*&gt;**e** . The elements of the dictionary are encoded with each key immediately followed by its value. All keys must be strings in lexicographical order.
 
         A dictionary like {“foo”:“bar”, “hello”: 52} would be encoded as: `d3:foo3:bar5:helloi52ee`
 
