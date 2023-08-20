@@ -204,7 +204,25 @@ stages:
   - slug: "parse-torrent"
     name: "Parse torrent file"
     difficulty: easy
-    description_md:
+    description_md: |
+    In this stage, you’ll be parsing a torrent file and outputting information about the torrent. A torrent file is a small file containing metadata to facilitate sharing files over the internet. These files are essentially bencoded dictionaries, with the following keys:
+
+    - __announce__: the URL of the tracker
+    - __info__: another dictionary with keys: length, name, piece length, pieces
+
+    Having length key present means that torrent consists of a single file. In this case, length indicates size of the file in bytes. You’ll only be working with single file torrents during this challenge as torrents with multiple files contain different keys in their info dictionary.
+
+    See [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files) to familiarize yourself with contents of the info dictionary.
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh info test.torrent
+    ```
+    and here’s the output it expects:
+    ```
+    Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
+    Length: 406847488
+    ```
     marketing_md: |
         In this stage, you’ll parse a .torrent file and extract information about the torrent.
 
