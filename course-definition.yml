@@ -338,7 +338,7 @@ stages:
 
         You’ll first receive a `bitfield` message indicating which pieces your peer has. Peers will have all the pieces downloaded during this challenge so you can read and ignore this message for now.
 
-        You’ll send an `interest` message and wait until you receive an unchoke message back from your peer. Once you receive an `unchoke` message, you can start sending `request` messages as described in [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages). To learn more about choking, a mechanism used to control the number of simultaneous downloads, please refer to the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol).
+        You’ll send an `interest` message and wait until you receive an `unchoke` message back from your peer. Once you receive an `unchoke` message, you can start sending `request` messages as described in [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages). To learn more about choking, a mechanism used to control the number of simultaneous downloads, please refer to the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol).
 
         To request a piece, we’ll need to break it down into parts called __blocks__. The default recommended block size is 16 kb. So to download a piece that is 128 kb in size, you would need to make 8 requests because our block size is 16 kb.
 
