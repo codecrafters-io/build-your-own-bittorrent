@@ -340,7 +340,7 @@ stages:
 
         You’ll send an `interest` message and wait until you receive an `unchoke` message back from your peer. Once you receive an `unchoke` message, you can start sending `request` messages as described in [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages). To learn more about choking, a mechanism used to control the number of simultaneous downloads, please refer to the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol).
 
-        To request a piece, we’ll need to break it down into parts called __blocks__. The default recommended block size is 16 kb. So to download a piece that is 128 kb in size, you would need to make 8 requests because our block size is 16 kb.
+        To request a piece, you’ll need to break it down into parts called __blocks__. The default recommended block size is 16 kb. So to download a piece that is 128 kb in size, you would need to make 8 requests because our block size is 16 kb.
 
         Once you receive all the blocks and combine them, you’ll want to check the integrity of the piece. You can compare the piece hash specified in the torrent file with the hash value you calculate for the bytes you’ve downloaded.
 
@@ -353,7 +353,7 @@ stages:
         Piece 0 downloaded to /tmp/test-piece-0.
         ```
 
-        To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent. For example, after requesting the first block, instead of waiting for the block to arrive before requesting the next block, try making 5 requests for blocks at once and every time a block arrives, a new request can be sent.
+        To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 recommends pending at once, to avoid a delay between blocks being sent. For example, after requesting the first block, instead of waiting for the block to arrive before requesting the next block, try making 5 requests for blocks at once and every time a block arrives, a new request can be sent.
     marketing_md: |
         In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
