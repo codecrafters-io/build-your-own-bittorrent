@@ -147,6 +147,9 @@ stages:
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
         You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
+        {{#lang_is_go}}
+        For Go, the recommended library is [bencode-go](https://github.com/jackpal/bencode-go).
+        {{/lang_is_go}}
 
         Here’s how the tester will execute your program:
         ```
@@ -169,6 +172,9 @@ stages:
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
         You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
+        {{#lang_is_go}}
+        For Go, the recommended library is [bencode-go](https://github.com/jackpal/bencode-go).
+        {{/lang_is_go}}
 
         Here’s how the tester will execute your program:
         ```
@@ -191,6 +197,9 @@ stages:
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
         You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
+        {{#lang_is_go}}
+        For go, the recommended library is [bencode-go](https://github.com/jackpal/bencode-go)
+        {{/lang_is_go}}
 
         Here’s how the tester will execute your program:
         ```
