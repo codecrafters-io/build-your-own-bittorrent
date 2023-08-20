@@ -159,14 +159,45 @@ stages:
   - slug: "bencode-list"
     name: "Decode bencoded lists"
     difficulty: very_easy
-    description_md:
+    description_md: |
+    In this stage, you’ll decode a bencoded list value.
+
+    A list of values is encoded as **l**_\<contents\>_**e** . The contents consist of bencoded elements of the list.
+
+    For example, a list consisting of the string "hello" and the number 52 would be encoded as: `l5:helloi52ee`. Note the absence of separators between elements.
+
+    See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
+
+    You can create your own parser or use a library to decode bencoded content.
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh decode l5:helloi52ee
+    [“hello”,52]
+    ```
     marketing_md: |
         In this stage, you’ll decode a bencoded list.
 
   - slug: "bencode-dict"
     name: "Decode bencoded dictionaries"
     difficulty: very_easy
-    description_md:
+    description_md: |
+    In this stage, you’ll decode a bencoded dictionary value.
+
+
+    A dictionary is encoded as **d**_\<contents>_**e** . The elements of the dictionary are encoded with each key immediately followed by its value. All keys must be strings in lexicographical order.
+
+    A dictionary like {“foo”:“bar”, “hello”: 52} would be encoded as: `d3:foo3:bar5:helloi52ee`
+
+    See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
+
+    You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh decode d3:foo3:bar5:helloi52ee
+    {“foo”:“bar”,“hello”:52}
+    ```
     marketing_md: |
         In this stage, you’ll decode a bencoded dictionary.
 
