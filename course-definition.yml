@@ -229,7 +229,23 @@ stages:
   - slug: "infohash"
     name: "Calculate info hash"
     difficulty: easy
-    description_md:
+    description_md: |
+    Info hash is a unique identifier for a torrent file. It’s used to identify a torrent when talking to trackers or peers. It’s not stored in the torrent file but calculated using a cryptographic hash function (SHA-1). This ensures to protect the integrity of the torrent, as adding or removing pieces, or tampering with the length or name of the torrent would change the info hash value.
+
+    In this stage, you’ll be calculating the info hash and printing it in hexadecimal format. 
+
+    Info hash is defined as the 20 byte SHA-1 hash of the bencoded form of the info dictionary in the torrent file (not hash of the whole file, just hash of the bencoded **info** dictionary).
+
+    Here’s how the tester will execute your program:
+    ```
+    $ ./your_bittorrent.sh info test.torrent
+    ```
+    and here’s the output it expects:
+    ```
+    Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
+    Length: 406847488
+    Info Hash: 6d4795dee70aeb88e03e5336ca7c9fcf0a1e206d
+    ```
     marketing_md: |
         In this stage, you’ll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
