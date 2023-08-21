@@ -113,7 +113,7 @@ stages:
 
     # The instructions for your stage. Markdown supported. Shown on the course page.
     description_md: |
-        [Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced like *Bee-encode*) is a serialization format used in BitTorrent protocol. It is used in torrent files and in communication between trackers and peers. 
+        [Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced *Bee-encode*) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
 
         Bencode supports four data types: 
         - strings
@@ -121,16 +121,17 @@ stages:
         - arrays
         - dictionaries
 
-        In this stage, you’ll decode a bencoded string value. Strings are represented by their length followed by a colon ':', and then the actual string content. For example, the string **"hello"** is encoded as **"5:hello"**.
+        In this stage, we'll focus on decoding strings.
 
-        See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding. 
+        Strings are represented by their length followed by a colon ':', and then the actual string content.
 
-        As you'll notice in torrent files, a string can contain binary data. Its content is a sequence of bytes, not necessarily characters.
+        For example, the string `"hello"` is encoded as `"5:hello"`.
 
         Here’s how the tester will execute your program:
+
         ```
         $ ./your_bittorrent.sh decode 5:hello
-        “hello”
+        "hello"
         ```
     # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
     marketing_md: |
