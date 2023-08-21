@@ -8,10 +8,10 @@ import sys
 # 
 # - decode_bencode("5:hello") -> "hello"
 # - decode_bencode("10:hello12345") -> "hello12345"
-def decode_bencode(bencoded_string):
-    if bencoded_string[0].isdigit(): 
-        length = int(bencoded_string.split(':')[0])
-        return bencoded_string.split(':')[1][:length]
+def decode_bencode(bencoded_value):
+    if bencoded_value[0].isdigit():
+        length = int(bencoded_value.split(':')[0])
+        return bencoded_value.split(':')[1][:length]
     else:
         raise NotImplementedError("Only strings are supported at the moment")
 
@@ -23,10 +23,10 @@ def main():
     print("Logs from your program will appear here!")
 
     if command == "decode":
-        bencoded_string = sys.argv[2]
+        bencoded_value = sys.argv[2]
 
         # Uncomment this block to pass the first stage
-        # print(json.dumps(decode_bencode(bencoded_string)))
+        # print(json.dumps(decode_bencode(bencoded_value)))
     else:
         raise NotImplementedError(f"Unknown command {command}")
 
