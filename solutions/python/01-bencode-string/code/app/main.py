@@ -19,14 +19,10 @@ def decode_bencode(bencoded_string):
 def main():
     command = sys.argv[1]
 
-    # You can use print statements as follows for debugging, they'll be visible when running tests.
-    print("Logs from your program will appear here!")
-
     if command == "decode":
         bencoded_string = sys.argv[2]
 
-        # Uncomment this block to pass the first stage
-        # print(json.dumps(decode_bencode(bencoded_string)))
+        print(json.dumps(decode_bencode(bencoded_string)))
     else:
         raise NotImplementedError(f"Unknown command {command}")
 
