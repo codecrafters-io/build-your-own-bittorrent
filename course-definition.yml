@@ -141,9 +141,7 @@ stages:
     description_md: |
         In this stage, you’ll decode a bencoded integer value. 
 
-        Integers are represented by an 'i' followed by the number in base 10 followed by an 'e'. For example, the integer **52** is encoded as **i52e** and **i-52e** corresponds to **-52**.
-
-        See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
+        Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
 
         You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
         {{#lang_is_go}}
@@ -154,6 +152,7 @@ stages:
         {{/lang_is_python}}
 
         Here’s how the tester will execute your program:
+
         ```
         $ ./your_bittorrent.sh decode i52e
         52
