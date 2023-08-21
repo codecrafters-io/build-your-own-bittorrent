@@ -137,7 +137,7 @@ stages:
 
   - slug: "bencode-int"
     name: "Decode bencoded integers"
-    difficulty: very_easy
+    difficulty: easy
     description_md: |
         In this stage, you’ll decode a bencoded integer value. 
 
@@ -163,7 +163,7 @@ stages:
 
   - slug: "bencode-list"
     name: "Decode bencoded lists"
-    difficulty: very_easy
+    difficulty: easy
     description_md: |
         In this stage, you’ll decode a bencoded list value.
 
@@ -191,7 +191,7 @@ stages:
 
   - slug: "bencode-dict"
     name: "Decode bencoded dictionaries"
-    difficulty: very_easy
+    difficulty: easy
     description_md: |
         In this stage, you’ll decode a bencoded dictionary value.
 
