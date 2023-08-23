@@ -235,8 +235,8 @@ stages:
         ```
         and here’s the output it expects:
         ```
-        Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
-        Length: 406847488
+        Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+        Length: 1048500
         ```
     marketing_md: |
         In this stage, you’ll parse a .torrent file and extract information about the torrent.
@@ -257,9 +257,9 @@ stages:
         ```
         and here’s the output it expects:
         ```
-        Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
-        Length: 406847488
-        Info Hash: 6d4795dee70aeb88e03e5336ca7c9fcf0a1e206d
+        Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+        Length: 1048500
+        Info Hash: c77829d2a77d6516f88cd7a3de1a26abcbfab0db
         ```
     marketing_md: |
         In this stage, you’ll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
@@ -331,9 +331,9 @@ stages:
         ```
         and here’s the output it expects:
         ```
-        Tracker URL: http://linuxtracker.org:2710/00000000000000000000000000000000/announce
+        Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
         Length: 1048500
-        Info Hash: 6d4795dee70aeb88e03e5336ca7c9fcf0a1e206d
+        Info Hash: c77829d2a77d6516f88cd7a3de1a26abcbfab0db
         Piece Length: 262144
         Piece Hashes:
         ddf33172599fda84f0a209a3034f79f0b8aa5e22
