@@ -233,7 +233,7 @@ stages:
         Here’s how the tester will execute your program:
 
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
 
         and here’s the output it expects:
@@ -257,7 +257,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -280,7 +280,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh peers test.torrent
+        $ ./your_bittorrent.sh peers sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -308,7 +308,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh handshake test.torrent 118.119.61.177:6882
+        $ ./your_bittorrent.sh handshake sample.torrent 118.119.61.177:6882
         ```
         and here’s the output it expects:
         ```
@@ -331,7 +331,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -366,7 +366,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 test.torrent 0
+        $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 sample.torrent 0
         ```
         and here’s the output it expects:
         ```
@@ -387,11 +387,11 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh download -o /tmp/test.iso test.torrent
+        $ ./your_bittorrent.sh download -o /tmp/test.txt sample.torrent
         ```
         and here’s the output it expects:
         ```
-        Downloaded test.torrent to /tmp/test.iso.
+        Downloaded test.torrent to /tmp/test.txt.
         ```
 
         **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
