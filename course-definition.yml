@@ -165,9 +165,9 @@ stages:
     description_md: |
         In this stage, you’ll decode a bencoded list value.
 
-        A list of values is encoded as **l**&lt;*contents*&gt;**e** . The contents consist of bencoded elements of the list.
+        Lists are encoded as `l<contents>e`, where `<contents>` is the bencoded elements of the list, with no separator.
 
-        For example, a list consisting of the string "hello" and the number 52 would be encoded as: `l5:helloi52ee`. Note the absence of separators between elements.
+        For example, `["hello", 52]` would be encoded as `l5:helloi52ee`. Note that there are no separators between the elements.
 
         Here’s how the tester will execute your program:
         ```
