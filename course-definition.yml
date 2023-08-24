@@ -165,7 +165,7 @@ stages:
     description_md: |
         In this stage, you’ll decode a bencoded list value.
 
-        Lists are encoded as `l<contents>e`, where `<contents>` is the bencoded elements of the list, with no separator.
+        Lists are encoded as `l<bencoded_elements>e`.
 
         For example, `["hello", 52]` would be encoded as `l5:helloi52ee`. Note that there are no separators between the elements.
 
