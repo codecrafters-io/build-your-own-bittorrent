@@ -192,7 +192,7 @@ stages:
 
         A dictionary is encoded as `d<key1><value1>...<keyN><valueN>e`. `<key1>`, `<value1>` etc. correspond to the bencoded keys & values. The keys are sorted in lexicographical order.
 
-        A dictionary like {"hello": 52, "foo":"bar"} would be encoded as: `d5:helloi52e3:foo3:bare` (note that the keys were reordered).
+        For example, `{"hello": 52, "foo":"bar"}` would be encoded as `d5:helloi52e3:foo3:bare` (note that the keys were reordered).
 
         Here’s how the tester will execute your program:
         ```
