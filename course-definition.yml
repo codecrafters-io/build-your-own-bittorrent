@@ -197,7 +197,7 @@ stages:
         Here’s how the tester will execute your program:
         ```
         $ ./your_bittorrent.sh decode d3:foo3:bar5:helloi52ee
-        {“foo”:“bar”,“hello”:52}
+        {"foo":"bar","hello":52}
         ```
 
         {{#lang_is_go}}
