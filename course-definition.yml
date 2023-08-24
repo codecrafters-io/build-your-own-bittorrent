@@ -228,6 +228,8 @@ stages:
           
         **Note**: The `info` hash looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
+        In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
+
         Here’s how the tester will execute your program:
 
         ```
