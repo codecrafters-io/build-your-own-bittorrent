@@ -143,19 +143,19 @@ stages:
 
         Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
 
-        {{#lang_is_go}}
-        If you'd prefer to use a library for this, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-        {{/lang_is_go}}
-        {{#lang_is_python}}
-        If you'd prefer to use a library for this, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-        {{/lang_is_python}}
-
         Here’s how the tester will execute your program:
 
         ```
         $ ./your_bittorrent.sh decode i52e
         52
         ```
+
+        {{#lang_is_go}}
+        If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
+        {{/lang_is_go}}
+        {{#lang_is_python}}
+        If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
+        {{/lang_is_python}}
     marketing_md: |
         In this stage, you’ll decode a bencoded integer.
 
@@ -169,18 +169,18 @@ stages:
 
         For example, a list consisting of the string "hello" and the number 52 would be encoded as: `l5:helloi52ee`. Note the absence of separators between elements.
 
-        {{#lang_is_go}}
-        If you'd prefer to use a library for this, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-        {{/lang_is_go}}
-        {{#lang_is_python}}
-        If you'd prefer to use a library for this, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-        {{/lang_is_python}}
-
         Here’s how the tester will execute your program:
         ```
         $ ./your_bittorrent.sh decode l5:helloi52ee
         [“hello”,52]
         ```
+
+        {{#lang_is_go}}
+        If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
+        {{/lang_is_go}}
+        {{#lang_is_python}}
+        If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
+        {{/lang_is_python}}
     marketing_md: |
         In this stage, you’ll decode a bencoded list.
 
@@ -194,18 +194,18 @@ stages:
 
         A dictionary like {“foo”:“bar”, “hello”: 52} would be encoded as: `d3:foo3:bar5:helloi52ee`
 
-        {{#lang_is_go}}
-        If you'd prefer to use a library for this, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-        {{/lang_is_go}}
-        {{#lang_is_python}}
-        If you'd prefer to use a library for this, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-        {{/lang_is_python}}
-
         Here’s how the tester will execute your program:
         ```
         $ ./your_bittorrent.sh decode d3:foo3:bar5:helloi52ee
         {“foo”:“bar”,“hello”:52}
         ```
+
+        {{#lang_is_go}}
+        If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
+        {{/lang_is_go}}
+        {{#lang_is_python}}
+        If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
+        {{/lang_is_python}}
     marketing_md: |
         In this stage, you’ll decode a bencoded dictionary.
 
