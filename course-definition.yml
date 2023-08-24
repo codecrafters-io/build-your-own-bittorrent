@@ -217,9 +217,9 @@ stages:
         
         A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following values:
 
-        - **`announce`**:
+        - `announce`:
             - URL to a "tracker", which is a central server that keeps track of peers participating in the sharing of a torrent.
-        - **`info`**: 
+        - `info`: 
             - A dictionary with keys: 
                 - `length`: size of the file in bytes, for single-file torrents
                 - `name`: suggested name to save the file / directory as 
