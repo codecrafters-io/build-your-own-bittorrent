@@ -16,6 +16,8 @@
       target: your_bittorrent.sh
     - source: starter_templates/.gitattributes
       target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
   template_attributes:
     required_executable: "python (3.11)"
     user_editable_file: "app/main.py"
@@ -38,6 +40,8 @@
       target: your_bittorrent.sh
     - source: starter_templates/.gitattributes
       target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
   template_attributes:
     required_executable: "cargo (1.70)"
     user_editable_file: "src/main.rs"
@@ -58,6 +62,8 @@
       target: cmd/mybittorrent/main.go
     - source: starter_templates/.gitattributes
       target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
   template_attributes:
     required_executable: "go (1.19)"
     user_editable_file: "cmd/mybittorrent/main.go"
