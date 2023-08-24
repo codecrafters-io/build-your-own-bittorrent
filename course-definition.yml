@@ -172,12 +172,11 @@ stages:
 
         See [Bittorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#bencoding) for details on bencoding.
 
-        You're encouraged to use a library to decode bencoded content, but you can create your own parser too.
         {{#lang_is_go}}
-        For Go, the recommended library is [bencode-go](https://github.com/jackpal/bencode-go).
+        <!--- If you'd prefer to use a library for this, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use. -->
         {{/lang_is_go}}
         {{#lang_is_python}}
-        For Python, the recommended library is [bencode.py](https://pypi.org/project/bencode.py/)
+        <!--- If you'd prefer to use a library for this, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use. -->
         {{/lang_is_python}}
 
         Here’s how the tester will execute your program:
