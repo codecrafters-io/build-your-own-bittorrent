@@ -226,7 +226,7 @@ stages:
                 - `piece length`: number of bytes in each piece
                 - `pieces`: concatenated SHA-1 hashes of each piece
           
-        **Note**: The `info` hash looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
+        **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
         In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
 
