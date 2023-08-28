@@ -226,14 +226,14 @@ stages:
                 - `piece length`: number of bytes in each piece
                 - `pieces`: concatenated SHA-1 hashes of each piece
           
-        **Note**: The `info` hash looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
+        **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
         In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
 
         Here’s how the tester will execute your program:
 
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
 
         and here’s the output it expects:
@@ -249,15 +249,18 @@ stages:
     name: "Calculate info hash"
     difficulty: easy
     description_md: |
-        Info hash is a unique identifier for a torrent file. It’s used to identify a torrent when talking to trackers or peers. It’s not stored in the torrent file but calculated using a cryptographic hash function (SHA-1). This ensures to protect the integrity of the torrent, as adding or removing pieces, or tampering with the length or name of the torrent would change the info hash value.
+        Info hash is a unique identifier for a torrent file. It's used when talking to trackers or peers.
 
-        In this stage, you’ll be calculating the info hash and printing it in hexadecimal format. 
+        In this stage, you'll calculate the info hash for a torrent file and print it in hexadecimal format.
 
-        Info hash is defined as the 20 byte SHA-1 hash of the bencoded form of the info dictionary in the torrent file (not hash of the whole file, just hash of the bencoded **info** dictionary).
+        To calculate the info hash, you'll need to:
+
+        - Extract the `info` dictionary from the torrent file
+        - Bencode the contents of the `info` dictionary, and calculate the SHA-1 hash
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -280,7 +283,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh peers test.torrent
+        $ ./your_bittorrent.sh peers sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -308,7 +311,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh handshake test.torrent 118.119.61.177:6882
+        $ ./your_bittorrent.sh handshake sample.torrent 118.119.61.177:6882
         ```
         and here’s the output it expects:
         ```
@@ -331,7 +334,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh info test.torrent
+        $ ./your_bittorrent.sh info sample.torrent
         ```
         and here’s the output it expects:
         ```
@@ -366,7 +369,7 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 test.torrent 0
+        $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 sample.torrent 0
         ```
         and here’s the output it expects:
         ```
@@ -387,11 +390,11 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh download -o /tmp/test.iso test.torrent
+        $ ./your_bittorrent.sh download -o /tmp/test.txt sample.torrent
         ```
         and here’s the output it expects:
         ```
-        Downloaded test.torrent to /tmp/test.iso.
+        Downloaded test.torrent to /tmp/test.txt.
         ```
 
         **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
