@@ -1,11 +1,11 @@
 import json
 import sys
 
-# import pyparsing - available if you need it!
-# import lark - available if you need it!
+# import bencodepy - available if you need it!
+# import requests - available if you need it!
 
 # Examples:
-# 
+#
 # - decode_bencode("5:hello") -> "hello"
 # - decode_bencode("10:hello12345") -> "hello12345"
 def decode_bencode(bencoded_value):
