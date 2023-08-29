@@ -282,11 +282,14 @@ stages:
         You'll need to make a request to the tracker URL you extracted in the previous stage, and include these query params:
 
         - `info_hash`: the info hash of the torrent
-            - 20 bytes long, will need to be URL encoded (note that this is NOT the hexadecimal representation, that's 40 bytes long)
+            - 20 bytes long, will need to be URL encoded
+            - **Note**: this is **NOT** the hexadecimal representation, which is 40 bytes long
         - `peer_id`: a unique identifier for your client
-            - For the purposes of this challenge, it doesn't matter what you set this to. You can use `00112233445566778899`.
+            - For the purposes of this challenge, it doesn't matter what you set this to.
+            - You can use `00112233445566778899`.
         - `port`: the port your client is listening on
-            - For the purposes of this challenge, it doesn't matter what you set this to. You can use `6881`.
+            - For the purposes of this challenge, it doesn't matter what you set this to.
+            - You can use `6881`.
         - `uploaded`: the total amount uploaded so far
             - Since your client hasn't uploaded anything yet, you can set this to `0`.
         - `downloaded`: the total amount downloaded so far
