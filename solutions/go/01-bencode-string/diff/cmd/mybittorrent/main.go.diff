@@ -1,4 +1,4 @@
-@@ -1,64 +1,58 @@
+@@ -1,63 +1,57 @@
  package main
 
  import (
@@ -9,7 +9,6 @@
  	"os"
  	"strconv"
  	"unicode"
-
  	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
  )
 
