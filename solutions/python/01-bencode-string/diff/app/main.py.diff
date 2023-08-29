@@ -2,8 +2,8 @@
  import json
  import sys
 
- # import pyparsing - available if you need it!
- # import lark - available if you need it!
+ # import bencodepy - available if you need it!
+ # import requests - available if you need it!
 
  # Examples:
  #
