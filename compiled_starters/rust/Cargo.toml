@@ -25,6 +25,7 @@ clap = { version = "4.0.32", features = ["derive"]}                # creating a 
 regex = "1"                                                        # for regular expressions
 reqwest = { version = "0.11.18", features = ["json", "blocking"] } # http requests
 serde = { version = "1.0.136", features = ["derive"] }             # for json mangling
+serde_bencode = "0.2.3"                                            # for bencode encoding/decoding
 serde_json = "1.0.105"                                             # for json mangling
 sha1 = "0.10.1"                                                    # hashing
 tempfile = "3"                                                     # creating temporary directories
