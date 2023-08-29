@@ -279,6 +279,8 @@ stages:
 
         In this stage, you'll make a GET request to a HTTP tracker to discover peers to download the file from.
 
+        ### Tracker GET request
+
         You'll need to make a request to the tracker URL you extracted in the previous stage, and include these query params:
 
         - `info_hash`: the info hash of the torrent
@@ -301,6 +303,8 @@ stages:
             - The compact representation is more commonly used in the wild, the non-compact representation is mostly supported for backward-compatibility.
 
         Read [the BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for more information about these query parameters.
+
+        ### Tracker response
 
         The tracker's response will be a bencoded dictionary with two keys:
 
