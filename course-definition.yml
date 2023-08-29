@@ -6,27 +6,27 @@ slug: "bittorrent"
 # Example: "Build your own Redis"
 name: "Build your own BitTorrent"
 
-# A short name for your course, this'll be used in copy like emails. 
+# A short name for your course, this'll be used in copy like emails.
 # Example: "Redis"
 short_name: "BitTorrent"
 
-# The release status for your course. 
+# The release status for your course.
 #
-# - alpha: Only visible to yourself and CodeCrafters staff. 
+# - alpha: Only visible to yourself and CodeCrafters staff.
 # - beta: Visible to all CodeCrafters users, but with a "beta" label.
 # - live: Visible to all CodeCrafters users, no label.
-# 
+#
 # Allowed values: "alpha", "beta", "live"
 release_status: "alpha"
 
 # This is shown on the course overview page. Markdown supported, recommended length ~30 words.
-# 
-# Recommended format: 
-# 
+#
+# Recommended format:
+#
 # > In this challenge, you'll build ABC that's capable of D, E, F and G. Along the way, we'll learn about X, Y, Z and more.
-# 
+#
 # Example:
-# 
+#
 # > In this challenge, you'll build a toy Redis clone that's capable of handling basic commands like PING, GET
 # > and SET. Along the way, we'll learn about event loops, the Redis Protocol and more.
 description_md: |
@@ -35,15 +35,15 @@ description_md: |
   Along the way, we’ll learn about how torrent files are structured, HTTP trackers, BitTorrent’s Peer Protocol, pipelining and more.
 
 # This is shown on the catalog. Plaintext only, recommended length ~10 words.
-# 
-# Recommended format: 
-# 
+#
+# Recommended format:
+#
 # > Learn about X, Y, Z and more
-# 
-# Example: 
+#
+# Example:
 #
 # > Learn about TCP servers, the Redis protocol and more
-# 
+#
 # **TODO**: Remove _md suffix since markdown isn't supported
 short_description_md: |
   Learn about .torrent files, the BitTorrent Peer Protocol and more
@@ -58,10 +58,10 @@ languages:
   - slug: "rust"
 
 marketing:
-  # Shown in the catalog. 
-  # 
+  # Shown in the catalog.
+  #
   # Recommended guidelines:
-  # 
+  #
   # - "easy": < 2h of work for an experienced developer
   # - "medium": > 6h of work for an experienced developer
   # - "hard": > 6h of work for an experienced developer
@@ -99,15 +99,15 @@ stages:
     # The name of the stage. This is shown in the course catalog, and on other course pages.
     name: "Decode bencoded strings"
 
-    # The difficulty of this stage. 
-    # 
+    # The difficulty of this stage.
+    #
     # Recommended guidelines, based on how long the stage will take an experienced developer to complete:
-    # 
-    # - Very Easy (< 5 minutes) 
-    # - Easy (5-10 minutes) 
-    # - Medium (30m-1h) 
+    #
+    # - Very Easy (< 5 minutes)
+    # - Easy (5-10 minutes)
+    # - Medium (30m-1h)
     # - Hard (> 1h)
-    # 
+    #
     # Allowed values: "very_easy", "easy", "medium", "hard"
     difficulty: very_easy
 
@@ -115,7 +115,7 @@ stages:
     description_md: |
         [Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced *Bee-encode*) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
 
-        Bencode supports four data types: 
+        Bencode supports four data types:
         - strings
         - integers
         - arrays
@@ -139,7 +139,7 @@ stages:
     name: "Decode bencoded integers"
     difficulty: easy
     description_md: |
-        In this stage, you’ll decode a bencoded integer value. 
+        In this stage, you’ll decode a bencoded integer value.
 
         Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
 
@@ -213,19 +213,19 @@ stages:
     name: "Parse torrent file"
     difficulty: easy
     description_md: |
-        In this stage, you'll parse a torrent file and print information about the torrent. 
-        
+        In this stage, you'll parse a torrent file and print information about the torrent.
+
         A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following values:
 
         - `announce`:
             - URL to a "tracker", which is a central server that keeps track of peers participating in the sharing of a torrent.
-        - `info`: 
-            - A dictionary with keys: 
+        - `info`:
+            - A dictionary with keys:
                 - `length`: size of the file in bytes, for single-file torrents
-                - `name`: suggested name to save the file / directory as 
+                - `name`: suggested name to save the file / directory as
                 - `piece length`: number of bytes in each piece
                 - `pieces`: concatenated SHA-1 hashes of each piece
-          
+
         **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
         In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
@@ -269,17 +269,42 @@ stages:
         Info Hash: c77829d2a77d6516f88cd7a3de1a26abcbfab0db
         ```
     marketing_md: |
-        In this stage, you’ll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
+        In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
   - slug: "peers"
     name: "Discover peers"
     difficulty: medium
     description_md: |
-        Trackers are central servers that maintain information about peers participating in the sharing and downloading of a torrent. BitTorrent protocol supports two types of trackers: [HTTP trackers](https://www.bittorrent.org/beps/bep_0003.html#trackers) and [UDP](https://www.bittorrent.org/beps/bep_0015.html) trackers. Over time, the protocol has evolved to support other mechanisms such as [Distributed Hash Tables (DHT)](http://bittorrent.org/beps/bep_0005.html) and [Peer Exchange (PEX)](http://bittorrent.org/beps/bep_0011.html) to allow peer discovery without relying on central trackers.
+        Trackers are central servers that maintain information about peers participating in the sharing and downloading of a torrent.
 
-        In this stage, you’ll be interacting with an HTTP tracker. You’ll make a GET request to a HTTP tracker to discover peers to download the file from. See [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for an explanation of keys that need to be included in your GET request. The response will be a bencoded dictionary with two keys: __interval__ and __peers__
+        In this stage, you'll make a GET request to a HTTP tracker to discover peers to download the file from.
 
-        Trackers use a [compact representation](https://www.bittorrent.org/beps/bep_0023.html) of the peer list by default where the value of the **peers** key is a bencoded string rather than a bencoded list.
+        You'll need to make a request to the tracker URL you extracted in the previous stage, and include these query params:
+
+        - `info_hash`: the info hash of the torrent
+          - 20 bytes long, will need to be URL encoded (note that this is NOT the hexadecimal representation, that's 40 bytes long)
+        - `peer_id`: a unique identifier for your client
+          - For the purposes of this challenge, it doesn't matter what you set this to. You can use `00112233445566778899`.
+        - `port`: the port your client is listening on
+          - For the purposes of this challenge, it doesn't matter what you set this to. You can use `6881`.
+        - `uploaded`: the total amount uploaded so far
+          - Since your client hasn't uploaded anything yet, you can set this to `0`.
+        - `downloaded`: the total amount downloaded so far
+          - Since your client hasn't downloaded anything yet, you can set this to `0`.
+        - `left`: the number of bytes left to download
+          - Since you client hasn't downloaded anything yet, this'll be the total length of the file (you've extracted this value from the torrent file in previous stages)
+        - `compact`: whether the peer list should use the [compact representation](https://www.bittorrent.org/beps/bep_0023.html)
+          - For the purposes of this challenge, set this to `1`. The compact representation is more commonly used in the wild.
+
+        Read [the BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for more information about these query parameters.
+
+        The tracker's response will be a bencoded dictionary with two keys:
+
+        - `interval`
+          - You can ignore this value for the purposes of this challenge, it indicates how often your client should make a request to the tracker.
+        - `peers`.
+          - A string, which contains list of peers that your client can connect to.
+          - Each peer is represented using 6 bytes. The first 4 bytes are the peer's IP address and the last 2 bytes are the peer's port number.
 
         Here’s how the tester will execute your program:
         ```
