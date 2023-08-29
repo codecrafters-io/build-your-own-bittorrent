@@ -282,29 +282,29 @@ stages:
         You'll need to make a request to the tracker URL you extracted in the previous stage, and include these query params:
 
         - `info_hash`: the info hash of the torrent
-          - 20 bytes long, will need to be URL encoded (note that this is NOT the hexadecimal representation, that's 40 bytes long)
+            - 20 bytes long, will need to be URL encoded (note that this is NOT the hexadecimal representation, that's 40 bytes long)
         - `peer_id`: a unique identifier for your client
-          - For the purposes of this challenge, it doesn't matter what you set this to. You can use `00112233445566778899`.
+            - For the purposes of this challenge, it doesn't matter what you set this to. You can use `00112233445566778899`.
         - `port`: the port your client is listening on
-          - For the purposes of this challenge, it doesn't matter what you set this to. You can use `6881`.
+            - For the purposes of this challenge, it doesn't matter what you set this to. You can use `6881`.
         - `uploaded`: the total amount uploaded so far
-          - Since your client hasn't uploaded anything yet, you can set this to `0`.
+            - Since your client hasn't uploaded anything yet, you can set this to `0`.
         - `downloaded`: the total amount downloaded so far
-          - Since your client hasn't downloaded anything yet, you can set this to `0`.
+            - Since your client hasn't downloaded anything yet, you can set this to `0`.
         - `left`: the number of bytes left to download
-          - Since you client hasn't downloaded anything yet, this'll be the total length of the file (you've extracted this value from the torrent file in previous stages)
+            - Since you client hasn't downloaded anything yet, this'll be the total length of the file (you've extracted this value from the torrent file in previous stages)
         - `compact`: whether the peer list should use the [compact representation](https://www.bittorrent.org/beps/bep_0023.html)
-          - For the purposes of this challenge, set this to `1`. The compact representation is more commonly used in the wild.
+            - For the purposes of this challenge, set this to `1`. The compact representation is more commonly used in the wild.
 
         Read [the BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for more information about these query parameters.
 
         The tracker's response will be a bencoded dictionary with two keys:
 
         - `interval`
-          - You can ignore this value for the purposes of this challenge, it indicates how often your client should make a request to the tracker.
+            - You can ignore this value for the purposes of this challenge, it indicates how often your client should make a request to the tracker.
         - `peers`.
-          - A string, which contains list of peers that your client can connect to.
-          - Each peer is represented using 6 bytes. The first 4 bytes are the peer's IP address and the last 2 bytes are the peer's port number.
+            - A string, which contains list of peers that your client can connect to.
+            - Each peer is represented using 6 bytes. The first 4 bytes are the peer's IP address and the last 2 bytes are the peer's port number.
 
         Here’s how the tester will execute your program:
         ```
