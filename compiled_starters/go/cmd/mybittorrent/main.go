@@ -3,12 +3,12 @@ package main
 import (
 	// Uncomment this line to pass the first stage
 	// "encoding/json"
-
-	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
 	"fmt"
 	"os"
 	"strconv"
 	"unicode"
+
+	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
 )
 
 // Example:
