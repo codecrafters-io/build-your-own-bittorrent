@@ -1,6 +1,7 @@
-@@ -1,35 +1,31 @@
- use serde_json;
- use std::env;
+@@ -3,36 +3,32 @@
+
+ // Available if you need it!
+ // use serde_bencode
 
  #[allow(dead_code)]
  fn decode_bencoded_value(encoded_value: &str) -> serde_json::Value {
