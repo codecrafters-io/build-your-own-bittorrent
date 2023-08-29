@@ -315,6 +315,8 @@ stages:
             - A string, which contains list of peers that your client can connect to.
             - Each peer is represented using 6 bytes. The first 4 bytes are the peer's IP address and the last 2 bytes are the peer's port number.
 
+        ---
+
         Here’s how the tester will execute your program:
         ```
         $ ./your_bittorrent.sh peers sample.torrent
