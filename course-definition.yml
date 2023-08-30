@@ -369,7 +369,12 @@ stages:
 
         Each piece is assigned a SHA-1 hash value. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download.
 
-        The [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) has more information about the `piece length` and `pieces` keys.
+        Piece length and piece hashes are specified in the `info` dictionary of the torrent file under the following keys:
+
+        - `piece length`: number of bytes in each piece, an integer
+        - `pieces`: concatenated SHA-1 hashes of each piece, a string
+
+        The [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) has more information about these keys.
 
         In this stage, the tester will expect your program to print piece length and a list of piece hashes in hexadecimal format.
 
