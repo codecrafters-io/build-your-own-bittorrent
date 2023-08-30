@@ -384,9 +384,9 @@ stages:
         ```
         and here’s the output it expects:
         ```
-        Tracker URL: ...
-        Length: ...
-        Info Hash: ...
+        Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+        Length: 1048500
+        Info Hash: c77829d2a77d6516f88cd7a3de1a26abcbfab0db
         Piece Length: 262144
         Piece Hashes:
         ddf33172599fda84f0a209a3034f79f0b8aa5e22
