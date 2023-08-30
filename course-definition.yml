@@ -365,8 +365,6 @@ stages:
     name: "Piece hashes"
     difficulty: easy
     description_md: |
-        In this stage, you’ll extract piece length and piece hashes from the torrent file.
-
         In a torrent, a file is split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size.
 
         Each piece is assigned a SHA-1 hash value. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download.
