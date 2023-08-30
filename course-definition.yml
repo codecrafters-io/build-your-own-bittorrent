@@ -338,11 +338,11 @@ stages:
 
         The handshake is a message consisting of the following parts as described in the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol):
 
-        1. length of the protocol string (BitTorrent protocol) which is 19
-        2. the string 'BitTorrent protocol'
+        1. length of the protocol string (BitTorrent protocol) which is `19`
+        2. the string `BitTorrent protocol`
         3. eight reserved bytes, which are all set to zero
         4. 20 byte sha1 infohash
-        5. 20 byte peer id (something we make up to identify ourselves)
+        5. 20 byte peer id (you can use `00112233445566778899` for this challenge)
 
         After we send a handshake to our peer, we should receive a handshake back in the same format.
 
