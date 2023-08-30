@@ -372,7 +372,7 @@ stages:
         Piece length and piece hashes are specified in the `info` dictionary of the torrent file under the following keys:
 
         - `piece length`: number of bytes in each piece, an integer
-        - `pieces`: concatenated SHA-1 hashes of each piece, a string
+        - `pieces`: concatenated SHA-1 hashes of each piece (20 bytes each), a string
 
         The [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) has more information about these keys.
 
