@@ -367,11 +367,13 @@ stages:
     description_md: |
         In this stage, you’ll extract piece length and piece hashes from the torrent file.
 
-        In a torrent, a file is conceptually split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size, so a large file could be made up of thousands of pieces. See _piece length_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary).
+        In a torrent, a file is split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size.
 
-        If you open a torrent file with a text editor, you’ll see a big binary blob. This is a bencoded string containing concatenated SHA-1 hash values of each piece. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download. See _pieces_ in [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary).
+        Each piece is assigned a SHA-1 hash value. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we’ll download.
 
-        Your program will print piece length and piece hashes (in hexadecimal format).
+        The [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) has more information about the `piece length` and `pieces` keys.
+
+        In this stage, the tester will expect your program to print piece length and a list of piece hashes in hexadecimal format.
 
         Here’s how the tester will execute your program:
         ```
