@@ -350,12 +350,14 @@ stages:
 
         Here’s how the tester will execute your program:
         ```
-        $ ./your_bittorrent.sh handshake sample.torrent 118.119.61.177:6882
+        $ ./your_bittorrent.sh handshake sample.torrent <peer_ip>:<peer_port>
         ```
         and here’s the output it expects:
         ```
         Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
         ```
+
+        **Note**: To get a peer IP & port to test this locally, run `./your_bittorrent.sh peers sample.torrent` and pick any peer from the list.
     marketing_md: |
         In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
