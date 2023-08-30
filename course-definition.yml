@@ -336,14 +336,17 @@ stages:
     description_md: |
         In this stage, you’ll establish a TCP connection with a peer and complete a handshake.
 
-        BitTorrent Protocol Specification defines a set of messages that are used to communicate between peers which is called the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol). The first step after establishing a TCP connection is to complete a handshake. The handshake is a message consisting of the following parts as described in the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol):
+        The handshake is a message consisting of the following parts as described in the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol):
+
         1. length of the protocol string (BitTorrent protocol) which is 19
         2. the string 'BitTorrent protocol'
         3. eight reserved bytes, which are all set to zero
         4. 20 byte sha1 infohash
         5. 20 byte peer id (something we make up to identify ourselves)
 
-        After we send a handshake to our peer, we should receive a handshake back in the same format. You’ll print the peer id you’ve received during the handshake in hexadecimal format.
+        After we send a handshake to our peer, we should receive a handshake back in the same format.
+
+        Your program should print the hexadecimal representation of the peer id you've received during the handshake.
 
         Here’s how the tester will execute your program:
         ```
