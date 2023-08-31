@@ -411,7 +411,7 @@ stages:
             - you've done this in previous stages
         - Establish a TCP connection with a peer, and perform a handshake
             - you've done this in previous stages
-        - Exchange multiple [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to download the file.
+        - Exchange multiple [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to download the file
             - **This is the part you'll implement in this stage**
 
         Peer messages consist of a message length prefix (4 bytes), message id (1 byte) and a payload (variable size).
