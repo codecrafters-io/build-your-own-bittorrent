@@ -247,7 +247,7 @@ stages:
 
   - slug: "infohash"
     name: "Calculate info hash"
-    difficulty: easy
+    difficulty: medium
     description_md: |
         Info hash is a unique identifier for a torrent file. It's used when talking to trackers or peers.
 
