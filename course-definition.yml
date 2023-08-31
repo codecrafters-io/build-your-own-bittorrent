@@ -405,10 +405,14 @@ stages:
 
         To download a piece, your program will need to need to send [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to a peer. The overall flow looks like this:
 
-        - Read the torrent file to get the tracker URL (you've done this in previous stages)
-        - Perform the tracker GET request to get a list of peers (you've done this in previous stages)
-        - Establish a TCP connection with a peer, and perform a handshake (you've done this in previous stages)
+        - Read the torrent file to get the tracker URL
+            - you've done this in previous stages
+        - Perform the tracker GET request to get a list of peers
+            - you've done this in previous stages
+        - Establish a TCP connection with a peer, and perform a handshake
+            - you've done this in previous stages
         - Exchange multiple [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to download the file.
+            - **This is the part you'll implement in this stage**
 
         Peer messages consist of a message length prefix (4 bytes), message id (1 byte) and a payload (variable size).
 
