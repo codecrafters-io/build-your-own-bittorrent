@@ -414,6 +414,8 @@ stages:
         - Exchange multiple [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to download the file
             - **This is the part you'll implement in this stage**
 
+        ### Peer Messages
+
         Peer messages consist of a message length prefix (4 bytes), message id (1 byte) and a payload (variable size).
 
         Here are the peer messages you'll need to exchange once the handshake is complete:
