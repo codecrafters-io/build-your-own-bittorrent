@@ -6,8 +6,8 @@ import sys
 
 # Examples:
 #
-# - decode_bencode("5:hello") -> "hello"
-# - decode_bencode("10:hello12345") -> "hello12345"
+# - decode_bencode(b"5:hello") -> b"hello"
+# - decode_bencode(b"10:hello12345") -> b"hello12345"
 def decode_bencode(bencoded_value):
     if chr(bencoded_value[0]).isdigit():
         length = int(bencoded_value.split(b":")[0])
