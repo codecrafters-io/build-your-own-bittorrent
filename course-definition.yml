@@ -141,11 +141,11 @@ stages:
     name: "Decode bencoded integers"
     difficulty: easy
     description_md: |
-        In this stage, you’ll decode a bencoded integer value.
+        In this stage, you'll extend the `decode` command to support bencoded integers.
 
         Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
 
-        Here’s how the tester will execute your program:
+        Here's how the tester will execute your program:
 
         ```
         $ ./your_bittorrent.sh decode i52e
@@ -165,7 +165,7 @@ stages:
     name: "Decode bencoded lists"
     difficulty: easy
     description_md: |
-        In this stage, you’ll decode a bencoded list value.
+        In this stage, you'll extend the `decode` command to support bencoded lists.
 
         Lists are encoded as `l<bencoded_elements>e`.
 
@@ -190,7 +190,7 @@ stages:
     name: "Decode bencoded dictionaries"
     difficulty: easy
     description_md: |
-        In this stage, you’ll decode a bencoded dictionary value.
+        In this stage, you'll extend the `decode` command to support bencoded dictionaries.
 
         A dictionary is encoded as `d<key1><value1>...<keyN><valueN>e`. `<key1>`, `<value1>` etc. correspond to the bencoded keys & values. The keys are sorted in lexicographical order.
 
