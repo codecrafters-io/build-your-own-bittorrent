@@ -125,6 +125,8 @@ stages:
 
         Strings are encoded as `<length>:<contents>`. For example, the string `"hello"` is encoded as `"5:hello"`.
 
+        You'll implement a `decode` command which takes a bencoded value as input and prints the decoded value as JSON.
+
         Here’s how the tester will execute your program:
 
         ```
