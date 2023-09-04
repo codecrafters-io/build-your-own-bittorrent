@@ -26,6 +26,7 @@ regex = "1"                                                        # for regular
 reqwest = { version = "0.11.18", features = ["json", "blocking"] } # http requests
 serde = { version = "1.0.136", features = ["derive"] }             # for json mangling
 serde_bencode = "0.2.3"                                            # for bencode encoding/decoding
+serde_bytes = "0.11.12"                                            # for dealing with bytes
 serde_json = "1.0.105"                                             # for json mangling
 sha1 = "0.10.1"                                                    # hashing
 tempfile = "3"                                                     # creating temporary directories
