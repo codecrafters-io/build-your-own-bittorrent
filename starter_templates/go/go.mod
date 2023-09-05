@@ -6,7 +6,7 @@
 //
 // DON'T EDIT THIS!
 
-module github.com/codecrafters-io/grep-starter-go
+module github.com/codecrafters-io/bittorrent-starter-go
 
 go 1.16
 
