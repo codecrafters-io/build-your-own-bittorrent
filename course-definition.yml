@@ -326,11 +326,9 @@ stages:
             - 20 bytes long, will need to be URL encoded
             - **Note**: this is **NOT** the hexadecimal representation, which is 40 bytes long
         - `peer_id`: a unique identifier for your client
-            - For the purposes of this challenge, it doesn't matter what you set this to.
-            - You can use `00112233445566778899`.
+            - A string of length 20 that you get to pick. You can use something like `00112233445566778899`.
         - `port`: the port your client is listening on
-            - For the purposes of this challenge, it doesn't matter what you set this to.
-            - You can use `6881`.
+            - You can set this to `6881`, you will not have to support this functionality during this challenge.
         - `uploaded`: the total amount uploaded so far
             - Since your client hasn't uploaded anything yet, you can set this to `0`.
         - `downloaded`: the total amount downloaded so far
@@ -380,7 +378,7 @@ stages:
         1. length of the protocol string (BitTorrent protocol) which is `19`
         2. the string `BitTorrent protocol`
         3. eight reserved bytes, which are all set to zero
-        4. 20 byte sha1 infohash
+        4. 20 byte sha1 infohash (**NOT** the hexadecimal representation, which is 40 bytes long)
         5. 20 byte peer id (you can use `00112233445566778899` for this challenge)
 
         After we send a handshake to our peer, we should receive a handshake back in the same format.
@@ -424,8 +422,8 @@ stages:
         Here are the peer messages you'll need to exchange once the handshake is complete:
 
         - Wait for a `bitfield` message from the peer indicating which pieces it has
-            - The message id for this message is `5`.
-            - You can ignore the payload for now, the tracker we use for this challenge ensures that all peers have all pieces available.
+            - The message id for this message type is `5`.
+            - You can read and ignore the payload for now, the tracker we use for this challenge ensures that all peers have all pieces available.
         - Send an `interested` message
             - The message id for `interested` is `2`.
             - The payload for this message is empty.
