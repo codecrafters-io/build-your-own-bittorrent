@@ -217,7 +217,7 @@ stages:
     description_md: |
         In this stage, you'll parse a torrent file and print information about the torrent.
 
-        A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following values:
+        A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following keys and values:
 
         - `announce`:
             - URL to a "tracker", which is a central server that keeps track of peers participating in the sharing of a torrent.
