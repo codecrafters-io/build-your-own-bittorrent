@@ -158,6 +158,9 @@ stages:
         {{#lang_is_python}}
         If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
         {{/lang_is_python}}
+        {{#lang_is_rust}}
+        If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
+        {{/lang_is_rust}}
     marketing_md: |
         In this stage, you’ll decode a bencoded integer.
 
@@ -183,6 +186,9 @@ stages:
         {{#lang_is_python}}
         If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
         {{/lang_is_python}}
+        {{#lang_is_rust}}
+        If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
+        {{/lang_is_rust}}
     marketing_md: |
         In this stage, you’ll decode a bencoded list.
 
@@ -208,6 +214,9 @@ stages:
         {{#lang_is_python}}
         If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
         {{/lang_is_python}}
+        {{#lang_is_rust}}
+        If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
+        {{/lang_is_rust}}
     marketing_md: |
         In this stage, you’ll decode a bencoded dictionary.
 
