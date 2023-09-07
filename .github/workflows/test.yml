@@ -11,4 +11,4 @@ concurrency:
 
 jobs:
   test_course_definition:
-    uses: anugrahsinghal/course-sdk/.github/workflows/test-course-definition.yml@close_io_relay
+    uses: anugrahsinghal/codecrafters-course-sdk/.github/workflows/test-course-definition.yml@close_io_relay
