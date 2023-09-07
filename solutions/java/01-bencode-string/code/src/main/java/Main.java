@@ -1,11 +1,12 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
+// JBANG SUPPORT
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 17
 //DEPS com.fasterxml.jackson.core:jackson-databind:2.14.2
@@ -13,7 +14,7 @@ import com.google.gson.JsonParser;
 //SOURCES **.java
 
 public class Main {
-  private static final ObjectMapper objectMapper = new ObjectMapper();
+  // private static final ObjectMapper objectMapper = new ObjectMapper();
   private static final Gson gson = new Gson();
   public static void main(String[] args) throws Exception {
     String command = args[0];

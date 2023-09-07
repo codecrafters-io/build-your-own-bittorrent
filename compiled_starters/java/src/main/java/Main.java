@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
+// JBANG SUPPORT
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 17
 //DEPS com.fasterxml.jackson.core:jackson-databind:2.14.2

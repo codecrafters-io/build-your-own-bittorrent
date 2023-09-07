@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
-tmpFile=$(mktemp -d)
+# tmpFile=$(mktemp -d)
 
+## Java with Jar COPY Support
 # databind="jars/jackson-databind-2.14.2.jar"
 # core="jars/jackson-core-2.14.2.jar"
 # annotations="jars/jackson-annotations-2.14.2.jar"
@@ -13,7 +14,10 @@ tmpFile=$(mktemp -d)
 # jar cf java_bittorrent.jar -C "$tmpFile"/ .
 # exec java -cp "$classpath:java_bittorrent.jar" Main "$@"
 
-mvn package -Ddir="$tmpFile"
-exec java -jar "$tmpFile"/java_bittorrent.jar "$@"
+## MAVEN SUPPORT
+# mvn package -Ddir="$tmpFile"
+# exec java -jar "$tmpFile"/java_bittorrent.jar "$@"
+exec java -jar /tmp/codecrafters-bittorrent-target/java_bittorrent.jar "$@"
 
+## JBANG SUPPORT
 # JBANG_DEFAULT_JAVA_VERSION=17 $HOME/.jbang/bin/jbang src/main/java/Main.java "$@"
