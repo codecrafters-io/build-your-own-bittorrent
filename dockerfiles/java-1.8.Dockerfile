@@ -1,20 +1,31 @@
 # JAVA SUPPORT with Jar Copy (alpine should also work but no curl so using this right now for easier testing)
-FROM openjdk:8-jdk
+# FROM openjdk:8-jdk
 
 ## MAVEN SUPPORT
-# FROM maven:3.9.4-eclipse-temurin-8-focal
+FROM maven:3.9.4-eclipse-temurin-8-focal
 
-# COPY pom.xml /app/pom.xml
+COPY pom.xml /app/pom.xml
 
-# WORKDIR /app
-# RUN mvn dependency:go-offline
+WORKDIR /app
 
-# RUN mvn clean
+RUN mkdir -p .m2
+# ENV M2_HOME=/app/.m2
+ENV M2_REPO=/app/.m2
+RUN ls -alh /app/.m2
 
-# RUN rm -rf /app/src
-# what is this and how to use it
-# RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && cargo build --release --target-dir=/tmp/codecrafters-bittorrent-target --manifest-path Cargo.toml" > /codecrafters-precompile.sh
-# RUN chmod +x /codecrafters-precompile.sh
+# downloads the dependencies
+RUN mvn dependency:go-offline
+RUN ls -alh /app/.m2
+
+RUN mvn clean
+
+RUN rm -rf /app
+
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn package -Ddir=/tmp/codecrafters-bittorrent-target" > /codecrafters-precompile.sh
+RUN chmod +x /codecrafters-precompile.sh
+
+# RUN mkdir -p /app-cached
+# RUN cp -r /app/.m2/* /app-cached/.m2
 
 ## JBANG SUPPORT
 # RUN echo '///usr/bin/env jbang "$0" "$@" ; exit $?' >> init.java
