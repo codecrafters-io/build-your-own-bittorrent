@@ -18,7 +18,8 @@ tmpFile=$(mktemp -d)
 
 # Location of JAR used by source code
 # com.fasterxml.jackson.core:jackson-databind:2.14.2
-jackson="/home/gitpod/.m2/repository/com/fasterxml/jackson/core"
+# jackson="/home/gitpod/.m2/repository/com/fasterxml/jackson/core"
+jackson="jars"
 databind="jackson-databind/2.14.2/jackson-databind-2.14.2.jar"
 core="jackson-core/2.14.2/jackson-core-2.14.2.jar"
 annotations="jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar"
@@ -31,7 +32,7 @@ outDir="$tmpFile"
 
 # Compile with classpath containing depJar
 # "${jackson}\${core}"
-# echo "${jackson}/${core}" "${jackson}/${annotations}" "${jackson}/${databind}"
+echo "${jackson}/${core}" "${jackson}/${annotations}" "${jackson}/${databind}"
 classpath="${jackson}/${core}:${jackson}/${annotations}:${jackson}/${databind}"
 # javac -sourcepath $srcDir -d $outDir -cp "$classpath" $srcDir/*.java "$@"
 # javac -sourcepath $srcDir -d $outDir -cp "${jackson}/${core}" "${jackson}/${annotations}" "${jackson}/${databind}" $srcDir/*.java

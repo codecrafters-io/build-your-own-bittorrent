@@ -16,15 +16,15 @@ public class Main {
     String command = args[0];
     if("decode".equals(command)) {
       //  Uncomment this block to pass the first stage
-        String bencodedValue = args[1];
-        String decoded;
-        try {
-          decoded = decodeBencode(bencodedValue);
-        } catch(RuntimeException e) {
-          System.out.println(e.getMessage());
-          return;
-        }
-        System.out.println(objectMapper.writeValueAsString(decoded));
+      //  String bencodedValue = args[1];
+      //  String decoded;
+      //  try {
+      //    decoded = decodeBencode(bencodedValue);
+      //  } catch(RuntimeException e) {
+      //    System.out.println(e.getMessage());
+      //    return;
+      //  }
+      //  System.out.println(objectMapper.writeValueAsString(decoded));
 
     } else {
       System.out.println("Unknown command: " + command);
