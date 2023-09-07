@@ -8,24 +8,19 @@ COPY pom.xml /app/pom.xml
 
 WORKDIR /app
 
-RUN mkdir -p .m2
-# ENV M2_HOME=/app/.m2
-ENV M2_REPO=/app/.m2
-RUN ls -alh /app/.m2
+RUN mkdir -p /app/.m2/
+ENV APP_MVN_REPO=/app/.m2
 
 # downloads the dependencies
-RUN mvn dependency:go-offline
-RUN ls -alh /app/.m2
+RUN mvn -Dmaven.repo.local=$APP_MVN_REPO dependency:go-offline
 
-RUN mvn clean
-
-RUN rm -rf /app
-
-RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn package -Ddir=/tmp/codecrafters-bittorrent-target" > /codecrafters-precompile.sh
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn package -Dmaven.repo.local=$APP_MVN_REPO -Ddir=/tmp/codecrafters-bittorrent-target" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
 
-# RUN mkdir -p /app-cached
-# RUN cp -r /app/.m2/* /app-cached/.m2
+RUN mkdir -p /app-cached
+RUN mv -v $APP_MVN_REPO /app-cached/.m2
+
+# RUN rm -rf /app
 
 ## JBANG SUPPORT
 # RUN echo '///usr/bin/env jbang "$0" "$@" ; exit $?' >> init.java
