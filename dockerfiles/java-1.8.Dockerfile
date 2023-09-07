@@ -7,7 +7,8 @@
 # RUN curl -Ls https://sh.jbang.dev | bash -s - app setup
 # RUN echo pwd
 # RUN ls
-FROM openjdk:8-jdk
+# FROM openjdk:8-jdk
+FROM maven:3.9.4-eclipse-temurin-8-focal
 
 # RUN curl -s "https://get.sdkman.io" | bash 
 # RUN source ~/.bash_profile
