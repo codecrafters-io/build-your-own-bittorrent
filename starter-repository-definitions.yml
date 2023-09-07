@@ -81,14 +81,6 @@
       target: src/main/java/Main.java
     - source: starter_templates/java/pom.xml
       target: pom.xml
-    # - source: starter_templates/java/jars/jackson-databind-2.14.2.jar
-    #   target: jars/jackson-databind-2.14.2.jar
-    # - source: starter_templates/java/jars/jars/jackson-core-2.14.2.jar
-    #   target: jars/jars/jackson-core-2.14.2.jar
-    # - source: starter_templates/java/jars/jackson-annotations-2.14.2.jar
-    #   target: jars/jackson-annotations-2.14.2.jar
-    # - source: starter_templates/java/jars/gson-2.10.1.jar
-    #   target: jars/gson-2.10.1.jar
     - source: starter_templates/.gitattributes
       target: .gitattributes
     - source: starter_templates/sample.torrent
