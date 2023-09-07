@@ -2,7 +2,7 @@
 # FROM openjdk:8-jdk
 
 ## MAVEN SUPPORT
-FROM maven:3.9.4-eclipse-temurin-8-focal
+FROM maven:3.9.4-eclipse-temurin-8-alpine
 
 COPY pom.xml /app/pom.xml
 
@@ -14,11 +14,14 @@ ENV APP_MVN_REPO=/app/.m2
 # downloads the dependencies
 RUN mvn -Dmaven.repo.local=$APP_MVN_REPO dependency:go-offline
 
-RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn package -Dmaven.repo.local=$APP_MVN_REPO -Ddir=/tmp/codecrafters-bittorrent-target" > /codecrafters-precompile.sh
-RUN chmod +x /codecrafters-precompile.sh
-
+# Cache MAVEN Dependencies
 RUN mkdir -p /app-cached
 RUN mv -v $APP_MVN_REPO /app-cached/.m2
+
+# Pre-compile jar to directly run
+ENV MAVEN_OPTS="-Dmaven.repo.local=$APP_MVN_REPO -Ddir=/tmp/codecrafters-bittorrent-target"
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn -B --quiet package " > /codecrafters-precompile.sh
+RUN chmod +x /codecrafters-precompile.sh
 
 # RUN rm -rf /app
 
