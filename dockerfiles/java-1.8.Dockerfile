@@ -12,7 +12,7 @@ RUN mkdir -p /app/.m2/
 ENV APP_MVN_REPO=/app/.m2
 
 # downloads the dependencies
-RUN mvn -Dmaven.repo.local=$APP_MVN_REPO dependency:go-offline
+RUN mvn -B --quiet -Dmaven.repo.local=$APP_MVN_REPO dependency:go-offline
 
 # Cache MAVEN Dependencies
 RUN mkdir -p /app-cached
