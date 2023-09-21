@@ -29,7 +29,7 @@ release_status: "beta"
 #
 # > In this challenge, you'll build a toy Redis clone that's capable of handling basic commands like PING, GET
 # > and SET. Along the way, we'll learn about event loops, the Redis Protocol and more.
-description_md: |
+description_md: |-
   In this challenge, you’ll build a BitTorrent client that's capable of parsing a .torrent file and downloading a file from a peer.
 
   Along the way, we’ll learn about how torrent files are structured, HTTP trackers, BitTorrent’s Peer Protocol, pipelining and more.
@@ -45,7 +45,7 @@ description_md: |
 # > Learn about TCP servers, the Redis protocol and more
 #
 # **TODO**: Remove _md suffix since markdown isn't supported
-short_description_md: |
+short_description_md: |-
   Learn about .torrent files, the BitTorrent Peer Protocol and more
 
 # The percentage of users who complete your course. We'll calculate this automatically in the future, safe to ignore for now.
@@ -90,7 +90,7 @@ marketing:
       author_description: "Senior Software Developer, CenturyLink"
       author_avatar: "https://codecrafters.io/images/external/testimonials/patrick-burris.jpeg"
       link: "https://github.com/Jumballaya"
-      text: |
+      text: |-
         I think the instant feedback right there in the git push is really cool.
         Didn't even know that was possible!
 
@@ -113,7 +113,7 @@ stages:
     difficulty: very_easy
 
     # The instructions for your stage. Markdown supported. Shown on the course page.
-    description_md: |
+    description_md: |-
         [Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced *Bee-encode*) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
 
         Bencode supports four data types:
@@ -135,13 +135,13 @@ stages:
         "hello"
         ```
     # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
-    marketing_md: |
+    marketing_md: |-
         [Bencode](https://en.wikipedia.org/wiki/Bencode) is a binary serialization format used in BitTorrent protocol. In this stage, you’ll decode a bencoded string.
 
   - slug: "bencode-int"
     name: "Decode bencoded integers"
     difficulty: easy
-    description_md: |
+    description_md: |-
         In this stage, you'll extend the `decode` command to support bencoded integers.
 
         Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
@@ -162,13 +162,13 @@ stages:
         {{#lang_is_rust}}
         If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
         {{/lang_is_rust}}
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll decode a bencoded integer.
 
   - slug: "bencode-list"
     name: "Decode bencoded lists"
     difficulty: easy
-    description_md: |
+    description_md: |-
         In this stage, you'll extend the `decode` command to support bencoded lists.
 
         Lists are encoded as `l<bencoded_elements>e`.
@@ -190,13 +190,13 @@ stages:
         {{#lang_is_rust}}
         If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
         {{/lang_is_rust}}
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll decode a bencoded list.
 
   - slug: "bencode-dict"
     name: "Decode bencoded dictionaries"
     difficulty: easy
-    description_md: |
+    description_md: |-
         In this stage, you'll extend the `decode` command to support bencoded dictionaries.
 
         A dictionary is encoded as `d<key1><value1>...<keyN><valueN>e`. `<key1>`, `<value1>` etc. correspond to the bencoded keys & values. The keys are sorted in lexicographical order and must be strings.
@@ -218,13 +218,13 @@ stages:
         {{#lang_is_rust}}
         If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
         {{/lang_is_rust}}
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll decode a bencoded dictionary.
 
   - slug: "parse-torrent"
     name: "Parse torrent file"
     difficulty: easy
-    description_md: |
+    description_md: |-
         In this stage, you'll parse a torrent file and print information about the torrent.
 
         A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following keys and values:
@@ -254,13 +254,13 @@ stages:
         Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
         Length: 1048500
         ```
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll parse a .torrent file and extract information about the torrent.
 
   - slug: "infohash"
     name: "Calculate info hash"
     difficulty: medium
-    description_md: |
+    description_md: |-
         Info hash is a unique identifier for a torrent file. It's used when talking to trackers or peers.
 
         In this stage, you'll calculate the info hash for a torrent file and print it in hexadecimal format.
@@ -280,13 +280,13 @@ stages:
         Length: 1048500
         Info Hash: c77829d2a77d6516f88cd7a3de1a26abcbfab0db
         ```
-    marketing_md: |
+    marketing_md: |-
         In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
   - slug: "hashes"
     name: "Piece hashes"
     difficulty: easy
-    description_md: |
+    description_md: |-
         In a torrent, a file is split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size.
 
         Each piece is assigned a SHA-1 hash value. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we'll download.
@@ -316,14 +316,14 @@ stages:
         cdae2ef532d611a46b2cf7b64d578c09b3ac0b6e
         098dadc0c19436f1927ea27b90eb18b1a2820a23
         ```
-    marketing_md: |
+    marketing_md: |-
         In this stage, you'll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
 
   - slug: "peers"
     name: "Discover peers"
     difficulty: medium
-    description_md: |
+    description_md: |-
         Trackers are central servers that maintain information about peers participating in the sharing and downloading of a torrent.
 
         In this stage, you'll make a GET request to a HTTP tracker to discover peers to download the file from.
@@ -374,13 +374,13 @@ stages:
         71.224.0.29:51414
         62.153.208.98:3652
         ```
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
   - slug: "handshake"
     name: "Peer handshake"
     difficulty: medium
-    description_md: |
+    description_md: |-
         In this stage, you’ll establish a TCP connection with a peer and complete a handshake.
 
         The handshake is a message consisting of the following parts as described in the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol):
@@ -405,13 +405,13 @@ stages:
         ```
 
         **Note**: To get a peer IP & port to test this locally, run `./your_bittorrent.sh peers sample.torrent` and pick any peer from the list.
-    marketing_md: |
+    marketing_md: |-
         In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
   - slug: "dl-piece"
     name: "Download a piece"
     difficulty: hard
-    description_md: |
+    description_md: |-
         In this stage, you'll download one piece and save it to disk. In the next stage we'll combine these pieces into a file.
 
         To download a piece, your program will need to need to send [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to a peer. The overall flow looks like this:
@@ -469,13 +469,13 @@ stages:
         ```
 
         **Optional:** To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent.
-    marketing_md: |
+    marketing_md: |-
         In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
   - slug: "dl-file"
     name: "Download the whole file"
     difficulty: hard
-    description_md: |
+    description_md: |-
         In this stage, you’ll download the entire file and save it to disk.
 
         You can start with using a single peer to download all the pieces. You’ll need to download all the pieces, verify their integrity using piece hashes, and combine them to assemble the file.
@@ -490,5 +490,5 @@ stages:
         ```
 
         **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
-    marketing_md: |
+    marketing_md: |-
         In this stage, you'll download the entire file. You'll download all the pieces, verify them using SHA-1 and save them to disk.
