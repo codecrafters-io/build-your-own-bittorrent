@@ -35,3 +35,8 @@ language_pack: dotnet-6.0
 # Available versions: c-9.2
 language_pack: c-9.2
 {{/ language_is_c }}
+{{#language_is_cpp}}
+# Available versions: cpp-20
+language_pack: cpp-20
+{{/language_is_cpp}}
+
