@@ -54,9 +54,11 @@ completion_percentage: 15
 # The languages that your course supports.
 languages:
   - slug: "go"
+  - slug: "java"
+  - slug: "javascript"
+    release_status: "alpha"
   - slug: "python"
   - slug: "rust"
-  - slug: "java"
 
 marketing:
   # Shown in the catalog.

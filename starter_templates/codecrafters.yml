@@ -23,3 +23,7 @@ language_pack: rust-1.70
 # Available versions: java-1.8
 language_pack: java-1.8
 {{/ language_is_java }}
+{{# language_is_javascript }}
+# Available versions: nodejs-18
+language_pack: nodejs-18
+{{/ language_is_javascript }}
