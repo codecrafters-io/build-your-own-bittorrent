@@ -56,7 +56,6 @@ languages:
   - slug: "go"
   - slug: "java"
   - slug: "javascript"
-    release_status: "alpha"
   - slug: "python"
   - slug: "rust"
 
