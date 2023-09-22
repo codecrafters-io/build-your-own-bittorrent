@@ -88,3 +88,19 @@
   template_attributes:
     required_executable: "java (1.8)"
     user_editable_file: "src/main/java/Main.java"
+
+- language: javascript
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/javascript/app/main.js
+      target: app/main.js
+    - source: starter_templates/javascript/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+  template_attributes:
+    required_executable: "node (18)"
+    user_editable_file: "app/main.js"
