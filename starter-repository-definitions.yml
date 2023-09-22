@@ -101,6 +101,8 @@
       target: your_bittorrent.sh
     - source: starter_templates/.gitattributes
       target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
   template_attributes:
     required_executable: "node (18)"
     user_editable_file: "app/main.js"
