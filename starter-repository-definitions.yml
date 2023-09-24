@@ -106,3 +106,21 @@
   template_attributes:
     required_executable: "node (18)"
     user_editable_file: "app/main.js"
+    
+- language: ruby
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/ruby/app/main.rb
+      target: app/main.rb
+    - source: starter_templates/ruby/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+  template_attributes:
+    required_executable: "ruby (2.7+)"
+    user_editable_file: "app/main.rb"

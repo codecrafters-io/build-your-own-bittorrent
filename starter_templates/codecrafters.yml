@@ -27,3 +27,7 @@ language_pack: java-1.8
 # Available versions: nodejs-18
 language_pack: nodejs-18
 {{/ language_is_javascript }}
+{{# language_is_ruby }}
+# Available versions: ruby-2.7
+language_pack: ruby-2.7
+{{/ language_is_ruby }}
