@@ -27,3 +27,7 @@ language_pack: java-1.8
 # Available versions: nodejs-18
 language_pack: nodejs-18
 {{/ language_is_javascript }}
+{{# language_is_c }}
+# Available versions: c-9.2
+language_pack: c-9.2
+{{/ language_is_c }}
