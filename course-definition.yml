@@ -272,8 +272,9 @@ stages:
 
         To calculate the info hash, you'll need to:
 
-        - Extract the `info` dictionary from the torrent file
-        - Bencode the contents of the `info` dictionary, and calculate the SHA-1 hash
+        - Extract the `info` dictionary from the torrent file after parsing
+        - Bencode the contents of the `info` dictionary
+        - Calculate the SHA-1 hash of this bencoded dictionary
 
         Here’s how the tester will execute your program:
         ```
