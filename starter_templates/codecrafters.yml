@@ -27,6 +27,10 @@ language_pack: java-1.8
 # Available versions: nodejs-18
 language_pack: nodejs-18
 {{/ language_is_javascript }}
+{{# language_is_ruby }}
+# Available versions: ruby-3.2
+language_pack: ruby-3.2
+{{/ language_is_ruby }}
 {{#language_is_csharp}}
 # Available versions: dotnet-6.0
 language_pack: dotnet-6.0
