@@ -53,10 +53,14 @@ completion_percentage: 15
 
 # The languages that your course supports.
 languages:
+  - slug: "c"
+  - slug: "cpp"
+  - slug: "csharp"
   - slug: "go"
   - slug: "java"
   - slug: "javascript"
   - slug: "python"
+  - slug: "ruby"
   - slug: "rust"
 
 marketing:
