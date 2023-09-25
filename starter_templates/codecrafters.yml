@@ -39,4 +39,3 @@ language_pack: c-9.2
 # Available versions: cpp-20
 language_pack: cpp-20
 {{/language_is_cpp}}
-
