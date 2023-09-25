@@ -67,6 +67,7 @@
   template_attributes:
     required_executable: "go (1.19)"
     user_editable_file: "cmd/mybittorrent/main.go"
+
 - language: java
   file_mappings:
     - source: starter_templates/README.md
@@ -106,7 +107,7 @@
   template_attributes:
     required_executable: "node (18)"
     user_editable_file: "app/main.js"
-    
+
 - language: ruby
   file_mappings:
     - source: starter_templates/README.md
@@ -124,3 +125,72 @@
   template_attributes:
     required_executable: "ruby (2.7+)"
     user_editable_file: "app/main.rb"
+
+- language: csharp
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/csharp/.gitignore
+      target: .gitignore
+    - source: starter_templates/csharp/Program.cs
+      target: src/Program.cs
+    - source: starter_templates/csharp/codecrafters-bittorrent.csproj
+      target: codecrafters-bittorrent.csproj
+    - source: starter_templates/csharp/codecrafters-bittorrent.sln
+      target: codecrafters-bittorrent.sln
+    - source: starter_templates/csharp/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+  template_attributes:
+    required_executable: "dotnet (6.0)"
+    user_editable_file: "src/Program.cs"
+
+- language: cpp
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/cpp/.gitignore
+      target: .gitignore
+    - source: starter_templates/cpp/src/Main.cpp
+      target: src/Main.cpp
+    - source: starter_templates/cpp/CMakeLists.txt
+      target: CMakeLists.txt
+    - source: starter_templates/cpp/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/cpp/src/lib/nlohmann/json.hpp
+      target: src/lib/nlohmann/json.hpp
+      should_skip_template_evaluation: true
+  template_attributes:
+    required_executable: "cmake"
+    user_editable_file: "src/Main.cpp"
+
+- language: c
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/c/app/main.c
+      target: app/main.c
+    - source: starter_templates/c/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+  template_attributes:
+    required_executable: "gcc"
+    user_editable_file: "app/main.c"

@@ -31,3 +31,15 @@ language_pack: nodejs-18
 # Available versions: ruby-2.7
 language_pack: ruby-2.7
 {{/ language_is_ruby }}
+{{#language_is_csharp}}
+# Available versions: dotnet-6.0
+language_pack: dotnet-6.0
+{{/language_is_csharp}}
+{{# language_is_c }}
+# Available versions: c-9.2
+language_pack: c-9.2
+{{/ language_is_c }}
+{{#language_is_cpp}}
+# Available versions: cpp-20
+language_pack: cpp-20
+{{/language_is_cpp}}
