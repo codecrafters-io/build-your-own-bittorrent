@@ -154,6 +154,7 @@
       target: sample.torrent
     - source: starter_templates/cpp/src/lib/nlohmann/json.hpp
       target: src/lib/nlohmann/json.hpp
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "cmake"
     user_editable_file: "src/Main.cpp"
