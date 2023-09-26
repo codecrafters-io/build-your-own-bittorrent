@@ -1,4 +1,4 @@
-using static System.Buffers.Binary.BinaryPrimitives;
+using System.Text.Json;
 
 // Parse arguments
 var (command, param) = args.Length switch
@@ -15,13 +15,12 @@ if (command == "decode")
     if (Char.IsDigit(encodedValue[0]))
     {
        // Example: "5:hello" -> "hello"
-       int colonIndex = encodedValue.IndexOf(':');
+       var colonIndex = encodedValue.IndexOf(':');
        if (colonIndex != -1)
        {
-           string numberString = encodedValue.Substring(0, colonIndex);
-           long number = Convert.ToInt64(numberString);
-           string stringValue = encodedValue.Substring(colonIndex + 1, (int)number);
-           Console.WriteLine($"\"{stringValue}\"");
+           var strLength = int.Parse(encodedValue[..colonIndex]);
+           var strValue = encodedValue.Substring(colonIndex + 1, strLength);
+           Console.WriteLine(JsonSerializer.Serialize(strValue));
        }
        else
        {

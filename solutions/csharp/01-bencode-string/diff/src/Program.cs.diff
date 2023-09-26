@@ -1,5 +1,5 @@
-@@ -1,43 +1,39 @@
- using static System.Buffers.Binary.BinaryPrimitives;
+@@ -1,42 +1,38 @@
+ using System.Text.Json;
 
  // Parse arguments
  var (command, param) = args.Length switch
@@ -20,13 +20,12 @@
 -    //if (Char.IsDigit(encodedValue[0]))
 -    //{
 -    //    // Example: "5:hello" -> "hello"
--    //    int colonIndex = encodedValue.IndexOf(':');
+-    //    var colonIndex = encodedValue.IndexOf(':');
 -    //    if (colonIndex != -1)
 -    //    {
--    //        string numberString = encodedValue.Substring(0, colonIndex);
--    //        long number = Convert.ToInt64(numberString);
--    //        string stringValue = encodedValue.Substring(colonIndex + 1, (int)number);
--    //        Console.WriteLine($"\"{stringValue}\"");
+-    //        var strLength = int.Parse(encodedValue[..colonIndex]);
+-    //        var strValue = encodedValue.Substring(colonIndex + 1, strLength);
+-    //        Console.WriteLine(JsonSerializer.Serialize(strValue));
 -    //    }
 -    //    else
 -    //    {
@@ -41,13 +40,12 @@
 +    if (Char.IsDigit(encodedValue[0]))
 +    {
 +       // Example: "5:hello" -> "hello"
-+       int colonIndex = encodedValue.IndexOf(':');
++       var colonIndex = encodedValue.IndexOf(':');
 +       if (colonIndex != -1)
 +       {
-+           string numberString = encodedValue.Substring(0, colonIndex);
-+           long number = Convert.ToInt64(numberString);
-+           string stringValue = encodedValue.Substring(colonIndex + 1, (int)number);
-+           Console.WriteLine($"\"{stringValue}\"");
++           var strLength = int.Parse(encodedValue[..colonIndex]);
++           var strValue = encodedValue.Substring(colonIndex + 1, strLength);
++           Console.WriteLine(JsonSerializer.Serialize(strValue));
 +       }
 +       else
 +       {
