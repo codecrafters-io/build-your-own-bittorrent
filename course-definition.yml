@@ -257,7 +257,7 @@ stages:
         In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
 
         {{#lang_is_java}}
-        **Note:** *pieces* field is of type string, and its contents are a sequence of bytes. A Java String (before Java 9) is represented internally using bytes encoded as UTF-16. When bytes that don't correspond to valid characters in UTF-16 are encountered, Java will replace them with the Unicode Replacement Character (�). Therefore, if you use a string when reading the torrent file, you'll lose original byte values for pieces field. For this reason, we recommend processing the torrent file as a **byte[]** or using the [bencode](https://github.com/dampcake/bencode) parser.
+        **Note:** *pieces* field is of type string, and its contents are a sequence of bytes. A Java String (before Java 9) is represented internally using bytes encoded as UTF-16. When bytes that don't correspond to valid characters in UTF-16 are encountered, Java will replace them with the Unicode Replacement Character (�). Therefore, if you use a string when reading the torrent file, you'll lose original byte values for pieces field. We recommend processing the torrent file as a **byte[]** or using the [bencode](https://github.com/dampcake/bencode) parser.
         {{/lang_is_java}}
 
         Here’s how the tester will execute your program:
