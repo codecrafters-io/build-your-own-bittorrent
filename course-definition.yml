@@ -417,6 +417,7 @@ stages:
         ```
         Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
         ```
+        (Exact value will be different as it is randomly generated.)
 
         **Note**: To get a peer IP & port to test this locally, run `./your_bittorrent.sh peers sample.torrent` and pick any peer from the list.
     marketing_md: |-
