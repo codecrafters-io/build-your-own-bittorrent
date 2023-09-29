@@ -16,5 +16,5 @@ RUN mv -v $APP_MVN_REPO /app-cached/.m2
 
 # Pre-compile steps
 ENV MAVEN_OPTS="-Dmaven.repo.local=$APP_MVN_REPO -Ddir=/tmp/codecrafters-bittorrent-target"
-RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn -B --quiet package" > /codecrafters-precompile.sh
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn -B --quiet package && java -jar /tmp/codecrafters-bittorrent-target/java_bittorrent.jar 'init'" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
