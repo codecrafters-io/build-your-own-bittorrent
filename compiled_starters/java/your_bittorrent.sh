@@ -6,9 +6,5 @@
 #
 # DON'T EDIT THIS!
 set -e
-# Check if directory exists
-if [ ! -d "/tmp/codecrafters-bittorrent-target" ]; then
-  # Download dependencies if it does not exist
-  mvn -B --quiet package -Ddir=/tmp/codecrafters-bittorrent-target
-fi
+mvn -B --quiet package -Ddir=/tmp/codecrafters-bittorrent-target
 exec java -jar /tmp/codecrafters-bittorrent-target/java_bittorrent.jar "$@"
