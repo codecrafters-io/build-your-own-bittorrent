@@ -6,5 +6,4 @@
 #
 # DON'T EDIT THIS!
 set -e
-mvn -B --quiet package -Ddir=/tmp/codecrafters-bittorrent-target
 exec java -jar /tmp/codecrafters-bittorrent-target/java_bittorrent.jar "$@"
