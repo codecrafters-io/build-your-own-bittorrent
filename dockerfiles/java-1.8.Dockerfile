@@ -4,17 +4,13 @@ COPY pom.xml /app/pom.xml
 
 WORKDIR /app
 
-RUN mkdir -p /app/.m2/
-ENV APP_MVN_REPO=/app/.m2
-
 # Download the dependencies
-RUN mvn -B --quiet -Dmaven.repo.local=$APP_MVN_REPO dependency:go-offline
+RUN mvn -B package -Ddir=/tmp/codecrafters-bittorrent-target
 
 # Cache Dependencies
 RUN mkdir -p /app-cached
-RUN mv -v $APP_MVN_REPO /app-cached/.m2
+RUN mv /app/target /app-cached # Is this needed?
 
 # Pre-compile steps
-ENV MAVEN_OPTS="-Dmaven.repo.local=$APP_MVN_REPO -Ddir=/tmp/codecrafters-bittorrent-target"
-RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn -B --quiet package && java -jar /tmp/codecrafters-bittorrent-target/java_bittorrent.jar 'init'" > /codecrafters-precompile.sh
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && mvn -B package -Ddir=/tmp/codecrafters-bittorrent-target && sed -i 's/^\(mvn .*\)/#\1/' ./your_bittorrent.sh" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
