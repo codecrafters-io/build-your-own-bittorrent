@@ -10,6 +10,8 @@ WORKDIR /app
 
 RUN dotnet run --project . --configuration Release "$@" # This saves nuget packages to ~/.nuget
 
+RUN rm /app/src/Program.cs
+
 RUN mkdir /app-cached
 RUN mv /app/obj /app-cached/obj
 RUN mv /app/bin /app-cached/bin
