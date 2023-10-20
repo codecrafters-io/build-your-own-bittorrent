@@ -4,7 +4,7 @@ COPY codecrafters-bittorrent.csproj /app/codecrafters-bittorrent.csproj
 COPY codecrafters-bittorrent.sln /app/codecrafters-bittorrent.sln
 
 RUN mkdir /app/src
-RUN (echo 'System.Console.WriteLine("If you are seeing this outside the [build], there is something wrong with our caching mechanism! Please contact us at hello@codecrafters.io.");' > /app/src/Program.cs) > /dev/null
+RUN (echo 'System.Console.WriteLine("If you are seeing this, there is something wrong with our caching mechanism! Please contact us at hello@codecrafters.io.");' > /app/src/Program.cs) > /dev/null
 
 WORKDIR /app
 
