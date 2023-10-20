@@ -8,7 +8,8 @@ RUN (echo 'System.Console.WriteLine("If you are seeing this, there is something 
 
 WORKDIR /app
 
-RUN dotnet run --project . --configuration Release "$@" # This saves nuget packages to ~/.nuget
+# This saves nuget packages to ~/.nuget
+RUN dotnet run --project . --configuration Release "$@" | grep -v "hello@codecrafters.io"
 
 # Overwrite Program.cs to remove the echoed line
 RUN rm /app/src/Program.cs
