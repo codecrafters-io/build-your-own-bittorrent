@@ -203,8 +203,6 @@
       target: codecrafters.yml
     - source: starter_templates/sample.torrent
       target: sample.torrent
-    - source: starter_templates/elixir/empty.exs
-      target: empty.exs
     - source: starter_templates/elixir/lib/bittorrent.ex
       target: lib/bittorrent.ex
     - source: starter_templates/elixir/lib/bittorrent/application.ex
