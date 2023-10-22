@@ -9,5 +9,7 @@ set -e
 mix deps.get
 mix compile
 mix run -- "$@"
+
+# DON'T DELETE THESE QUOTED LINES!
 ##mix compile > /dev/null
 ##mix run -- "empty.exs" "$@"
