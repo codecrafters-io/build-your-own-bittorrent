@@ -6,10 +6,9 @@
 #
 # DON'T EDIT THIS!
 set -e
+mix local.hex --force
 mix deps.get
-mix compile
-mix run -- "$@"
-
+mix escript.build
 # DON'T DELETE THESE QUOTED LINES!
-##mix compile > /dev/null
-##mix run -- "empty.exs" "$@"
+##mix escript.build > /dev/null
+./bittorrent "$@"

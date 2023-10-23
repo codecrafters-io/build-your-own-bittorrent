@@ -10,16 +10,14 @@ WORKDIR /app
 RUN mix local.hex --force && \
   mix local.rebar --force
 
-# install mix dependencies
+# install and compile mix dependencies
 COPY mix.exs ./
 COPY mix.lock ./
-RUN mix deps.clean --all && \
- mix deps.get && \
- mix deps.compile
+RUN mix deps.get && \
+    mix deps.compile
 
 # copy compiled dependencies
 RUN mkdir -p /app-cached
-RUN touch /app-cached/empty.exs
 RUN mv _build/ /app-cached/
 RUN mv deps/ /app-cached/
 

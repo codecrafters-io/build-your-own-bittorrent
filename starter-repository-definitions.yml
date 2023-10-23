@@ -205,8 +205,6 @@
       target: sample.torrent
     - source: starter_templates/elixir/lib/bittorrent.ex
       target: lib/bittorrent.ex
-    - source: starter_templates/elixir/lib/bittorrent/application.ex
-      target: lib/bittorrent/application.ex
     - source: starter_templates/elixir/mix.exs
       target: mix.exs
     - source: starter_templates/elixir/mix.lock
@@ -217,4 +215,4 @@
       target: .gitattributes
   template_attributes:
     required_executable: "mix"
-    user_editable_file: "lib/bittorrent/application.ex"
+    user_editable_file: "lib/bittorrent.ex"
