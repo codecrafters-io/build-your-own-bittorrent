@@ -25,3 +25,5 @@ RUN mv deps/ /app-cached/
 # comment lines starting with mix
 # uncomment lines starting with ##
 RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && sed -i 's/^\(mix .*\)/#\1/' ./your_bittorrent.sh && sed -i 's/^##\(.*\)/\1/' ./your_bittorrent.sh" > /codecrafters-precompile.sh
+
+ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="mix.exs,mix.lock"
