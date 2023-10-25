@@ -9,7 +9,7 @@ function decodeBencode(bencodedValue) {
   if (!isNaN(bencodedValue[0])) {
     const firstColonIndex = bencodedValue.indexOf(":");
     if (firstColonIndex === -1) {
-        throw new Error("Invalid encoded value")
+      throw new Error("Invalid encoded value");
     }
     return bencodedValue.substr(firstColonIndex + 1);
   } else {
