@@ -11,8 +11,8 @@
  # - decode_bencode(b"10:hello12345") -> b"hello12345"
  def decode_bencode(bencoded_value):
      if chr(bencoded_value[0]).isdigit():
-         length = int(bencoded_value.split(b":")[0])
-         return bencoded_value.split(b":")[1][:length]
+         first_colon = bencoded_value.find(b":")
+         return bencoded_value[first_colon+1:]
      else:
          raise NotImplementedError("Only strings are supported at the moment")
 
