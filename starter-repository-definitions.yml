@@ -194,3 +194,25 @@
   template_attributes:
     required_executable: "gcc"
     user_editable_file: "app/main.c"
+
+- language: elixir
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+    - source: starter_templates/elixir/lib/bittorrent.ex
+      target: lib/bittorrent.ex
+    - source: starter_templates/elixir/mix.exs
+      target: mix.exs
+    - source: starter_templates/elixir/mix.lock
+      target: mix.lock
+    - source: starter_templates/elixir/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+  template_attributes:
+    required_executable: "mix"
+    user_editable_file: "lib/bittorrent.ex"

@@ -62,6 +62,9 @@ languages:
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
+  - slug: "elixir"
+    release_status: "alpha"
+    alpha_tester_usernames: ["sarp", "rohitpaulk"]
 
 marketing:
   # Shown in the catalog.
@@ -258,6 +261,9 @@ stages:
         {{#lang_is_rust}}
         **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `&[u8]` or `Vec<u8>` instead.
         {{/lang_is_rust}}
+        {{#lang_is_elixir}}
+        **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `binary` instead, see `IO.iodata_to_binary()`.
+        {{/lang_is_elixir}}
 
         **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
