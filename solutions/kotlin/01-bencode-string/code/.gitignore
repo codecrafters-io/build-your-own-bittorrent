@@ -1,0 +1,4 @@
+java_bittorrent.jar
+target/*
+target/
+.idea/

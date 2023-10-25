@@ -43,3 +43,7 @@ language_pack: c-9.2
 # Available versions: cpp-20
 language_pack: cpp-20
 {{/language_is_cpp}}
+{{#language_is_kotlin }}
+# Available versions: kotlin-1.9
+language_pack: kotlin-1.9
+{{/language_is_kotlin }}
