@@ -1,12 +1,13 @@
-@@ -1,36 +1,31 @@
+@@ -1,34 +1,30 @@
  defmodule Bittorrent.CLI do
    def main(argv) do
        case argv do
            ["decode" | [encoded_str | _]] ->
 -              # You can use print statements as follows for debugging, they'll be visible when running tests.
 -              IO.puts("Logs from your program will appear here!")
+-
 -              # Uncomment this block to pass the first stage
--              #Bencode.decode(encoded_str)
+-              # Bencode.decode(encoded_str)
 +              Bencode.decode(encoded_str)
            [command | _] ->
                IO.puts("Unknown command: #{command}")
@@ -33,6 +34,3 @@
        end
 
      def decode(_), do: "Invalid encoded value: not binary"
- end
--
--
