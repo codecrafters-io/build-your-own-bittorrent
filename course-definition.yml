@@ -56,13 +56,13 @@ languages:
   - slug: "c"
   - slug: "cpp"
   - slug: "csharp"
+  - slug: "elixir"
   - slug: "go"
   - slug: "java"
   - slug: "javascript"
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
-  - slug: "elixir"
 
 marketing:
   # Shown in the catalog.
