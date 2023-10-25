@@ -7,8 +7,11 @@ const util = require("util");
 function decodeBencode(bencodedValue) {
   // Check if the first character is a digit
   if (!isNaN(bencodedValue[0])) {
-    const firstColon = bencodedValue.indexOf(":");
-    return bencodedValue.substr(firstColon + 1);
+    const firstColonIndex = bencodedValue.indexOf(":");
+    if (firstColonIndex === -1) {
+      throw new Error("Invalid encoded value");
+    }
+    return bencodedValue.substr(firstColonIndex + 1);
   } else {
     throw new Error("Only strings are supported at the moment");
   }
