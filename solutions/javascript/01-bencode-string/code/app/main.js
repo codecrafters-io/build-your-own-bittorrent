@@ -5,11 +5,10 @@ const util = require("util");
 // - decodeBencode("5:hello") -> "hello"
 // - decodeBencode("10:hello12345") -> "hello12345"
 function decodeBencode(bencodedValue) {
+  // Check if the first character is a digit
   if (!isNaN(bencodedValue[0])) {
-    // Check if the first character is a digit
-    const parts = bencodedValue.split(":");
-    const length = parseInt(parts[0], 10);
-    return parts[1].substr(0, length);
+    const firstColon = bencodedValue.indexOf(":");
+    return bencodedValue.substr(firstColon + 1);
   } else {
     throw new Error("Only strings are supported at the moment");
   }
