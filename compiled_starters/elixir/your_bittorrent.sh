@@ -6,9 +6,9 @@
 #
 # DON'T EDIT THIS!
 set -e
+
 mix local.hex --force
 mix deps.get
 mix escript.build
-# DON'T DELETE THESE QUOTED LINES!
-##mix escript.build > /dev/null
+
 ./bittorrent "$@"
