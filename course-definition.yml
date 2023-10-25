@@ -56,15 +56,13 @@ languages:
   - slug: "c"
   - slug: "cpp"
   - slug: "csharp"
+  - slug: "elixir"
   - slug: "go"
   - slug: "java"
   - slug: "javascript"
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
-  - slug: "elixir"
-    release_status: "alpha"
-    alpha_tester_usernames: ["sarp", "rohitpaulk"]
 
 marketing:
   # Shown in the catalog.
