@@ -10,8 +10,10 @@ import sys
 # - decode_bencode(b"10:hello12345") -> b"hello12345"
 def decode_bencode(bencoded_value):
     if chr(bencoded_value[0]).isdigit():
-        first_colon = bencoded_value.find(b":")
-        return bencoded_value[first_colon+1:]
+        first_colon_index = bencoded_value.find(b":")
+        if first_colon_index == -1:
+            raise ValueError("Invalid encoded value")
+        return bencoded_value[first_colon_index+1:]
     else:
         raise NotImplementedError("Only strings are supported at the moment")
 
@@ -36,7 +38,7 @@ def main():
             raise TypeError(f"Type not serializable: {type(data)}")
 
         # Uncomment this block to pass the first stage
-        # print(json.dumps(decode_bencode(bencoded_value), default=bytes_to_str))
+        print(json.dumps(decode_bencode(bencoded_value), default=bytes_to_str))
     else:
         raise NotImplementedError(f"Unknown command {command}")
 
