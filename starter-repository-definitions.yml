@@ -78,8 +78,8 @@
       target: your_bittorrent.sh
     - source: starter_templates/java/.gitignore
       target: .gitignore
-    - source: starter_templates/java/src/main/java/Main.kt
-      target: src/main/java/Main.kt
+    - source: starter_templates/java/src/main/java/Main.java
+      target: src/main/java/Main.java
     - source: starter_templates/java/pom.xml
       target: pom.xml
     - source: starter_templates/.gitattributes
@@ -88,7 +88,7 @@
       target: sample.torrent
   template_attributes:
     required_executable: "java (1.8)"
-    user_editable_file: "src/main/java/Main.kt"
+    user_editable_file: "src/main/java/Main.java"
 
 - language: kotlin
   file_mappings:
@@ -101,7 +101,7 @@
     - source: starter_templates/kotlin/.gitignore
       target: .gitignore
     - source: starter_templates/kotlin/src/main/kotlin/Main.kt
-      target: src/main/java/Main.kt
+      target: src/main/kotlin/Main.kt
     - source: starter_templates/kotlin/pom.xml
       target: pom.xml
     - source: starter_templates/.gitattributes
