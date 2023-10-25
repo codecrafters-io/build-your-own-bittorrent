@@ -1,6 +1,4 @@
-# TODO: Understand out of order execution why
-
-FROM elixir:1.10-alpine
+FROM elixir:1.15.6-alpine
 
 # prepare build dir
 RUN mkdir /app
