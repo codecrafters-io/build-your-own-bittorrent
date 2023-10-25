@@ -213,6 +213,8 @@
       target: your_bittorrent.sh
     - source: starter_templates/.gitattributes
       target: .gitattributes
+    - source: starter_templates/elixir/.gitignore
+      target: .gitignore
   template_attributes:
     required_executable: "mix"
     user_editable_file: "lib/bittorrent.ex"
