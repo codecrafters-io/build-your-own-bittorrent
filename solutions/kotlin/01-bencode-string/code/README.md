@@ -31,6 +31,6 @@ Note: This section is for stages 2 and beyond.
 
 1. Ensure you have `java (1.8)` installed locally
 1. Run `./your_bittorrent.sh` to run your program, which is implemented in
-   `src/main/java/Main.java`.
+   `src/main/kotlin/Main.kt`.
 1. Commit your changes and run `git push origin master` to submit your solution
    to CodeCrafters. Test output will be streamed to your terminal.
