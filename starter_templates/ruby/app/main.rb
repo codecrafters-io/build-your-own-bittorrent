@@ -8,6 +8,9 @@ end
 def decode_bencode(bencoded_value)
   if bencoded_value[0].chr.match?(/\d/)
     first_colon = bencoded_value.index(':')
+    if first_colon.nil?
+      raise ArgumentError, "Invalid encoded value"
+    end
     return bencoded_value[first_colon+1..-1]
   else
     puts "Only strings are supported at the moment"
