@@ -7,8 +7,8 @@ end
 
 def decode_bencode(bencoded_value)
   if bencoded_value[0].chr.match?(/\d/)
-    length = bencoded_value.split(':')[0].to_i
-    return bencoded_value.split(':')[1][0, length]
+    first_colon = bencoded_value.index(':')
+    return bencoded_value[first_colon+1..-1]
   else
     puts "Only strings are supported at the moment"
     exit(1)
