@@ -2,7 +2,8 @@ defmodule Bittorrent.CLI do
   def main(argv) do
       case argv do
           ["decode" | [encoded_str | _]] ->
-              Bencode.decode(encoded_str)
+              decoded_str = Bencode.decode(encoded_str)
+              IO.puts(Jason.encode!(decoded_str))
           [command | _] ->
               IO.puts("Unknown command: #{command}")
               System.halt(1)
@@ -21,9 +22,7 @@ defmodule Bencode do
             IO.puts("The ':' character is not found in the binary")
           index ->
             rest = Enum.slice(binary_data, index+1..-1)
-            rest_str = List.to_string(rest)
-            json_encoded = Jason.encode!(rest_str)
-            IO.puts(json_encoded)
+            List.to_string(rest)
         end
       end
 
