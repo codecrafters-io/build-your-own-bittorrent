@@ -62,6 +62,9 @@ languages:
   - slug: "elixir"
     release_status: "beta"
   - slug: "go"
+  - slug: "haskell"
+    release_status: "alpha"
+    alpha_tester_usernames: ["sarp", "rohitpaulk"]
   - slug: "java"
     release_status: "beta"
   - slug: "javascript"
