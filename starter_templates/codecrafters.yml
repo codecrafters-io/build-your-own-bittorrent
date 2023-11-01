@@ -20,8 +20,8 @@ language_pack: go-1.19
 language_pack: rust-1.70
 {{/ language_is_rust }}
 {{# language_is_java }}
-# Available versions: java-1.8
-language_pack: java-1.8
+# Available versions: java-21
+language_pack: java-21
 {{/ language_is_java }}
 {{# language_is_javascript }}
 # Available versions: nodejs-18
