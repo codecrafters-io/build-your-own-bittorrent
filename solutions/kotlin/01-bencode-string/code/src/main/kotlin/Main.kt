@@ -8,12 +8,8 @@ fun main(args: Array<String>) {
     when (command) {
         "decode" -> {
             val bencodedValue = args[1]
-            try {
-                val decoded = decodeBencode(bencodedValue)
-                println(gson.toJson(decoded))
-            } catch (e: RuntimeException) {
-                println(e.message)
-            }
+            val decoded = decodeBencode(bencodedValue)
+            println(gson.toJson(decoded))
             return
         }
         else -> println("Unknown command $command")
