@@ -47,3 +47,7 @@ language_pack: cpp-20
 # Available versions: elixir-1.15
 language_pack: elixir-1.15
 {{/ language_is_elixir }}
+{{#language_is_kotlin }}
+# Available versions: kotlin-1.9
+language_pack: kotlin-1.9
+{{/language_is_kotlin }}

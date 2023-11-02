@@ -1,0 +1,4 @@
+kotlin_bittorrent.jar
+target/*
+target/
+.idea/

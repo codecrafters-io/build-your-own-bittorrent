@@ -60,6 +60,8 @@ languages:
   - slug: "go"
   - slug: "java"
   - slug: "javascript"
+  - slug: "kotlin"
+    release_status: "alpha"
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
@@ -171,6 +173,9 @@ stages:
         {{#lang_is_java}}
         If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
         {{/lang_is_java}}
+        {{#lang_is_kotlin}}
+        If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
+        {{/lang_is_kotlin}}
     marketing_md: |-
         In this stage, you’ll decode a bencoded integer.
 
@@ -202,6 +207,9 @@ stages:
         {{#lang_is_java}}
         If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
         {{/lang_is_java}}
+        {{#lang_is_kotlin}}
+        If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
+        {{/lang_is_kotlin}}
     marketing_md: |-
         In this stage, you’ll decode a bencoded list.
 
@@ -233,6 +241,9 @@ stages:
         {{#lang_is_java}}
         If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
         {{/lang_is_java}}
+        {{#lang_is_kotlin}}
+        If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
+        {{/lang_is_kotlin}}
     marketing_md: |-
         In this stage, you’ll decode a bencoded dictionary.
 
@@ -256,6 +267,9 @@ stages:
         {{#lang_is_java}}
         **Note**: .torrent files contain bytes that aren’t valid UTF-16 characters. You’ll run into problems if you try to read the contents of this file as a `String`. Use `byte[]` instead.
         {{/lang_is_java}}
+        {{#lang_is_kotlin}}
+        **Note**: .torrent files contain bytes that aren’t valid UTF-16 characters. You’ll run into problems if you try to read the contents of this file as a `String`. Use `byte[]` instead.
+        {{/lang_is_kotlin}}
         {{#lang_is_rust}}
         **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `&[u8]` or `Vec<u8>` instead.
         {{/lang_is_rust}}
@@ -474,7 +488,7 @@ stages:
                     - This'll be `0` for the first block, `2^14` for the second block, 2*2^14 for the third block etc.
                 - `length`: the length of the block in bytes
                     - This'll be `2^14` (16 * 1024) for all blocks except the last one.
-                    - The last block will contain `2^14` bytes or less, you'll need calculate this value using the piece length. 
+                    - The last block will contain `2^14` bytes or less, you'll need calculate this value using the piece length.
         - Wait for a `piece` message for each block you've requested
             - The message id for `piece` is `7`.
             - The payload for this message consists of:

@@ -90,6 +90,28 @@
     required_executable: "java (1.8)"
     user_editable_file: "src/main/java/Main.java"
 
+- language: kotlin
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/kotlin/your_bittorrent.sh
+      target: your_bittorrent.sh
+    - source: starter_templates/kotlin/.gitignore
+      target: .gitignore
+    - source: starter_templates/kotlin/src/main/kotlin/Main.kt
+      target: src/main/kotlin/Main.kt
+    - source: starter_templates/kotlin/pom.xml
+      target: pom.xml
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
+  template_attributes:
+    required_executable: "java (1.8)"
+    user_editable_file: "src/main/kotlin/Main.kt"
+
 - language: javascript
   file_mappings:
     - source: starter_templates/README.md
