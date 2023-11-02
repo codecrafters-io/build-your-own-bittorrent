@@ -61,6 +61,7 @@ languages:
   - slug: "java"
   - slug: "javascript"
   - slug: "kotlin"
+    release_status: "alpha"
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
@@ -487,7 +488,7 @@ stages:
                     - This'll be `0` for the first block, `2^14` for the second block, 2*2^14 for the third block etc.
                 - `length`: the length of the block in bytes
                     - This'll be `2^14` (16 * 1024) for all blocks except the last one.
-                    - The last block will contain `2^14` bytes or less, you'll need calculate this value using the piece length. 
+                    - The last block will contain `2^14` bytes or less, you'll need calculate this value using the piece length.
         - Wait for a `piece` message for each block you've requested
             - The message id for `piece` is `7`.
             - The payload for this message consists of:
