@@ -33,6 +33,4 @@
          }
          else -> TODO("Only strings are supported at the moment")
      }
--}
-\ No newline at end of file
-+}
+ }
