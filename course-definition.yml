@@ -70,6 +70,9 @@ languages:
   - slug: "python"
   - slug: "ruby"
   - slug: "rust"
+  - slug: "zig"
+    release_status: "alpha"
+    alpha_tester_usernames: ["sarp", "rohitpaulk"]
 
 marketing:
   # Shown in the catalog.
