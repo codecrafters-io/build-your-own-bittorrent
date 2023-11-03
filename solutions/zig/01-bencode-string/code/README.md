@@ -13,8 +13,9 @@ Protocol, pipelining and more.
 
 # Passing the first stage
 
-The entry point for your BitTorrent implementation is in `app/main.zig`. Study
-and uncomment the relevant code, and push your changes to pass the first stage:
+The entry point for your BitTorrent implementation is in
+`app/main.zig`. Study and uncomment the relevant code, and push your
+changes to pass the first stage:
 
 ```sh
 git add .
