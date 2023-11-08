@@ -63,8 +63,7 @@ languages:
     release_status: "beta"
   - slug: "go"
   - slug: "haskell"
-    release_status: "alpha"
-    alpha_tester_usernames: ["sarp", "rohitpaulk"]
+    release_status: "beta"
   - slug: "java"
     release_status: "beta"
   - slug: "javascript"
