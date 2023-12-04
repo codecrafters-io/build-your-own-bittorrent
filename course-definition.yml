@@ -463,7 +463,7 @@ stages:
     description_md: |-
         In this stage, you'll download one piece and save it to disk. In the next stage we'll combine these pieces into a file.
 
-        To download a piece, your program will need to need to send [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to a peer. The overall flow looks like this:
+        To download a piece, your program will need to send [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to a peer. The overall flow looks like this:
 
         - Read the torrent file to get the tracker URL
             - you've done this in previous stages
