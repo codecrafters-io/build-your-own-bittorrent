@@ -25,3 +25,4 @@ if command == "decode"
     decoded_str = decode_bencode(encoded_str)
     puts JSON.generate(decoded_str)
 end
+
