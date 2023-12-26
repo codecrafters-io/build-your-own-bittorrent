@@ -1,7 +1,11 @@
-name: MD5 Check
+name: MD5 Check on sample.torrent files
 
-on: [push, pull_request]
-  paths:
+on:
+  push:
+    paths:
+      - '**/sample.torrent'
+  pull_request:
+    paths:
       - '**/sample.torrent'
 
 jobs:
