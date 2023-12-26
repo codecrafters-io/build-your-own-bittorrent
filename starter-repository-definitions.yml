@@ -18,6 +18,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "python (3.11)"
     user_editable_file: "app/main.py"
@@ -42,6 +43,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "cargo (1.70)"
     user_editable_file: "src/main.rs"
@@ -64,6 +66,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "go (1.19)"
     user_editable_file: "cmd/mybittorrent/main.go"
@@ -86,6 +89,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "java (1.8)"
     user_editable_file: "src/main/java/Main.java"
@@ -108,6 +112,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "java (1.8)"
     user_editable_file: "src/main/kotlin/Main.kt"
@@ -126,6 +131,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "node (18)"
     user_editable_file: "app/main.js"
@@ -142,6 +148,7 @@
       target: your_bittorrent.sh
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
@@ -156,6 +163,7 @@
       target: codecrafters.yml
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/csharp/.gitignore
       target: .gitignore
     - source: starter_templates/csharp/Program.cs
@@ -180,6 +188,7 @@
       target: codecrafters.yml
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/cpp/.gitignore
       target: .gitignore
     - source: starter_templates/cpp/src/Main.cpp
@@ -192,6 +201,7 @@
       target: .gitattributes
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/cpp/src/lib/nlohmann/json.hpp
       target: src/lib/nlohmann/json.hpp
       should_skip_template_evaluation: true
@@ -207,6 +217,7 @@
       target: codecrafters.yml
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/c/app/main.c
       target: app/main.c
     - source: starter_templates/c/your_bittorrent.sh
@@ -225,6 +236,7 @@
       target: codecrafters.yml
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/elixir/lib/bittorrent.ex
       target: lib/bittorrent.ex
     - source: starter_templates/elixir/mix.exs
@@ -253,6 +265,7 @@
       target: your_bittorrent.sh
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
     - source: starter_templates/.gitattributes
       target: .gitattributes
     - source: starter_templates/zig/.gitignore
@@ -283,6 +296,7 @@
       target: your_bittorrent.sh
     - source: starter_templates/sample.torrent
       target: sample.torrent
+      should_skip_template_evaluation: true
   template_attributes:
     required_executable: "stack"
     user_editable_file: "app/Main.hs"
