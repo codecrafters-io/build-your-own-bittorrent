@@ -1,4 +1,4 @@
-name: MD5 Check on sample.torrent files
+name: MD5 check on sample.torrent files
 
 on:
   push:
