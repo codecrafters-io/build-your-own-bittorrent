@@ -1,0 +1,22 @@
+name: MD5 check on sample.torrent files
+
+on:
+  push:
+    paths:
+      - '**/sample.torrent'
+  pull_request:
+    paths:
+      - '**/sample.torrent'
+
+jobs:
+  check-md5:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Check sample.torrent MD5
+      run: |
+          find . -name "sample.torrent" | xargs -n1 shasum | awk '!/^32682077130437f19fb388813bca3355378b7621/ {print "Mismatching MD5 found: " $0; exit 1}'
+
