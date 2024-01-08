@@ -329,7 +329,6 @@ stages:
         Length: 92063
         Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
         ```
-        **Note:** If you cloned the repository between Dec 8 and Dec 26, your `sample.torrent` file might contain invalid pieces data. Valid `sample.torrent` file can be found [here](https://github.com/codecrafters-io/build-your-own-bittorrent/blob/main/starter_templates/sample.torrent).
     marketing_md: |-
         In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
