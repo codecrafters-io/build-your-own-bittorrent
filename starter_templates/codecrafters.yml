@@ -44,8 +44,8 @@ language_pack: c-9.2
 language_pack: cpp-20
 {{/language_is_cpp}}
 {{#language_is_elixir}}
-# Available versions: elixir-1.15
-language_pack: elixir-1.15
+# Available versions: elixir-1.16
+language_pack: elixir-1.16
 {{/ language_is_elixir }}
 {{#language_is_kotlin }}
 # Available versions: kotlin-1.9
