@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine
+FROM golang:1.21-alpine
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="go.mod,go.sum"
 
