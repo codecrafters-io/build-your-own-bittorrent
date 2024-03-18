@@ -539,7 +539,7 @@ stages:
       ```
       and here’s the output it expects:
       ```
-      Downloaded test.torrent to /tmp/test.txt.
+      Downloaded sample.torrent to /tmp/test.txt.
       ```
 
       **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
