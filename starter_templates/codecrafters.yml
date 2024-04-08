@@ -16,8 +16,8 @@ language_pack: python-3.12
 language_pack: go-1.21
 {{/ language_is_go }}
 {{# language_is_rust }}
-# Available versions: rust-1.76
-language_pack: rust-1.76
+# Available versions: rust-1.77
+language_pack: rust-1.77
 {{/ language_is_rust }}
 {{# language_is_java }}
 # Available versions: java-21
