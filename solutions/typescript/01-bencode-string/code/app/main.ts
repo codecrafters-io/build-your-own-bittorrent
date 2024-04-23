@@ -16,7 +16,7 @@ const args = Deno.args;
 const pattern = args[1];
 
 if (args[0] === "decode") {
-    const bencodedValue = new TextEncoder().encode(args[1]);
+    const bencodedValue = new TextEncoder().encode(pattern);
 
     try {
         const decoded = decodeBencode(bencodedValue);

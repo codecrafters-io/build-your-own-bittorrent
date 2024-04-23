@@ -16,7 +16,7 @@ const args = Deno.args;
 const pattern = args[1];
 
 if (args[0] === "decode") {
-    const bencodedValue = new TextEncoder().encode(args[1]);
+    const bencodedValue = new TextEncoder().encode(pattern);
 
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     console.log("Logs from your program will appear here!");
