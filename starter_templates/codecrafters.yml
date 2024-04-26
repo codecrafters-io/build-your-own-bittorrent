@@ -59,3 +59,7 @@ language_pack: zig-0.12
 # Available versions: haskell-9.4
 language_pack: haskell-9.4
 {{/ language_is_haskell }}
+{{#language_is_typescript}}
+# Available versions: bun-1.1
+language_pack: bun-1.1
+{{/language_is_typescript}}
