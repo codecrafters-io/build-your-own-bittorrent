@@ -8,7 +8,7 @@ pub fn main() !void {
     
     if (args.len < 3) {
         try stdout.print("Usage: your_bittorrent.zig <command> <args>\n", .{});
-        std.os.exit(1);
+        std.process.exit(1);
     }
 
     const command = args[1];
@@ -17,7 +17,7 @@ pub fn main() !void {
         const encodedStr = args[2];
         const decodedStr = decodeBencode(encodedStr) catch {
             try stdout.print("Invalid encoded value\n", .{});
-            std.os.exit(1);
+            std.process.exit(1);
         };
         var string = std.ArrayList(u8).init(allocator);
         try std.json.stringify(decodedStr.*, .{}, string.writer());
@@ -35,6 +35,6 @@ fn decodeBencode(encodedValue: []const u8) !*const []const u8 {
         return &encodedValue[firstColon.? + 1 ..];
     } else {
         try stdout.print("Only strings are supported at the moment\n", .{});
-        std.os.exit(1);
+        std.process.exit(1);
     }
 }
