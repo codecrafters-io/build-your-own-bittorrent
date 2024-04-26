@@ -52,8 +52,8 @@ language_pack: elixir-1.16
 language_pack: kotlin-1.9
 {{/language_is_kotlin }}
 {{#language_is_zig}}
-# Available versions: zig-0.11
-language_pack: zig-0.11
+# Available versions: zig-0.12
+language_pack: zig-0.12
 {{/language_is_zig}}
 {{# language_is_haskell }}
 # Available versions: haskell-9.4
