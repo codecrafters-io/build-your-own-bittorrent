@@ -1,25 +1,27 @@
-import { TextDecoder } from "util";
+// Examples:
+// - decodeBencode("5:hello") -> "hello"
+// - decodeBencode("10:hello12345") -> "hello12345"
+function decodeBencode(bencodedValue: string): string {
+    /* This function is used to decode a bencoded string
+    The bencoded string is a string that is prefixed by the length of the string
+    **/
 
-function decodeBencode(bencodedValue: Uint8Array): string {
-    const decoder = new TextDecoder("utf-8");
-    const encodedStr = decoder.decode(bencodedValue);
-    if (!isNaN(parseInt(encodedStr[0]))) {
-        const firstColonIndex = encodedStr.indexOf(":");
+    // Check if the first character is a digit
+    if (!isNaN(parseInt(bencodedValue[0]))) {
+        const firstColonIndex = bencodedValue.indexOf(":");
         if (firstColonIndex === -1) {
             throw new Error("Invalid encoded value");
         }
-        return encodedStr.substring(firstColonIndex + 1);
+        return bencodedValue.substring(firstColonIndex + 1);
     } else {
         throw new Error("Only strings are supported at the moment");
     }
 }
 
 const args = process.argv;
-const pattern = args[3];
+const bencodedValue = args[3];
 
 if (args[2] === "decode") {
-    const bencodedValue = new TextEncoder().encode(pattern);
-
     try {
         const decoded = decodeBencode(bencodedValue);
         console.log(JSON.stringify(decoded));
