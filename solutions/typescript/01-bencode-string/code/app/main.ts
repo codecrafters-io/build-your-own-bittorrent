@@ -1,3 +1,5 @@
+import { TextDecoder } from "util";
+
 function decodeBencode(bencodedValue: Uint8Array): string {
     const decoder = new TextDecoder("utf-8");
     const encodedStr = decoder.decode(bencodedValue);
@@ -12,10 +14,10 @@ function decodeBencode(bencodedValue: Uint8Array): string {
     }
 }
 
-const args = Deno.args;
-const pattern = args[1];
+const args = process.argv;
+const pattern = args[3];
 
-if (args[0] === "decode") {
+if (args[2] === "decode") {
     const bencodedValue = new TextEncoder().encode(pattern);
 
     try {
