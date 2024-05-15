@@ -119,7 +119,7 @@ marketing:
         Didn't even know that was possible!
 
 stages:
-  - slug: "bencode-string" # A identifier for this stage, needs to be unique within a course.
+  - legacy_slug: "bencode-string" # A identifier for this stage, needs to be unique within a course.
 
     # The name of the stage. This is shown in the course catalog, and on other course pages.
     name: "Decode bencoded strings"
@@ -162,7 +162,7 @@ stages:
     marketing_md: |-
       [Bencode](https://en.wikipedia.org/wiki/Bencode) is a binary serialization format used in BitTorrent protocol. In this stage, you’ll decode a bencoded string.
 
-  - slug: "bencode-int"
+  - legacy_slug: "bencode-int"
     name: "Decode bencoded integers"
     difficulty: easy
     description_md: |-
@@ -195,7 +195,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded integer.
 
-  - slug: "bencode-list"
+  - legacy_slug: "bencode-list"
     name: "Decode bencoded lists"
     difficulty: easy
     description_md: |-
@@ -229,7 +229,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded list.
 
-  - slug: "bencode-dict"
+  - legacy_slug: "bencode-dict"
     name: "Decode bencoded dictionaries"
     difficulty: easy
     description_md: |-
@@ -263,7 +263,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded dictionary.
 
-  - slug: "parse-torrent"
+  - legacy_slug: "parse-torrent"
     name: "Parse torrent file"
     difficulty: easy
     description_md: |-
@@ -312,7 +312,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll parse a .torrent file and extract information about the torrent.
 
-  - slug: "infohash"
+  - legacy_slug: "infohash"
     name: "Calculate info hash"
     difficulty: medium
     description_md: |-
@@ -339,7 +339,7 @@ stages:
     marketing_md: |-
       In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
-  - slug: "hashes"
+  - legacy_slug: "hashes"
     name: "Piece hashes"
     difficulty: easy
     description_md: |-
@@ -374,7 +374,7 @@ stages:
     marketing_md: |-
       In this stage, you'll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
-  - slug: "peers"
+  - legacy_slug: "peers"
     name: "Discover peers"
     difficulty: medium
     description_md: |-
@@ -431,7 +431,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
-  - slug: "handshake"
+  - legacy_slug: "handshake"
     name: "Peer handshake"
     difficulty: medium
     description_md: |-
@@ -463,7 +463,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
-  - slug: "dl-piece"
+  - legacy_slug: "dl-piece"
     name: "Download a piece"
     difficulty: hard
     description_md: |-
@@ -527,7 +527,7 @@ stages:
     marketing_md: |-
       In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
-  - slug: "dl-file"
+  - legacy_slug: "dl-file"
     name: "Download the whole file"
     difficulty: hard
     description_md: |-
