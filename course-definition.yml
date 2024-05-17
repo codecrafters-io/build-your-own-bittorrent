@@ -119,8 +119,7 @@ marketing:
         Didn't even know that was possible!
 
 stages:
-  - legacy_slug: "bencode-string" # A identifier for this stage, needs to be unique within a course.
-    slug: "ns2" # A identifier for this stage, needs to be unique within a course.
+  - slug: "ns2" # A identifier for this stage, needs to be unique within a course.
 
     # The name of the stage. This is shown in the course catalog, and on other course pages.
     name: "Decode bencoded strings"
@@ -163,8 +162,7 @@ stages:
     marketing_md: |-
       [Bencode](https://en.wikipedia.org/wiki/Bencode) is a binary serialization format used in BitTorrent protocol. In this stage, you’ll decode a bencoded string.
 
-  - legacy_slug: "bencode-int"
-    slug: "eb4"
+  - slug: "eb4"
     name: "Decode bencoded integers"
     difficulty: easy
     description_md: |-
@@ -197,8 +195,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded integer.
 
-  - legacy_slug: "bencode-list"
-    slug: "ah1"
+  - slug: "ah1"
     name: "Decode bencoded lists"
     difficulty: easy
     description_md: |-
@@ -232,8 +229,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded list.
 
-  - legacy_slug: "bencode-dict"
-    slug: "mn6"
+  - slug: "mn6"
     name: "Decode bencoded dictionaries"
     difficulty: easy
     description_md: |-
@@ -267,8 +263,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll decode a bencoded dictionary.
 
-  - legacy_slug: "parse-torrent"
-    slug: "ow9"
+  - slug: "ow9"
     name: "Parse torrent file"
     difficulty: easy
     description_md: |-
@@ -317,8 +312,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll parse a .torrent file and extract information about the torrent.
 
-  - legacy_slug: "infohash"
-    slug: "rb2"
+  - slug: "rb2"
     name: "Calculate info hash"
     difficulty: medium
     description_md: |-
@@ -345,8 +339,7 @@ stages:
     marketing_md: |-
       In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
-  - legacy_slug: "hashes"
-    slug: "bf7"
+  - slug: "bf7"
     name: "Piece hashes"
     difficulty: easy
     description_md: |-
@@ -381,8 +374,7 @@ stages:
     marketing_md: |-
       In this stage, you'll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
-  - legacy_slug: "peers"
-    slug: "fi9"
+  - slug: "fi9"
     name: "Discover peers"
     difficulty: medium
     description_md: |-
@@ -439,8 +431,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
-  - legacy_slug: "handshake"
-    slug: "ca4"
+  - slug: "ca4"
     name: "Peer handshake"
     difficulty: medium
     description_md: |-
@@ -472,8 +463,7 @@ stages:
     marketing_md: |-
       In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
-  - legacy_slug: "dl-piece"
-    slug: "nd2"
+  - slug: "nd2"
     name: "Download a piece"
     difficulty: hard
     description_md: |-
@@ -537,8 +527,7 @@ stages:
     marketing_md: |-
       In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
-  - legacy_slug: "dl-file"
-    slug: "jv8"
+  - slug: "jv8"
     name: "Download the whole file"
     difficulty: hard
     description_md: |-
