@@ -293,6 +293,16 @@ stages:
       **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `binary` instead, see `IO.iodata_to_binary()`.
       {{/lang_is_elixir}}
 
+      {{^lang_is_java}}
+      {{^lang_is_kotlin}}
+      {{^lang_is_rust}}
+      {{^lang_is_elixir}}
+      **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. If the language you're using treats strings as a sequence of unicode characters (like Python's [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)), you'll need to use a byte sequence (like Python's [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) instead.
+      {{/lang_is_elixir}}
+      {{/lang_is_rust}}
+      {{/lang_is_kotlin}}
+      {{/lang_is_java}}
+
       **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
 
       In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
