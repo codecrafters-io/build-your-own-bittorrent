@@ -26,6 +26,10 @@ json decode_bencoded_value(const std::string& encoded_value) {
 }
 
 int main(int argc, char* argv[]) {
+    // Flush after every std::cout / std::cerr
+    std::cout << std::unitbuf;
+    std::cerr << std::unitbuf;
+
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " decode <encoded_value>" << std::endl;
         return 1;
