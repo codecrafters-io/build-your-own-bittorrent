@@ -1,8 +1,4 @@
-@@ -16,39 +16,35 @@
-             std::string number_string = encoded_value.substr(0, colon_index);
-             int64_t number = std::atoll(number_string.c_str());
-             std::string str = encoded_value.substr(colon_index + 1, number);
-             return json(str);
+@@ -20,39 +20,35 @@
          } else {
              throw std::runtime_error("Invalid encoded value: " + encoded_value);
          }
@@ -12,6 +8,10 @@
  }
 
  int main(int argc, char* argv[]) {
+     // Flush after every std::cout / std::cerr
+     std:: cout < std: :unitbuf;
+     std:: cerr < std: :unitbuf;
+
      if (argc < 2) {
          std::cerr << "Usage: " << argv[0] << " decode <encoded_value>" << std::endl;
          return 1;
