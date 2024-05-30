@@ -1,8 +1,4 @@
-@@ -14,40 +14,36 @@
-         if (colon_index != NULL) {
-             const char* start = colon_index + 1;
-             char* decoded_str = (char*)malloc(length + 1);
-             strncpy(decoded_str, start, length);
+@@ -18,40 +18,36 @@
              decoded_str[length] = '\0';
              return decoded_str;
          } else {
@@ -16,6 +12,10 @@
  }
 
  int main(int argc, char* argv[]) {
+ 	// Disable output buffering
+ 	setbuf(stdout, NULL);
+  	setbuf(stderr, NULL);
+
      if (argc < 3) {
          fprintf(stderr, "Usage: your_bittorrent.sh <command> <args>\n");
          return 1;

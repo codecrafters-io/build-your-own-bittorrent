@@ -28,6 +28,10 @@ char* decode_bencode(const char* bencoded_value) {
 }
 
 int main(int argc, char* argv[]) {
+	// Disable output buffering
+	setbuf(stdout, NULL);
+ 	setbuf(stderr, NULL);
+
     if (argc < 3) {
         fprintf(stderr, "Usage: your_bittorrent.sh <command> <args>\n");
         return 1;
