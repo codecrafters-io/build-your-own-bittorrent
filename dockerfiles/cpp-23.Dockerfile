@@ -25,8 +25,10 @@ ENV PATH="${VCPKG_ROOT}:$PATH"
 
 WORKDIR /app
 
-COPY vcpkg.json ./
-COPY vcpkg-configuration.json ./
+# .git & README.md are unique per-repository. We ignore them on first copy to prevent cache misses
+COPY --exclude=.git --exclude=README.md . /app
+# COPY vcpkg.json ./
+# COPY vcpkg-configuration.json ./
 
 RUN vcpkg install --no-print-usage
 RUN sed -i '1s/^/set(VCPKG_INSTALL_OPTIONS --no-print-usage)\n/' ${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake
@@ -37,3 +39,6 @@ RUN if [ -d "/app/vcpkg_installed" ]; then mv /app/vcpkg_installed /app-cached/b
 
 RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake && cmake --build ./build && sed -i '/^cmake/ s/^/# /' ./your_bittorrent.sh" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
+
+# Once the heavy steps are done, we can copy all files back
+COPY . /app
