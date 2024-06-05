@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.7-labs
 FROM gcc:13.2.0-bookworm
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="vcpkg.json,vcpkg-configuration.json"
@@ -27,8 +28,6 @@ WORKDIR /app
 
 # .git & README.md are unique per-repository. We ignore them on first copy to prevent cache misses
 COPY --exclude=.git --exclude=README.md . /app
-# COPY vcpkg.json ./
-# COPY vcpkg-configuration.json ./
 
 RUN vcpkg install --no-print-usage
 RUN sed -i '1s/^/set(VCPKG_INSTALL_OPTIONS --no-print-usage)\n/' ${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake
