@@ -168,7 +168,7 @@
       target: sample.torrent
     - source: starter_templates/csharp/.gitignore
       target: .gitignore
-    - source: starter_templates/csharp/Program.cs
+    - source: starter_templates/csharp/src/Program.cs
       target: src/Program.cs
     - source: starter_templates/csharp/codecrafters-bittorrent.csproj
       target: codecrafters-bittorrent.csproj
