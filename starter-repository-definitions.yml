@@ -306,6 +306,8 @@
       target: README.md
     - source: starter_templates/codecrafters.yml
       target: codecrafters.yml
+    - source: starter_templates/sample.torrent
+      target: sample.torrent
     - source: starter_templates/typescript/app/main.ts
       target: app/main.ts
     - source: starter_templates/typescript/package.json
