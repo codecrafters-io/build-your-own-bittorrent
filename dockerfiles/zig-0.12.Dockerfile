@@ -6,5 +6,5 @@ RUN echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /et
 # Update the package list and install Zig
 RUN apk add --no-cache zig@community=0.12.0-r0
 
-RUN printf "cd \${CODECRAFTERS_SUBMISSION_DIR} && zig build-exe ./app/main.zig && sed -i 's/^\(zig .*\)/#\1/' ./your_bittorrent.sh" > /codecrafters-precompile.sh
+RUN printf "cd \${CODECRAFTERS_REPOSITORY_DIR} && zig build-exe ./app/main.zig && sed -i 's/^\(zig .*\)/#\1/' ./your_bittorrent.sh" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
