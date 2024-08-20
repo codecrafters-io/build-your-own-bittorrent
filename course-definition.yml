@@ -764,31 +764,42 @@ stages:
     description_md: |-
       In this stage, you'll request torrent metadata from a peer.
 
-      Since we're missing details usually found in a .torrent file, such as file length, piece length and piece hashes, we'll send a peer [metadata request](https://www.bittorrent.org/beps/bep_0009.html#request) message to get these details.
+      ### Metadata request message
 
-      It will follow the standard message format:
+      To fetch the details usually found in a .torrent file, such as file length, piece length and piece hashes, your client will need to send a [metadata request](https://www.bittorrent.org/beps/bep_0009.html#request) message to the peer.
+
+      This message follows the standard BitTorrent message format:
+
       - message length prefix (4 bytes)
       - message id (1 byte)
+        - Since this is a message implemented by an extension, the message id will be 20.
       - payload (variable size)
 
-      Message ID will be 20
-
       The payload will be structured as follows:
-      - extension message id (1 byte)
-      - bencoded dictionary (variable size)
 
-      Extension message id: You'll use the peer metadata extension ID you received during handshake.\
-      Bencoded dictionary: The dictionary that you send will look like this: `{'msg_type': 0, 'piece': 0}`\. It needs to be bencoded.
+      - extension message id (1 byte)
+        - This will be the peer's metadata extension ID, which you received during the handshake.
+      - bencoded dictionary (variable size)
+        - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (needs to be bencoded)
+        - `msg_type` will be 0 since this is a `request` message
+        - `piece` is the zero-based piece index of the metadata being requested
+          - This will always be 0 for the purposes of this challenge
+
+      We'll look at other `msg_type` values in later stages.
+
+      ### Tests
 
       Here's how the tester will execute your program:
-      ```
+
+      ```bash
       $ ./your_bittorrent.sh magnet_info <magnet-link>
       ```
-      No output needed at this stage, tester will assert if it received a correct metadata request.
+
+      There's no expected output at this stage, the tester will just assert if it received a correct metadata request.
 
       ### Notes
-      - If metadata is larger than 16 kb, you would need to request multiple pieces, but for the purposes of this challenge there will only be one piece.
 
+      - If metadata is larger than 16kb, you would need to request multiple pieces, but for the purposes of this challenge there will only be one piece.
     marketing_md: |-
       In this stage, you'll request torrent metadata from a peer.
 
