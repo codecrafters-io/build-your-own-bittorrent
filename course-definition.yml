@@ -657,7 +657,7 @@ stages:
 
   - slug: "jk6"
     primary_extension_slug: "magnet-links"
-    name: "Receive Extensions"
+    name: "Receive Extension Handshake"
     difficulty: easy
     description_md: |-
       In this stage, you'll add support for receiving a list of extensions that a peer supports.
@@ -714,10 +714,10 @@ stages:
 
   - slug: "xi4"
     primary_extension_slug: "magnet-links"
-    name: "Send Extensions"
+    name: "Send Extension Handshake"
     difficulty: easy
     description_md: |-
-      In this stage, you'll send back extensions your client supports.
+      In this stage, you'll send back a list of extensions that your client supports.
 
       After receiving supported extensions from your peer, you'll send back a peer message with the standard format:
       - message length prefix (4 bytes)
