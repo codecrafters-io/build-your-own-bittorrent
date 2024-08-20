@@ -660,40 +660,54 @@ stages:
     name: "Receive Extensions"
     difficulty: easy
     description_md: |-
-      In this stage, you'll add support for receiving a list of extensions your peer supports.
+      In this stage, you'll add support for receiving a list of extensions that a peer supports.
 
-      After the handshake and bitfield messages, clients that support extensions exchange an additional message called the [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message). This message includes a dictionary that maps extension names to IDs.
+      ### Extension handshake
+
+      After the handshake and bitfield messages, clients that support extensions exchange an additional message called the
+      [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message). This message includes a dictionary that maps extension names to IDs.
 
       Extension messages follow the standard BitTorrent message format:
+
       - message length prefix (4 bytes)
       - message id (1 byte)
+        - This will be 20 for all messages implemented by extensions
       - payload (variable size)
 
-      The message id for extension messages is 20
-
       The payload will be structured as follows:
+
       - extension message id (1 byte)
+        - This will be 0 for the extension handshake
       - bencoded dictionary (variable size)
+        - This will contain a key "m" with another dictionary as its value.
+        - The inner dictionary maps supported extension names to their corresponding message IDs.
+        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that the peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
 
-      The extension message id is 0 for extension handshake\
-      The bencoded dictionary contains a key "m" with another dictionary as its value. This inner dictionary maps supported extension names to their corresponding message IDs. For example, bencoded representation of {"m": {"ut_metadata": 1, "ut_pex": 2})
+      The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
 
-      In this stage, you'll print out the message ID your peer uses for metadata extension (the value of "ut_metadata" key in the inner dictionary)
+      ### Tests
+
+      In this stage, you'll print out the message ID your peer uses for the metadata extension (the value of "ut_metadata" key in the inner dictionary)
 
       Here's how the tester will execute your program:
-      ```
+
+      ```bash
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
+
       and here's the output it expects:
+
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      Peer Metadata Extension ID: 1
+      Peer Metadata Extension ID: 123
       ```
 
       ### Notes
-      - Extension IDs need to be stored for every peer,  as different peers may use different IDs for the same extension.
+
+      - The value of `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the handshake message.
+      - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
       - Client ignore any unrecognized extension names.
-      - To avoid collisions, extension names are prefixed with two charcters identifying the client that introduced the extension (e.g., "**lt**"  for libtorrent or "**ut**" for μTorrent)
+      - To avoid collisions, extension names are prefixed with two characters identifying the client that introduced the extension (e.g., "**lt**" for libtorrent or "**ut**" for μTorrent)
 
     marketing_md: |-
       In this stage, you'll receive the list of extensions your peer supports.
