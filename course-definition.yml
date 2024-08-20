@@ -618,7 +618,7 @@ stages:
 
   - slug: "pk2"
     primary_extension_slug: "magnet-links"
-    name: "Support Extensions"
+    name: "Advertise Extension Support"
     difficulty: easy
     description_md: |-
       In this stage, you'll modify the handshake message to indicate that your client supports extensions.
@@ -660,7 +660,7 @@ stages:
     name: "Receive Extensions"
     difficulty: easy
     description_md: |-
-      In this stage, you'll add a new message type (extension messages) and receive one from your peer.
+      In this stage, you'll add support for receiving a list of extensions your peer supports.
 
       After the handshake and bitfield messages, clients that support extensions exchange an additional message called the [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message). This message includes a dictionary that maps extension names to IDs.
 
