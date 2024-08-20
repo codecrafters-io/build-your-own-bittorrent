@@ -623,22 +623,35 @@ stages:
     description_md: |-
       In this stage, you'll modify the handshake message to indicate that your client supports extensions.
 
-      Exchanging torrent metadata between peers wasn't originally part of the standard BitTorrent protocol; it was introduced as an [extension](https://www.bittorrent.org/beps/bep_0009.html). It's part of a generic [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add functionality without affecting the standard protocol or interfering with clients that don't support extensions.
+      ### Extension handshake
 
-      During "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal support for extensions, the convention is to set the 20th bit from the right (counting starts at 0) in the reserved bytes to 1.
+      Exchanging torrent metadata between peers wasn't originally part of the standard BitTorrent protocol, it was introduced as
+      an [extension](https://www.bittorrent.org/beps/bep_0009.html).
 
-      In this stage, you'll parse the magnet link and discover peers by connecting to the tracker. You'll establish a TCP connection with the first peer and complete a handshake. Ensure your handshake message indicates extension support by setting the correct reserved bit.
+      This extension uses BitTorrent's [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add
+      functionality without breaking backward-compatibility.
+
+      During the "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal
+      support for extensions, a client must set the 20th bit from the right (counting starts at 0) in the reserved bytes to 1.
+
+      ### Tests
+
+      In this stage, you'll parse the magnet link and discover peers by connecting to the tracker. You'll establish a TCP connection with
+      the first peer and complete a handshake. Your handshake message must indicate extension support by setting the correct reserved bit.
 
       Here's how the tester will execute your program:
+
       ```
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
+
       and here's the output it expects:
+
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       ```
-      Tester will also assert that correct bit is set
 
+      Tester will also assert that correct bit is set in the reserved bytes of the handshake message.
     marketing_md: |-
       In this stage, you'll announce to other clients that you support extensions.
 
