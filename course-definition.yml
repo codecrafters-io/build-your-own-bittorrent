@@ -719,36 +719,38 @@ stages:
     description_md: |-
       In this stage, you'll send back a list of extensions that your client supports.
 
-      After receiving supported extensions from your peer, you'll send back a peer message with the standard format:
-      - message length prefix (4 bytes)
-      - message id (1 byte)
-      - payload (variable size)
+      ### Extension handshake (part 2)
 
-      Message ID will be 20
+      Similar to how your client received an extension handshake message from your peer in the previous stage,
+      your client will need to send an extension handshake message to the peer too.
 
-      The payload will follow this format:
-      - extension message id (1 byte)
-      - bencoded dictionary (variable size)
+      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
 
-      Extension message ID will be 0 for handshake.\
-      Your dictionary should at least contain the following keys:
-      `{"m": {"ut_metadata": <PICK YOUR ID>}}`
-      This dictionary needs to be bencoded.
+      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
+      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
 
-      You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
+      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
+
+      ### Tests
 
       Here's how the tester will execute your program:
+
       ```
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
+
       and here's the output it expects:
+
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       Peer Metadata Extension ID: 1
       ```
-      (Output same as last stage, tester will assert that correct message is received)
+
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct handshake message is received.
 
       ### Notes
+
+      - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
       - The only requirement on these IDs is that no extension messages share the same one.
       - Setting an ID to zero means that the extension is not supported/disabled.
 
