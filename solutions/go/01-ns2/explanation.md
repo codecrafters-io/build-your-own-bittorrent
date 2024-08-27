@@ -3,11 +3,6 @@ The entry point for your BitTorrent implementation is in `cmd/mybittorrent/main.
 Study and uncomment the relevant code: 
 
 ```go
-// Uncomment this line to pass the first stage
-"encoding/json"
-```
-
-```go
 // Uncomment this block to pass the first stage
 
 bencodedValue := os.Args[2]

@@ -9,6 +9,9 @@ import (
 	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
 )
 
+// Ensures gofmt doesn't remove the "os" encoding/json import (feel free to remove this!)
+var _ = json.Marshal
+
 // Example:
 // - 5:hello -> hello
 // - 10:hello12345 -> hello12345
