@@ -1,20 +1,4 @@
-@@ -1,63 +1,57 @@
- package main
-
- import (
--	// Uncomment this line to pass the first stage
--	// "encoding/json"
-+	"encoding/json"
- 	"fmt"
- 	"os"
- 	"strconv"
- 	"unicode"
- 	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
- )
-
- // Example:
- // - 5:hello -> hello
- // - 10:hello12345 -> hello12345
+@@ -18,47 +18,43 @@
  func decodeBencode(bencodedString string) (interface{}, error) {
  	if unicode.IsDigit(rune(bencodedString[0])) {
  		var firstColonIndex int
@@ -46,27 +30,17 @@
  	command := os.Args[1]
 
  	if command == "decode" {
+ 		// bencodedValue := os.Args[2]
+ 		//
+ 		// decoded, err := decodeBencode(bencodedValue)
+ 		// if err != nil {
+ 		// 	fmt.Println(err)
+ 		// 	return
+ 		// }
+ 		//
+ 		// jsonOutput, _ := json.Marshal(decoded)
 -		// Uncomment this block to pass the first stage
--		//
--		// bencodedValue := os.Args[2]
--		//
--		// decoded, err := decodeBencode(bencodedValue)
--		// if err != nil {
--		// 	fmt.Println(err)
--		// 	return
--		// }
--		//
--		// jsonOutput, _ := json.Marshal(decoded)
 -		// fmt.Println(string(jsonOutput))
-+		bencodedValue := os.Args[2]
-+
-+		decoded, err := decodeBencode(bencodedValue)
-+		if err != nil {
-+			fmt.Println(err)
-+			return
-+		}
-+
-+		jsonOutput, _ := json.Marshal(decoded)
 +		fmt.Println(string(jsonOutput))
  	} else {
  		fmt.Println("Unknown command: " + command)
