@@ -1,14 +1,16 @@
 package main
 
 import (
-	// Uncomment this line to pass the first stage
-	// "encoding/json"
+	"encoding/json"
 	"fmt"
 	"os"
 	"strconv"
 	"unicode"
 	// bencode "github.com/jackpal/bencode-go" // Available if you need it!
 )
+
+// Ensures gofmt doesn't remove the "os" encoding/json import (feel free to remove this!)
+var _ = json.Marshal
 
 // Example:
 // - 5:hello -> hello
@@ -44,8 +46,6 @@ func main() {
 	command := os.Args[1]
 
 	if command == "decode" {
-		// Uncomment this block to pass the first stage
-		//
 		// bencodedValue := os.Args[2]
 		//
 		// decoded, err := decodeBencode(bencodedValue)
@@ -55,6 +55,7 @@ func main() {
 		// }
 		//
 		// jsonOutput, _ := json.Marshal(decoded)
+		// Uncomment this block to pass the first stage
 		// fmt.Println(string(jsonOutput))
 	} else {
 		fmt.Println("Unknown command: " + command)
