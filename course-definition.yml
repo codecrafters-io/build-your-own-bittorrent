@@ -618,7 +618,7 @@ stages:
 
   - slug: "pk2"
     primary_extension_slug: "magnet-links"
-    name: "Advertise Extension Support"
+    name: "Announce Extension Support"
     difficulty: easy
     description_md: |-
       In this stage, you'll modify the handshake message to indicate that your client supports extensions.
@@ -694,7 +694,6 @@ stages:
       ### Notes
 
       - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
-      - The only requirement on these IDs is that no extension messages share the same one.
       - Setting an ID to zero means that the extension is not supported/disabled.
 
     marketing_md: |-
@@ -751,7 +750,7 @@ stages:
 
       - The value of `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the handshake message.
       - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
-      - Client ignore any unrecognized extension names.
+      - Clients ignore any unrecognized extension names.
       - To avoid collisions, extension names are prefixed with two characters identifying the client that introduced the extension (e.g., "**lt**" for libtorrent or "**ut**" for μTorrent)
 
     marketing_md: |-
