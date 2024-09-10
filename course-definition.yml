@@ -118,6 +118,14 @@ marketing:
         I think the instant feedback right there in the git push is really cool.
         Didn't even know that was possible!
 
+extensions:
+  - slug: "magnet-links"
+    name: "Magnet Links"
+    description_markdown: |
+      This extension covers magnet links. Magnet links allow downloading files without the need of downloading a .torrent file first.
+
+      Along the way, you'll learn how BitTorrent clients offer new functionality via extension protocol and how to download metadata from peers.
+
 stages:
   - slug: "ns2" # A identifier for this stage, needs to be unique within a course.
 
@@ -557,3 +565,326 @@ stages:
       **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
     marketing_md: |-
       In this stage, you'll download the entire file. You'll download all the pieces, verify them using SHA-1 and save them to disk.
+
+  - slug: "hw0"
+    primary_extension_slug: "magnet-links"
+    name: "Parse Magnet Link"
+    difficulty: easy
+    description_md: |-
+      Welcome to the BitTorrent Magnet Links extension! In this extension, you'll add support for downloading files using magnet links.
+
+      In this stage, you will parse a magnet link and print out the info hash and tracker URL.
+
+      ### Magnet links
+
+      [Magnet links](https://www.bittorrent.org/beps/bep_0009.html) allow users to download files from peers without needing a torrent file.
+
+      For example, here's **sample.torrent** represented as a magnet link:
+      `magnet:?xt=urn:btih:d69f91e6b2ae4c542468d1073a71d4ea13879a7f&dn=sample.torrent&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce`
+
+      Unlike .torrent files, magnet links don't contain information like file length, piece length and piece hashes. They only include the bare minimum
+      information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange).
+
+      These are the query parameters in a magnet link:
+
+      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `d69f91e6b2ae4c542468d1073a71d4ea13879a7f`)
+      - `dn`: The name of the file to be downloaded (example: `sample.torrent`)
+      - `tr`: The tracker URL (example: `http://bittorrent-test-tracker.codecrafters.io/announce`)
+
+      [This Wikipedia article](https://en.wikipedia.org/wiki/Magnet_URI_scheme) has more information about the magnet link format.
+
+      ### Magnet link example
+
+      Here's how the tester will execute your program:
+
+      ```bash
+      $ ./your_bittorrent.sh magnet_parse <magnet-link>
+      ```
+
+      and here's the output it expects:
+
+      ```bash
+      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
+      ```
+
+      ### Notes
+
+      - We'll be using v1 of [magnet URI format](https://www.bittorrent.org/beps/bep_0009.html#magnet-uri-format).
+      - `xt` is the only required parameter, all others are optional.
+      - A magnet link can contain multiple tracker URLs, but for the purposes of this challenge it'll only contain one.
+    marketing_md: |-
+      In this stage, you'll extract information from a magnet link.
+
+  - slug: "pk2"
+    primary_extension_slug: "magnet-links"
+    name: "Advertise Extension Support"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll modify the handshake message to indicate that your client supports extensions.
+
+      ### Extension handshake
+
+      Exchanging torrent metadata between peers wasn't originally part of the standard BitTorrent protocol, it was introduced as
+      an [extension](https://www.bittorrent.org/beps/bep_0009.html).
+
+      This extension uses BitTorrent's [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add
+      functionality without breaking backward-compatibility.
+
+      During the "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal
+      support for extensions, a client must set the 20th bit from the right (counting starts at 0) in the reserved bytes to 1.
+
+      ### Tests
+
+      In this stage, you'll parse the magnet link and discover peers by connecting to the tracker. You'll establish a TCP connection with
+      the first peer and complete a handshake. Your handshake message must indicate extension support by setting the correct reserved bit.
+
+      Here's how the tester will execute your program:
+
+      ```
+      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      ```
+
+      and here's the output it expects:
+
+      ```
+      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
+      ```
+
+      Tester will also assert that correct bit is set in the reserved bytes of the handshake message.
+    marketing_md: |-
+      In this stage, you'll announce to other clients that you support extensions.
+
+  - slug: "jk6"
+    primary_extension_slug: "magnet-links"
+    name: "Receive Extension Handshake"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll add support for receiving a list of extensions that a peer supports.
+
+      ### Extension handshake
+
+      After the handshake and bitfield messages, clients that support extensions exchange an additional message called the
+      [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message). This message includes a dictionary that maps extension names to IDs.
+
+      Extension messages follow the standard BitTorrent message format:
+
+      - message length prefix (4 bytes)
+      - message id (1 byte)
+        - This will be 20 for all messages implemented by extensions
+      - payload (variable size)
+
+      The payload will be structured as follows:
+
+      - extension message id (1 byte)
+        - This will be 0 for the extension handshake
+      - bencoded dictionary (variable size)
+        - This will contain a key "m" with another dictionary as its value.
+        - The inner dictionary maps supported extension names to their corresponding message IDs.
+        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that the peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
+
+      The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
+
+      ### Tests
+
+      In this stage, you'll print out the message ID your peer uses for the metadata extension (the value of "ut_metadata" key in the inner dictionary)
+
+      Here's how the tester will execute your program:
+
+      ```bash
+      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      ```
+
+      and here's the output it expects:
+
+      ```
+      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
+      Peer Metadata Extension ID: 123
+      ```
+
+      ### Notes
+
+      - The value of `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the handshake message.
+      - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
+      - Client ignore any unrecognized extension names.
+      - To avoid collisions, extension names are prefixed with two characters identifying the client that introduced the extension (e.g., "**lt**" for libtorrent or "**ut**" for μTorrent)
+
+    marketing_md: |-
+      In this stage, you'll receive the list of extensions your peer supports.
+
+  - slug: "xi4"
+    primary_extension_slug: "magnet-links"
+    name: "Send Extension Handshake"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll send back a list of extensions that your client supports.
+
+      ### Extension handshake (part 2)
+
+      Similar to how your client received an extension handshake message from your peer in the previous stage,
+      your client will need to send an extension handshake message to the peer too.
+
+      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
+
+      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
+      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
+
+      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
+
+      ### Tests
+
+      Here's how the tester will execute your program:
+
+      ```
+      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      ```
+
+      and here's the output it expects:
+
+      ```
+      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
+      Peer Metadata Extension ID: 1
+      ```
+
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct handshake message is received.
+
+      ### Notes
+
+      - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
+      - The only requirement on these IDs is that no extension messages share the same one.
+      - Setting an ID to zero means that the extension is not supported/disabled.
+
+    marketing_md: |-
+      In this stage, you'll send the list of extensions your client supports.
+
+  - slug: "ns5"
+    primary_extension_slug: "magnet-links"
+    name: "Request Metadata"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll request torrent metadata from a peer.
+
+      ### Metadata request message
+
+      To fetch the details usually found in a .torrent file, such as file length, piece length and piece hashes, your client will need to send a [metadata request](https://www.bittorrent.org/beps/bep_0009.html#request) message to the peer.
+
+      This message follows the standard BitTorrent message format:
+
+      - message length prefix (4 bytes)
+      - message id (1 byte)
+        - Since this is a message implemented by an extension, the message id will be 20.
+      - payload (variable size)
+
+      The payload will be structured as follows:
+
+      - extension message id (1 byte)
+        - This will be the peer's metadata extension ID, which you received during the handshake.
+      - bencoded dictionary (variable size)
+        - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (needs to be bencoded)
+        - `msg_type` will be 0 since this is a `request` message
+        - `piece` is the zero-based piece index of the metadata being requested
+          - This will always be 0 for the purposes of this challenge
+
+      We'll look at other `msg_type` values in later stages.
+
+      ### Tests
+
+      Here's how the tester will execute your program:
+
+      ```bash
+      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      ```
+
+      There's no expected output at this stage, the tester will just assert if it received a correct metadata request.
+
+      ### Notes
+
+      - If metadata is larger than 16kb, you would need to request multiple pieces, but for the purposes of this challenge there will only be one piece.
+    marketing_md: |-
+      In this stage, you'll request torrent metadata from a peer.
+
+  - slug: "zh1"
+    primary_extension_slug: "magnet-links"
+    name: "Receive Metadata"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll receive torrent metadata from a peer.
+
+      After sending a metadata request, you'll receive an extension message with ID 20.
+
+      The message will follow standard BitTorrent message structure:
+      - message length prefix (4 bytes)
+      - message id (1 byte)
+      - payload (variable size)
+
+      The payload will be structured as follows:
+      - extension message id (1 byte)
+      - bencoded dictionary (variable size)
+      - bencoded metadata
+
+      Extension message ID will be the ID you came up with during handshake stage.
+      The dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
+
+      It will be bencoded. Torrent metadata is appended to the payload after the dictionary, but it is not a part of the dictionary. It's a separate bencoded dictionary. The appended dictionary will contain torrent metadata, such as length, piece length, piece hashes etc.
+
+      Here's how the tester will execute your program:
+      ```
+      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      ```
+      and here's the output it expects:
+      ```
+      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+      Length: 92063
+      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
+      Piece Length: 32768
+      Piece Hashes:
+      6e2275e604a0766656736e81ff10b55204ad8d35
+      e876f67a2a8886e8f36b136726c30fa29703022d
+      f00d937a0213df1982bc8d097227ad9e909acc17
+      ```
+    marketing_md: |-
+      In this stage, you'll receive torrent metadata from a peer.
+
+  - slug: "qv6"
+    primary_extension_slug: "magnet-links"
+    name: "Download a piece"
+    difficulty: hard
+    description_md: |-
+      In this stage, you'll download one piece and save it to disk using a magnet link.
+
+      The overall flow looks like this:
+      - Parse magnet link to get the tracker URL
+      - Perform the tracker GET request to get the list of peers
+      - Establish a TCP connection with a peer, perform a handshake and receive bitfields
+      - Receive and send supported extension names and IDs
+      - Request and receive torrent metadata from a peer
+      - Exchange multiple peer messages to download the file
+
+      Here's how the tester will execute your program:
+      ```
+      $ ./your_bittorent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
+      ```
+      and here's the output it expects:
+      ```
+      Piece 0 downloaded to /tmp/test-piece-0.
+      ```
+    marketing_md: |-
+      In this stage, you'll download one piece and save it to disk using a magnet link.
+
+  - slug: "dv7"
+    primary_extension_slug: "magnet-links"
+    name: "Download the whole file"
+    difficulty: hard
+    description_md: |-
+      In this stage, you'll download the entire file and save it to disk using a magnet link.
+
+      Here's how the tester will execute your program:
+      ```
+      $ ./your_bittorent.sh magnet_download -o /tmp/sample <magnet_link>
+      ```
+      and here's the output it expects:
+      ```
+      Downloaded to /tmp/sample.
+      ```
+    marketing_md: |-
+      In this stage, you'll download the entire file and save it to disk using a magnet link.
