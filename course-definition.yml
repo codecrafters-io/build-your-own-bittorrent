@@ -655,6 +655,51 @@ stages:
     marketing_md: |-
       In this stage, you'll announce to other clients that you support extensions.
 
+  - slug: "xi4"
+    primary_extension_slug: "magnet-links"
+    name: "Send Extension Handshake"
+    difficulty: easy
+    description_md: |-
+      In this stage, you'll send back a list of extensions that your client supports.
+
+      ### Extension handshake (part 2)
+
+      Similar to how your client received an extension handshake message from your peer in the previous stage,
+      your client will need to send an extension handshake message to the peer too.
+
+      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
+
+      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
+      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
+
+      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
+
+      ### Tests
+
+      Here's how the tester will execute your program:
+
+      ```
+      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      ```
+
+      and here's the output it expects:
+
+      ```
+      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
+      Peer Metadata Extension ID: 1
+      ```
+
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct handshake message is received.
+
+      ### Notes
+
+      - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
+      - The only requirement on these IDs is that no extension messages share the same one.
+      - Setting an ID to zero means that the extension is not supported/disabled.
+
+    marketing_md: |-
+      In this stage, you'll send the list of extensions your client supports.
+
   - slug: "jk6"
     primary_extension_slug: "magnet-links"
     name: "Receive Extension Handshake"
@@ -711,51 +756,6 @@ stages:
 
     marketing_md: |-
       In this stage, you'll receive the list of extensions your peer supports.
-
-  - slug: "xi4"
-    primary_extension_slug: "magnet-links"
-    name: "Send Extension Handshake"
-    difficulty: easy
-    description_md: |-
-      In this stage, you'll send back a list of extensions that your client supports.
-
-      ### Extension handshake (part 2)
-
-      Similar to how your client received an extension handshake message from your peer in the previous stage,
-      your client will need to send an extension handshake message to the peer too.
-
-      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
-
-      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
-      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
-
-      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
-      ```
-
-      and here's the output it expects:
-
-      ```
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      Peer Metadata Extension ID: 1
-      ```
-
-      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct handshake message is received.
-
-      ### Notes
-
-      - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
-      - The only requirement on these IDs is that no extension messages share the same one.
-      - Setting an ID to zero means that the extension is not supported/disabled.
-
-    marketing_md: |-
-      In this stage, you'll send the list of extensions your client supports.
 
   - slug: "ns5"
     primary_extension_slug: "magnet-links"
