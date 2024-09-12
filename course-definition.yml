@@ -568,7 +568,7 @@ stages:
 
   - slug: "hw0"
     primary_extension_slug: "magnet-links"
-    name: "Parse Magnet Link"
+    name: "Parse magnet link"
     difficulty: easy
     description_md: |-
       Welcome to the BitTorrent Magnet Links extension! In this extension, you'll add support for downloading files using magnet links.
@@ -618,7 +618,7 @@ stages:
 
   - slug: "pk2"
     primary_extension_slug: "magnet-links"
-    name: "Announce Extension Support"
+    name: "Announce extension support"
     difficulty: easy
     description_md: |-
       In this stage, you'll modify the handshake message to indicate that your client supports extensions.
@@ -657,7 +657,7 @@ stages:
 
   - slug: "xi4"
     primary_extension_slug: "magnet-links"
-    name: "Send Extension Handshake"
+    name: "Send extension handshake"
     difficulty: easy
     description_md: |-
       In this stage, you'll send back a list of extensions that your client supports.
@@ -701,7 +701,7 @@ stages:
 
   - slug: "jk6"
     primary_extension_slug: "magnet-links"
-    name: "Receive Extension Handshake"
+    name: "Receive extension handshake"
     difficulty: easy
     description_md: |-
       In this stage, you'll add support for receiving a list of extensions that a peer supports.
@@ -758,7 +758,7 @@ stages:
 
   - slug: "ns5"
     primary_extension_slug: "magnet-links"
-    name: "Request Metadata"
+    name: "Request metadata"
     difficulty: easy
     description_md: |-
       In this stage, you'll request torrent metadata from a peer.
@@ -804,7 +804,7 @@ stages:
 
   - slug: "zh1"
     primary_extension_slug: "magnet-links"
-    name: "Receive Metadata"
+    name: "Receive metadata"
     difficulty: easy
     description_md: |-
       In this stage, you'll receive torrent metadata from a peer.
