@@ -696,11 +696,11 @@ stages:
       Each peer maintains a mapping of extension names to IDs. The same extension name might map to different IDs on different peers (but it'll always remain stable for a given peer).
 
       To communicate with other peers using the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata), your peer will
-      need to know the ID that the peer uses for this extension. The name for the metadata extension is `ut_metadata`. To get the ID,
+      need to know the ID that the other peer uses for this extension. The name for the metadata extension is `ut_metadata`. To get the ID,
       your peer will need to send an [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) message and
       wait for the corresponding handshake message back from the peer.
 
-      The extension handshake message it receives back will contain a dictionary that looks like this:
+      The extension handshake message contains a dictionary like this:
 
       ```json
       {
@@ -735,7 +735,7 @@ stages:
       - bencoded dictionary (variable size)
         - This will contain a key "m" with another dictionary as its value.
         - The inner dictionary maps supported extension names to their corresponding message IDs.
-        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that the peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
+        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that your peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
 
       The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
 
@@ -753,7 +753,7 @@ stages:
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       ```
 
-      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct extension handshake message is received.
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct extension handshake message is received. You can use any valid ID for the metadata extension.
 
       ### Notes
 
