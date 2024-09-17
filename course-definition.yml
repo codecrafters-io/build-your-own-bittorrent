@@ -713,7 +713,9 @@ stages:
 
       (In the example above, `1234` is the ID that the peer uses for the metadata extension)
 
-      Extension handshake messages are sent soon after the base handshake message (which you've implemented in previous stages).
+      Extension handshake messages are sent soon after the base handshake message (which you've implemented in previous stages). A peer
+      will only send an extension handshake message if the other peer supports the extension protocol (indicated by the reserved bit in the base handshake). This
+      is how backward compatibility is maintained with peers that don't support extensions.
 
       We'll implement sending extension handshake messages in this stage. Receiving extension handshake messages will be implemented in the next stage.
 
@@ -755,8 +757,10 @@ stages:
 
       ### Notes
 
-      - You can also include other fields defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol.
-      - Setting an ID to zero means that the extension is not supported/disabled.
+      - Your program must only send an extension handshake **if** the peer supports extensions
+        - To know whether a peer supports the extension protocol, you'll need to look at the reserved bytes in the base handshake message
+      - The extension handshake message is defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol doc.
+      - If an extension's ID is 0 in the dictionary, it means that the extension is not supported/disabled.
 
     marketing_md: |-
       In this stage, you'll send the list of extensions your client supports.
