@@ -610,8 +610,8 @@ stages:
 
       ### Notes
 
-      - We'll be using v1 of [magnet URI format](https://www.bittorrent.org/beps/bep_0009.html#magnet-uri-format).
-      - `xt` is the only required parameter, all others are optional.
+      - We'll be using v1 of [magnet URI format](https://www.bittorrent.org/beps/bep_0009.html#magnet-uri-format). v2 is not widely used yet.
+      - `xt` (info hash) is the only required parameter, all others are optional.
       - A magnet link can contain multiple tracker URLs, but for the purposes of this challenge it'll only contain one.
     marketing_md: |-
       In this stage, you'll extract information from a magnet link.
