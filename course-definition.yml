@@ -749,10 +749,9 @@ stages:
 
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      Peer Metadata Extension ID: 1
       ```
 
-      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct handshake message is received.
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct extension handshake message is received.
 
       ### Notes
 
