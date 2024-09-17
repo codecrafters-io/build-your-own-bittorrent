@@ -632,7 +632,7 @@ stages:
       During the "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal
       support for extensions, a client must set the 20th bit from the right (counting starts at 0) in the reserved bytes to 1.
 
-      In Hex, here's how the reserved bytes will look like after setting the 20th bit to 1:
+      In Hex, here's how the reserved bytes will look like after setting the 20th bit from the right to 1:
 
       ```bash
       00 00 00 00 00 10 00 00
