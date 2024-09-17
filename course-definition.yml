@@ -691,17 +691,38 @@ stages:
     description_md: |-
       In this stage, you'll send back a list of extensions that your client supports.
 
-      ### Extension handshake (part 2)
+      ### Extension IDs & handshake
 
-      Similar to how your client received an extension handshake message from your peer in the previous stage,
-      your client will need to send an extension handshake message to the peer too.
+      Each peer maintains a mapping of extension names to IDs. The same extension name might map to different IDs on different peers (but it'll always remain stable for a given peer).
 
-      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
+      To communicate with other peers using the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata), your peer will
+      need to know the ID that the peer uses for this extension. The name for the metadata extension is `ut_metadata`. To get the ID,
+      your peer will need to send an [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) message and
+      wait for the corresponding handshake message back from the peer.
 
-      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
-      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
+      Extension handshake messages are sent soon after the base handshake message (which you've implemented in previous stages).
 
-      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
+      We'll implement sending extension handshake messages in this stage. Receiving extension handshake messages will be implemented in the next stage.
+
+      ### Extension handshake format
+
+      Extension messages follow the standard BitTorrent message format:
+
+      - message length prefix (4 bytes)
+      - message id (1 byte)
+        - This will be 20 for all messages implemented by extensions
+      - payload (variable size)
+
+      The payload will be structured as follows:
+
+      - extension message id (1 byte)
+        - This will be 0 for the extension handshake
+      - bencoded dictionary (variable size)
+        - This will contain a key "m" with another dictionary as its value.
+        - The inner dictionary maps supported extension names to their corresponding message IDs.
+        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that the peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
+
+      The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
 
       ### Tests
 
@@ -735,28 +756,17 @@ stages:
     description_md: |-
       In this stage, you'll add support for receiving a list of extensions that a peer supports.
 
-      ### Extension handshake
+      ### Extension handshake (part 2)
 
-      After the handshake and bitfield messages, clients that support extensions exchange an additional message called the
-      [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message). This message includes a dictionary that maps extension names to IDs.
+      Similar to how your client sent an extension handshake message from your peer in the previous stage,
+      your client will need to send an extension handshake message to the peer too.
 
-      Extension messages follow the standard BitTorrent message format:
+      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
 
-      - message length prefix (4 bytes)
-      - message id (1 byte)
-        - This will be 20 for all messages implemented by extensions
-      - payload (variable size)
+      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
+      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
 
-      The payload will be structured as follows:
-
-      - extension message id (1 byte)
-        - This will be 0 for the extension handshake
-      - bencoded dictionary (variable size)
-        - This will contain a key "m" with another dictionary as its value.
-        - The inner dictionary maps supported extension names to their corresponding message IDs.
-        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that the peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
-
-      The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
+      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
 
       ### Tests
 
