@@ -638,11 +638,13 @@ stages:
       00 00 00 00 00 10 00 00
       ```
 
-      When looking at this in binary, here's how it'll look like (left side truncated):
+      (`10` in hex is `16` in decimal, which is `00010000` in binary)
+
+      When looking at individual bits, here's how it'll look like (left side truncated):
 
       ```bash
       .... 00010000 00000000 00000000
-              ^ 20th bit from the right
+              ^ 20th bit from the right, counting starts at 0
       ```
 
       ### The `magnet_handshake` command
