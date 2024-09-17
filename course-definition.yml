@@ -804,9 +804,8 @@ stages:
       ### Notes
 
       - The value of `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the handshake message.
+      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
       - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
-      - Clients ignore any unrecognized extension names.
-      - To avoid collisions, extension names are prefixed with two characters identifying the client that introduced the extension (e.g., "**lt**" for libtorrent or "**ut**" for μTorrent)
 
     marketing_md: |-
       In this stage, you'll receive the list of extensions your peer supports.
