@@ -647,7 +647,7 @@ stages:
               ^ 20th bit from the right, counting starts at 0
       ```
 
-      All the other reserved bytes will stay zero.
+      All the other reserved bits will stay zero.
 
       ### The `magnet_handshake` command
 
