@@ -700,6 +700,19 @@ stages:
       your peer will need to send an [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) message and
       wait for the corresponding handshake message back from the peer.
 
+      The extension handshake message it receives back will contain a dictionary that looks like this:
+
+      ```json
+      {
+        "m": {
+          "ut_metadata": 1234,
+          ... (other extension names and IDs)
+        }
+      }
+      ```
+
+      (In the example above, `1234` is the ID that the peer uses for the metadata extension)
+
       Extension handshake messages are sent soon after the base handshake message (which you've implemented in previous stages).
 
       We'll implement sending extension handshake messages in this stage. Receiving extension handshake messages will be implemented in the next stage.
