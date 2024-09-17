@@ -626,9 +626,7 @@ stages:
       ### Extension handshake
 
       Exchanging torrent metadata between peers wasn't originally part of the standard BitTorrent protocol, it was introduced as
-      an [extension](https://www.bittorrent.org/beps/bep_0009.html).
-
-      This extension uses BitTorrent's [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add
+      an [extension](https://www.bittorrent.org/beps/bep_0009.html). This extension uses BitTorrent's [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add
       functionality without breaking backward-compatibility.
 
       During the "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal
