@@ -587,7 +587,7 @@ stages:
 
       These are the query parameters in a magnet link:
 
-      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `d69f91e6b2ae4c542468d1073a71d4ea13879a7f`)
+      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `urn:btih:d69f91e6b2ae4c542468d1073a71d4ea13879a7f`)
       - `dn`: The name of the file to be downloaded (example: `sample.torrent`)
       - `tr`: The tracker URL (example: `http://bittorrent-test-tracker.codecrafters.io/announce`)
 
