@@ -763,7 +763,11 @@ stages:
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       ```
 
-      The expected output is same as last stage. In this stage, the tester will additionaly verify that the correct extension handshake message is received. You can use any valid ID for the metadata extension.
+      The expected output is same as last stage. In this stage, the tester will additionaly verify that:
+
+      - An extension handshake message is received.
+      - The extension handshake message contains a dictionary that looks like this: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
+      - The ID corresponding to `ut_metadata` is between 1 and 255 (it needs to be represented as an 8-bit unsigned integer, that isn't 0)
 
       ### Notes
 
@@ -779,14 +783,12 @@ stages:
     name: "Receive extension handshake"
     difficulty: easy
     description_md: |-
-      In this stage, you'll add support for receiving a list of extensions that a peer supports.
+      In this stage, you'll add support for receiving the extension handshake message back.
 
       ### Extension handshake (part 2)
 
-      Similar to how your client sent an extension handshake message from your peer in the previous stage,
-      your client will need to send an extension handshake message to the peer too.
-
-      This message must be sent before receiving the extension handshake (if both clients waited for the other to send a handshake, they'd be stuck forever).
+      In the previous stage, your peer sent an extension handshake message to the other peer. In this stage, you'll
+      add support for receiving the peer's extension handshake message back.
 
       The message will follow the same structure as the one you received in the previous stage. The payload dictionary
       should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
