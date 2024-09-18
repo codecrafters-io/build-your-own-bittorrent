@@ -795,6 +795,17 @@ stages:
 
       Your program will need to store the ID for the `ut_metadata` extension and print it out. This'll be used in later stages to send extension messages specific to the `ut_metadata` extension.
 
+      To recap, the overall flow will look like this:
+
+      - Establish a TCP connection with a peer
+      - Send the base handshake message
+      - Receive the base handshake message
+      - Send the bitfield message (safe to ignore in this challenge)
+      - Receive the bitfield message
+      - If the peer supports extensions (based on the reserved bit in the base handshake):
+        - Send the extension handshake message (last stage)
+        - Receive the extension handshake message (**this stage**)
+
       ### Tests
 
       Here's how the tester will execute your program:
