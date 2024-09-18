@@ -705,16 +705,26 @@ stages:
       ```json
       {
         "m": {
-          "ut_metadata": 1234,
+          "ut_metadata": 16,
           ... (other extension names and IDs)
         }
       }
       ```
 
-      (In the example above, `1234` is the ID that the peer uses for the metadata extension)
+      In the example above, `16` is the ID that the peer uses for the metadata extension. This is just an example, you can use any value you want for this ID.
 
-      Extension handshake messages are sent soon after the base handshake message (which you've implemented in previous stages). A peer
-      will only send an extension handshake message if the other peer supports the extension protocol (indicated by the reserved bit in the base handshake). This
+      Your program will need to send the extension handshake message soon after receiving the bitfield message. Overall, the flow will look like this:
+
+      - Establish a TCP connection with a peer
+      - Send the base handshake message
+      - Receive the base handshake message
+      - Send the bitfield message (safe to ignore in this challenge)
+      - Receive the bitfield message
+      - If the peer supports extensions (based on the reserved bit in the base handshake):
+        - Send the extension handshake message
+        - Receive the extension handshake message
+
+      Note that the extension handshake message is only sent if the other peer supports extensions (indicated by the reserved bit in the base handshake). This
       is how backward compatibility is maintained with peers that don't support extensions.
 
       We'll implement sending extension handshake messages in this stage. Receiving extension handshake messages will be implemented in the next stage.
@@ -760,7 +770,6 @@ stages:
       - Your program must only send an extension handshake **if** the peer supports extensions
         - To know whether a peer supports the extension protocol, you'll need to look at the reserved bytes in the base handshake message
       - The extension handshake message is defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol doc.
-      - If an extension's ID is 0 in the dictionary, it means that the extension is not supported/disabled.
 
     marketing_md: |-
       In this stage, you'll send the list of extensions your client supports.
