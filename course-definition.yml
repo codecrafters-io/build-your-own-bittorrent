@@ -790,14 +790,12 @@ stages:
       In the previous stage, your peer sent an extension handshake message to the other peer. In this stage, you'll
       add support for receiving the peer's extension handshake message back.
 
-      The message will follow the same structure as the one you received in the previous stage. The payload dictionary
-      should atleast contain the following keys: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
+      The message will follow the same structure as the one you sent in the previous stage. The payload dictionary
+      will contain the following keys: `{"m": {"ut_metadata": <PEER'S ID>}}`.
 
-      The ID for `ut_metadata` can be any value you choose. The only requirement is that it should not collide with any other extension IDs that your client supports.
+      Your program will need to store the ID for the `ut_metadata` extension and print it out. This'll be used in later stages to send extension messages specific to the `ut_metadata` extension.
 
       ### Tests
-
-      In this stage, you'll print out the message ID your peer uses for the metadata extension (the value of "ut_metadata" key in the inner dictionary)
 
       Here's how the tester will execute your program:
 
@@ -812,9 +810,10 @@ stages:
       Peer Metadata Extension ID: 123
       ```
 
+      The `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the extension handshake message.
+
       ### Notes
 
-      - The value of `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the handshake message.
       - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
       - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
 
