@@ -879,6 +879,35 @@ stages:
           - `piece` is the zero-based piece index of the metadata being requested
             - Since we're only requesting one piece in this challenge, this will always be 0
 
+      ### The `magnet_info` command
+
+      To test your program, we'll introduce a new command in this stage: `magnet_info`. Here's how it works:
+
+      ```bash
+      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
+      Length: 92063
+      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
+      Piece Length: 32768
+      Piece Hashes:
+      6e2275e604a0766656736e81ff10b55204ad8d35
+      e876f67a2a8886e8f36b136726c30fa29703022d
+      f00d937a0213df1982bc8d097227ad9e909acc17
+      ```
+
+      To fetch this info, your program will need to:
+
+      - Parse the magnet link to get the tracker URL
+      - Perform the tracker GET request to get a list of peers
+      - Establish a TCP connection with a peer, and perform a handshake
+      - Perform the base handshake
+      - Send the bitfield message (can be ignored in this challenge)
+      - Receive the bitfield message
+      - Perform the extension handshake
+      - Send the metadata request message (**This stage**)
+      - Receive the metadata message (later stages)
+      - Print out the data received, as per the format above.
+
       ### Tests
 
       Here's how the tester will execute your program:
@@ -887,7 +916,8 @@ stages:
       $ ./your_bittorrent.sh magnet_info <magnet-link>
       ```
 
-      There's no expected output at this stage, the tester will just assert if it received a correct metadata request.
+      There's no expected output at this stage, the tester will just assert if it received a correct metadata request. We'll
+      verify the output in later stages.
 
       ### Notes
 
