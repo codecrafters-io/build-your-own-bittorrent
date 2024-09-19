@@ -848,7 +848,6 @@ stages:
 
       - `request` (msg_type: 0)
         - Requests a piece of metadata from the peer
-        - (**This stage**)
       - `data` (msg_type: 1)
         - Sends a piece of metadata to the peer
       - `reject` (msg_type: 2)
