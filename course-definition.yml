@@ -836,30 +836,49 @@ stages:
     name: "Request metadata"
     difficulty: easy
     description_md: |-
-      In this stage, you'll request torrent metadata from a peer.
+      In this stage, you'll request torrent metadata from a peer using the metadata extension.
 
-      ### Metadata request message
+      ### Metadata extension messages
 
-      To fetch the details usually found in a .torrent file, such as file length, piece length and piece hashes, your client will need to send a [metadata request](https://www.bittorrent.org/beps/bep_0009.html#request) message to the peer.
+      As we learnt earlier, a magnet link doesn't contain all the information found in a .torrent file, such as file length, piece length and piece hashes.
 
-      This message follows the standard BitTorrent message format:
+      To fetch these additional details, your client will need to use messages defined by the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#extension-message).
+
+      The metadata extension supports the following message types:
+
+      - `request` (msg_type: 0)
+        - Requests a piece of metadata from the peer
+        - (**This stage**)
+      - `data` (msg_type: 1)
+        - Sends a piece of metadata to the peer
+      - `reject` (msg_type: 2)
+        - Signals that the peer doesn't have the piece of metadata that was requested
+
+      `msg_type` is an identifier for message types within the metadata extension.
+
+      Metadata is stored in "pieces", which are 16kiB chunks. For the purposes of this challenge, you can assume that the entire metadata for a torrent fits in a single piece.
+
+      You'll implement sending the `request` message (msg_type: 0) in this stage. We'll look at other `msg_type` values in later stages.
+
+      ### The metadata `request` message
+
+      As seen above, the `request` message is part of the metadata extension.
+
+      Note that this `request` message is different from the request message (ID: 6) in the base [BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html).
+
+      This message follows the standard BitTorrent extension message format:
 
       - message length prefix (4 bytes)
       - message id (1 byte)
-        - Since this is a message implemented by an extension, the message id will be 20.
+        - This will be 20, since this is a message implemented by an extension
       - payload (variable size)
-
-      The payload will be structured as follows:
-
-      - extension message id (1 byte)
-        - This will be the peer's metadata extension ID, which you received during the handshake.
-      - bencoded dictionary (variable size)
-        - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (needs to be bencoded)
-        - `msg_type` will be 0 since this is a `request` message
-        - `piece` is the zero-based piece index of the metadata being requested
-          - This will always be 0 for the purposes of this challenge
-
-      We'll look at other `msg_type` values in later stages.
+        - extension message id (1 byte)
+          - This will be the peer's metadata extension ID, which you received during the extension handshake
+        - bencoded dictionary (variable size)
+          - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (encoded as a bencoded dictionary)
+          - `msg_type` will be 0 since this is a `request` message
+          - `piece` is the zero-based piece index of the metadata being requested
+            - Since we're only requesting one piece in this challenge, this will always be 0
 
       ### Tests
 
