@@ -932,28 +932,53 @@ stages:
     description_md: |-
       In this stage, you'll receive torrent metadata from a peer.
 
-      After sending a metadata request, you'll receive an extension message with ID 20.
+      ### The metadata `data` message
 
-      The message will follow standard BitTorrent message structure:
+      The `data` message is the response to the `request` message that your peer sent in the previous stage.
+
+      It contains the actual metadata, which you'll need to save to disk in order to construct the metainfo file.
+
+      This message follows the standard BitTorrent extension message format:
+
       - message length prefix (4 bytes)
       - message id (1 byte)
+        - This will be 20, since this is a message implemented by an extension
       - payload (variable size)
+          - extension message id (1 byte)
+            - This will be your peer's metadata extension ID, which it sent as part of the extension handshake
+          - bencoded dictionary (variable size)
+            - This dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
+            - `msg_type` will be 1, since this is a `data` message
+            - `piece` will be 0, since we're only requesting one piece in this challenge
+            - `total_size` will be the length of the metadata piece
+          - metadata piece contents (variable size)
 
-      The payload will be structured as follows:
-      - extension message id (1 byte)
-      - bencoded dictionary (variable size)
-      - bencoded metadata
+      The "metadata piece contents" is what you're interested in. When these pieces are combined, they'll form a bencoded dictionary that
+      looks something like this (presented as JSON for readability):
 
-      Extension message ID will be the ID you came up with during handshake stage.
-      The dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
+      ```
+      {
+        "piece length": 262144,
+        "pieces": "<hash1><hash2>...",
+        "name": "debian-12.3.0-amd64-netinst.iso",
+        "length": 67108864
+      }
+      ```
 
-      It will be bencoded. Torrent metadata is appended to the payload after the dictionary, but it is not a part of the dictionary. It's a separate bencoded dictionary. The appended dictionary will contain torrent metadata, such as length, piece length, piece hashes etc.
+      This is same as the [`info` dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) in a .torrent file, which you've seen in previous stages.
+
+      You should be able to compute the hash of this and validate it against the info hash present in the magnet link.
+
+      ### Tests
 
       Here's how the tester will execute your program:
+
       ```
       $ ./your_bittorrent.sh magnet_info <magnet-link>
       ```
+
       and here's the output it expects:
+
       ```
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
       Length: 92063
@@ -964,6 +989,11 @@ stages:
       e876f67a2a8886e8f36b136726c30fa29703022d
       f00d937a0213df1982bc8d097227ad9e909acc17
       ```
+
+      ### Notes
+
+      - For this challenge, all torrents we use will have a single metadata piece (i.e. it'll fit in one 16kiB chunk).
+      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
     marketing_md: |-
       In this stage, you'll receive torrent metadata from a peer.
 
