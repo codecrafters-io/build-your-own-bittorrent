@@ -869,15 +869,15 @@ stages:
 
       - message length prefix (4 bytes)
       - message id (1 byte)
-        - This will be 20, since this is a message implemented by an extension
+          - This will be 20, since this is a message implemented by an extension
       - payload (variable size)
-        - extension message id (1 byte)
-          - This will be the peer's metadata extension ID, which you received during the extension handshake
-        - bencoded dictionary (variable size)
-          - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (encoded as a bencoded dictionary)
-          - `msg_type` will be 0 since this is a `request` message
-          - `piece` is the zero-based piece index of the metadata being requested
-            - Since we're only requesting one piece in this challenge, this will always be 0
+          - extension message id (1 byte)
+              - This will be the peer's metadata extension ID, which you received during the extension handshake
+          - bencoded dictionary (variable size)
+              - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (encoded as a bencoded dictionary)
+              - `msg_type` will be 0 since this is a `request` message
+              - `piece` is the zero-based piece index of the metadata being requested
+                  - Since we're only requesting one piece in this challenge, this will always be 0
 
       ### The `magnet_info` command
 
