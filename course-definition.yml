@@ -965,7 +965,7 @@ stages:
       }
       ```
 
-      This is same as the [`info` dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) in a .torrent file, which you've seen in previous stages.
+      This is same as the [info dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) in a .torrent file, which you've seen in previous stages.
 
       You should be able to compute the hash of this and validate it against the info hash present in the magnet link.
 
