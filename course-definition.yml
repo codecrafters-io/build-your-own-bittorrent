@@ -533,13 +533,12 @@ stages:
       with the piece hash value found in the torrent file.
 
       Here’s how the tester will execute your program:
+
       ```
       $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 sample.torrent 0
       ```
-      and here’s the output it expects:
-      ```
-      Piece 0 downloaded to /tmp/test-piece-0.
-      ```
+
+      The tester will validate that the piece was downloaded correctly.
 
       **Optional:** To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent.
     marketing_md: |-
@@ -553,14 +552,15 @@ stages:
 
       You can start with using a single peer to download all the pieces. You’ll need to download all the pieces, verify their integrity using piece hashes, and combine them to assemble the file.
 
+      ### Tests
+
       Here’s how the tester will execute your program:
+
       ```
       $ ./your_bittorrent.sh download -o /tmp/test.txt sample.torrent
       ```
-      and here’s the output it expects:
-      ```
-      Downloaded sample.torrent to /tmp/test.txt.
-      ```
+
+      The tester will validate that the file was downloaded correctly.
 
       **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
     marketing_md: |-
@@ -1004,22 +1004,35 @@ stages:
     description_md: |-
       In this stage, you'll download one piece and save it to disk using a magnet link.
 
-      The overall flow looks like this:
+      ### The `magnet_download_piece` command
+
+      To test your program, we'll introduce a new command in this stage: `magnet_download_piece`. Here's how it works:
+
+      ```bash
+      $ ./your_bittorrent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet-link> 0
+      ```
+
+      This is similar to the `download_piece` command you've worked on previously, just that it takes a magnet link instead of a .torrent file path.
+
+      For this command, the overall flow you need to implement will look like this:
+
       - Parse magnet link to get the tracker URL
       - Perform the tracker GET request to get the list of peers
-      - Establish a TCP connection with a peer, perform a handshake and receive bitfields
-      - Receive and send supported extension names and IDs
-      - Request and receive torrent metadata from a peer
-      - Exchange multiple peer messages to download the file
+      - Establish a TCP connection with a peer, perform a base handshake
+      - Perform the extension handshake
+      - Get the info dictionary using the metadata extension (send `request` message, get `data` message)
+      - Download blocks of the piece (same as the `download_piece` command from previous stages)
+      - Save the piece to disk
+
+      ### Tests
 
       Here's how the tester will execute your program:
+
       ```
       $ ./your_bittorent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
       ```
-      and here's the output it expects:
-      ```
-      Piece 0 downloaded to /tmp/test-piece-0.
-      ```
+
+      The tester will validate that the piece was downloaded correctly.
     marketing_md: |-
       In this stage, you'll download one piece and save it to disk using a magnet link.
 
@@ -1034,9 +1047,7 @@ stages:
       ```
       $ ./your_bittorent.sh magnet_download -o /tmp/sample <magnet_link>
       ```
-      and here's the output it expects:
-      ```
-      Downloaded to /tmp/sample.
-      ```
+
+      The tester will validate that the file was downloaded correctly.
     marketing_md: |-
       In this stage, you'll download the entire file and save it to disk using a magnet link.
