@@ -124,7 +124,7 @@ extensions:
     description_markdown: |
       This extension covers magnet links. Magnet links allow downloading files without the need of downloading a .torrent file first.
 
-      Along the way, you'll learn how BitTorrent clients offer new functionality via extension protocol and how to download metadata from peers.
+      Along the way, you'll learn how BitTorrent clients offer new functionality via the extension protocol and how to download metadata from peers.
 
 stages:
   - slug: "ns2" # A identifier for this stage, needs to be unique within a course.
