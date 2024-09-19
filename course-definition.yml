@@ -124,7 +124,7 @@ extensions:
     description_markdown: |
       This extension covers magnet links. Magnet links allow downloading files without the need of downloading a .torrent file first.
 
-      Along the way, you'll learn how BitTorrent clients offer new functionality via the [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) and how to download metadata using the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html).
+      Along the way, you'll learn about the [magnet URI format](https://en.wikipedia.org/wiki/Magnet_URI_scheme), the [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) and the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html).
 
 stages:
   - slug: "ns2" # A identifier for this stage, needs to be unique within a course.
