@@ -583,7 +583,7 @@ stages:
       `magnet:?xt=urn:btih:d69f91e6b2ae4c542468d1073a71d4ea13879a7f&dn=sample.torrent&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce`
 
       Unlike .torrent files, magnet links don't contain information like file length, piece length and piece hashes. They only include the bare minimum
-      information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange).
+      information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange). You'll implement this in later stages.
 
       These are the query parameters in a magnet link:
 
@@ -787,7 +787,7 @@ stages:
 
       ### Extension handshake (part 2)
 
-      In the previous stage, your peer sent an extension handshake message to the other peer. In this stage, you'll
+      In the previous stage, your client sent an extension handshake message to the other peer. In this stage, you'll
       add support for receiving the peer's extension handshake message back.
 
       The message will follow the same structure as the one you sent in the previous stage. The payload dictionary
@@ -803,7 +803,7 @@ stages:
       - Send the bitfield message (safe to ignore in this challenge)
       - Receive the bitfield message
       - If the peer supports extensions (based on the reserved bit in the base handshake):
-        - Send the extension handshake message (last stage)
+        - Send the extension handshake message (previous stage)
         - Receive the extension handshake message (**this stage**)
 
       ### Tests
@@ -825,7 +825,7 @@ stages:
 
       ### Notes
 
-      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
+      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally. You may need to surround links with double quotes to escape special characters in terminal.
       - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
 
     marketing_md: |-
@@ -840,7 +840,7 @@ stages:
 
       ### Metadata extension messages
 
-      As we learnt earlier, a magnet link doesn't contain all the information found in a .torrent file, such as file length, piece length and piece hashes.
+      As mentioned earlier, a magnet link doesn't contain all the information found in a .torrent file, such as file length, piece length and piece hashes.
 
       To fetch these additional details, your client will need to use messages defined by the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#extension-message).
 
@@ -936,7 +936,7 @@ stages:
 
       The `data` message is the response to the `request` message that your peer sent in the previous stage.
 
-      It contains the actual metadata, which you'll need to save to disk in order to construct the metainfo file.
+      It contains the actual metadata, which you'll need to download the file.
 
       This message follows the standard BitTorrent extension message format:
 
