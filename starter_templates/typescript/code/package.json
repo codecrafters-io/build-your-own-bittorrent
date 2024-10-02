@@ -1,14 +1,11 @@
 {
-    "name": "@codecrafters/build-your-own-bittorrent",
-    "description": "Build your own Bittorrent challenge, from CodeCrafters",
-    "type": "module",
-    "scripts": {
-        "dev": "bun run app/main.ts"
-    },
-    "dependencies": {
-        "fs-extra": "^11.2.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.12.11"
-    }
+  "name": "@codecrafters/bittorrent",
+  "description": "Build your own BitTorrent challenge, from CodeCrafters",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run app/main.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
 }
