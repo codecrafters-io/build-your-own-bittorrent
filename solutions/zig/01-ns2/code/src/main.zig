@@ -5,28 +5,24 @@ const allocator = std.heap.page_allocator;
 pub fn main() !void {
     const args = try std.process.argsAlloc(allocator);
     defer std.process.argsFree(allocator, args);
-    
+
     if (args.len < 3) {
         try stdout.print("Usage: your_bittorrent.zig <command> <args>\n", .{});
         std.process.exit(1);
     }
 
     const command = args[1];
-        
-    if (std.mem.eql(u8, command, "decode")) {
-        // You can use print statements as follows for debugging, they'll be visible when running tests.
-        try stdout.print("Logs from your program will appear here\n", .{});
 
-        // Uncomment this block to pass the first stage
-        // const encodedStr = args[2];
-        // const decodedStr = decodeBencode(encodedStr) catch {
-        //     try stdout.print("Invalid encoded value\n", .{});
-        //     std.process.exit(1);
-        // };
-        // var string = std.ArrayList(u8).init(allocator);
-        // try std.json.stringify(decodedStr.*, .{}, string.writer());
-        // const jsonStr = try string.toOwnedSlice();
-        // try stdout.print("{s}\n", .{jsonStr});
+    if (std.mem.eql(u8, command, "decode")) {
+        const encodedStr = args[2];
+        const decodedStr = decodeBencode(encodedStr) catch {
+            try stdout.print("Invalid encoded value\n", .{});
+            std.process.exit(1);
+        };
+        var string = std.ArrayList(u8).init(allocator);
+        try std.json.stringify(decodedStr.*, .{}, string.writer());
+        const jsonStr = try string.toOwnedSlice();
+        try stdout.print("{s}\n", .{jsonStr});
     }
 }
 
