@@ -46,7 +46,10 @@ if command == "decode" {
 
     do {
         let decoded = try decodeBencode(bencodedValue)
-        print("\"\(decoded)\"")
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .withoutEscapingSlashes
+        let jsonDecoded = try encoder.encode(decoded)
+        print(String(data: jsonDecoded, encoding: .utf8)!)
     } catch {
         print(error.localizedDescription)
         exit(1)
