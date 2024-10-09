@@ -13,7 +13,7 @@ Protocol, pipelining and more.
 
 # Passing the first stage
 
-The entry point for your BitTorrent implementation is in `app/main.zig`. Study
+The entry point for your BitTorrent implementation is in `src/main.zig`. Study
 and uncomment the relevant code, and push your changes to pass the first stage:
 
 ```sh
@@ -27,8 +27,8 @@ Time to move on to the next stage!
 
 Note: This section is for stages 2 and beyond.
 
-1. Ensure you have `zig (0.11)` installed locally
+1. Ensure you have `zig (0.13+)` installed locally
 1. Run `./your_bittorrent.sh` to run your program, which is implemented in
-   `app/main.zig`.
+   `src/main.zig`.
 1. Commit your changes and run `git push origin master` to submit your solution
    to CodeCrafters. Test output will be streamed to your terminal.
