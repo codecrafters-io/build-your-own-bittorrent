@@ -408,7 +408,7 @@ stages:
           - 20 bytes long, will need to be URL encoded
           - **Note**: this is **NOT** the hexadecimal representation, which is 40 bytes long
       - `peer_id`: a unique identifier for your client
-          - A string of length 20 that you get to pick. You can use something like `00112233445566778899`.
+          - A string of length 20 that you get to pick.
       - `port`: the port your client is listening on
           - You can set this to `6881`, you will not have to support this functionality during this challenge.
       - `uploaded`: the total amount uploaded so far
@@ -461,7 +461,7 @@ stages:
       2. the string `BitTorrent protocol` (19 bytes)
       3. eight reserved bytes, which are all set to zero (8 bytes)
       4. sha1 infohash (20 bytes) (**NOT** the hexadecimal representation, which is 40 bytes long)
-      5. peer id (20 bytes) (you can use `00112233445566778899` for this challenge)
+      5. peer id (20 bytes) (generate 20 random byte values)
 
       After we send a handshake to our peer, we should receive a handshake back in the same format.
 
