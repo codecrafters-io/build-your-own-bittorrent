@@ -579,16 +579,16 @@ stages:
 
       [Magnet links](https://www.bittorrent.org/beps/bep_0009.html) allow users to download files from peers without needing a torrent file.
 
-      For example, here's **sample.torrent** represented as a magnet link:
-      `magnet:?xt=urn:btih:d69f91e6b2ae4c542468d1073a71d4ea13879a7f&dn=sample.torrent&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce`
+      For example, here's a magnet link:
+      `magnet:?xt=urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165&dn=magnet1.gif&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce`
 
       Unlike .torrent files, magnet links don't contain information like file length, piece length and piece hashes. They only include the bare minimum
       information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange). You'll implement this in later stages.
 
       These are the query parameters in a magnet link:
 
-      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `urn:btih:d69f91e6b2ae4c542468d1073a71d4ea13879a7f`)
-      - `dn`: The name of the file to be downloaded (example: `sample.torrent`)
+      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165`)
+      - `dn`: The name of the file to be downloaded (example: `magnet1.gif`)
       - `tr`: The tracker URL (example: `http://bittorrent-test-tracker.codecrafters.io/announce`)
 
       [This Wikipedia article](https://en.wikipedia.org/wiki/Magnet_URI_scheme) has more information about the magnet link format.
@@ -681,6 +681,10 @@ stages:
       ```
 
       Tester will also assert that correct bit is set in the reserved bytes of the handshake message.
+
+      ### Notes
+
+      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally. You may need to surround links with double quotes to escape special characters in terminal.
     marketing_md: |-
       In this stage, you'll announce to other clients that you support extensions.
 
