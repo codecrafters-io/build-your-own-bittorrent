@@ -22,7 +22,7 @@ def main():
     command = sys.argv[1]
 
     # You can use print statements as follows for debugging, they'll be visible when running tests.
-    print("Logs from your program will appear here!")
+    print("Logs from your program will appear here!", file=sys.stderr)
 
     if command == "decode":
         bencoded_value = sys.argv[2].encode()

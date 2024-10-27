@@ -3,7 +3,7 @@ defmodule Bittorrent.CLI do
       case argv do
           ["decode" | [encoded_str | _]] ->
               # You can use print statements as follows for debugging, they'll be visible when running tests.
-              IO.puts("Logs from your program will appear here!")
+              IO.puts(:stderr, "Logs from your program will appear here!")
 
               # Uncomment this block to pass the first stage
               # decoded_str = Bencode.decode(encoded_str)

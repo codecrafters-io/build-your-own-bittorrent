@@ -22,7 +22,7 @@ command = ARGV[0]
 
 if command == "decode"
     # You can use print statements as follows for debugging, they'll be visible when running tests.
-    puts "Logs from your program will appear here"
+    warn "Logs from your program will appear here"
     
     # Uncomment this block to pass the first stage
     # encoded_str = ARGV[1]
