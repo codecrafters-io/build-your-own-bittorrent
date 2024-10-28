@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
 
     if (strcmp(command, "decode") == 0) {
     	// You can use print statements as follows for debugging, they'll be visible when running tests.
-        printf("Logs from your program will appear here!\n");
+        fprintf(stderr, "Logs from your program will appear here!\n");
             
         // Uncomment this block to pass the first stage
         // const char* encoded_str = argv[2];
