@@ -529,13 +529,13 @@ stages:
               - `begin`: the zero-based byte offset within the piece
               - `block`: the data for the piece, usually `2^14` bytes long
 
-      After receiving blocks and combining them into pieces, you'll want to check the integrity of each piece by comparing it's hash
+      After receiving blocks and combining them into pieces, you'll want to check the integrity of each piece by comparing its hash
       with the piece hash value found in the torrent file.
 
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 sample.torrent 0
+      $ ./your_bittorrent.sh download_piece -o /tmp/test-piece sample.torrent <piece_index>
       ```
 
       The tester will validate that the piece was downloaded correctly.
