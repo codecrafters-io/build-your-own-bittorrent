@@ -535,7 +535,7 @@ stages:
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh download_piece -o /tmp/test-piece-0 sample.torrent 0
+      $ ./your_bittorrent.sh download_piece -o /tmp/test-piece sample.torrent <piece_index>
       ```
 
       The tester will validate that the piece was downloaded correctly.
