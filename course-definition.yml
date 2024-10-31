@@ -1033,7 +1033,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
+      $ ./your_bittorrent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
       ```
 
       The tester will validate that the piece was downloaded correctly.
@@ -1066,7 +1066,7 @@ stages:
 
       Here's how the tester will execute your program:
       ```
-      $ ./your_bittorent.sh magnet_download -o /tmp/sample <magnet-link>
+      $ ./your_bittorrent.sh magnet_download -o /tmp/sample <magnet-link>
       ```
 
       The tester will validate that the file was downloaded correctly.
