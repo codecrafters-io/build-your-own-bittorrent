@@ -7,6 +7,7 @@ import System.Environment
 import System.Exit
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy as LB
+import System.IO (hSetBuffering, stdout, stderr,  BufferMode (NoBuffering))
 
 decodeBencodedValue :: ByteString -> ByteString
 decodeBencodedValue encodedValue
@@ -18,6 +19,10 @@ decodeBencodedValue encodedValue
 
 main :: IO ()
 main = do
+    -- Disable output buffering
+    hSetBuffering stdout NoBuffering
+    hSetBuffering stderr NoBuffering
+
     args <- getArgs
     if length args < 2
         then do 
