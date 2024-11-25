@@ -580,7 +580,9 @@ stages:
       [Magnet links](https://www.bittorrent.org/beps/bep_0009.html) allow users to download files from peers without needing a torrent file.
 
       For example, here's a magnet link:
-      `magnet:?xt=urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165&dn=magnet1.gif&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce`
+      ```
+      magnet:?xt=urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165&dn=magnet1.gif&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce
+      ```
 
       Unlike .torrent files, magnet links don't contain information like file length, piece length and piece hashes. They only include the bare minimum
       information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange). You'll implement this in later stages.
