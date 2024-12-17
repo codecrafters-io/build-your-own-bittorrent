@@ -55,6 +55,7 @@ short_description_md: |-
 
 # The percentage of users who complete your course. We'll calculate this automatically in the future, safe to ignore for now.
 completion_percentage: 15
+concept_slugs: ["bencode"]
 
 # The languages that your course supports.
 languages:
