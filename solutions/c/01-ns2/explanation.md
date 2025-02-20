@@ -1,4 +1,4 @@
-The entry point for your BitTorrent implementation is in `app/main.c`.
+The entry point for your BitTorrent implementation is in `src/main.c`.
 
 Study and uncomment the relevant code: 
 
