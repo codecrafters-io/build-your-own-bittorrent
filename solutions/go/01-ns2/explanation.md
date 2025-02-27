@@ -1,4 +1,4 @@
-The entry point for your BitTorrent implementation is in `cmd/mybittorrent/main.go`.
+The entry point for your BitTorrent implementation is in `app/main.go`.
 
 Study and uncomment the relevant code: 
 
