@@ -449,8 +449,8 @@ stages:
       and here’s the output it expects:
       ```
       165.232.41.73:51556
-      165.232.38.164:51532
-      165.232.35.114:51437
+      165.232.38.164:51493
+      165.232.35.114:51476
       ```
     marketing_md: |-
       In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
