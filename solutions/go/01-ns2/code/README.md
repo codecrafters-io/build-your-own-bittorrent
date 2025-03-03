@@ -13,9 +13,8 @@ Protocol, pipelining and more.
 
 # Passing the first stage
 
-The entry point for your BitTorrent implementation is in
-`cmd/mybittorrent/main.go`. Study and uncomment the relevant code, and push your
-changes to pass the first stage:
+The entry point for your BitTorrent implementation is in `app/main.go`. Study
+and uncomment the relevant code, and push your changes to pass the first stage:
 
 ```sh
 git commit -am "pass 1st stage" # any msg
@@ -28,8 +27,8 @@ Time to move on to the next stage!
 
 Note: This section is for stages 2 and beyond.
 
-1. Ensure you have `go (1.19)` installed locally
+1. Ensure you have `go (1.24)` installed locally
 1. Run `./your_bittorrent.sh` to run your program, which is implemented in
-   `cmd/mybittorrent/main.go`.
+   `app/main.go`.
 1. Commit your changes and run `git push origin master` to submit your solution
    to CodeCrafters. Test output will be streamed to your terminal.
