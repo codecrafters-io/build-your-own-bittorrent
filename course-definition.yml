@@ -957,7 +957,7 @@ stages:
         - This will be 20, since this is a message implemented by an extension
       - payload (variable size)
           - extension message id (1 byte)
-            - This will be your peer's metadata extension ID, which it sent as part of the extension handshake
+            - This will be your peer's metadata extension ID, which you sent as part of the extension handshake
           - bencoded dictionary (variable size)
             - This dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
             - `msg_type` will be 1, since this is a `data` message
