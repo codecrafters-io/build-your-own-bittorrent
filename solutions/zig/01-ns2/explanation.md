@@ -1,4 +1,4 @@
-The entry point for your BitTorrent implementation is in `app/main.zig`.
+The entry point for your BitTorrent implementation is in `src/main.zig`.
 
 Study and uncomment the relevant code: 
 
