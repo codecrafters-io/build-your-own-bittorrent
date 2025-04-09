@@ -21,4 +21,5 @@ set -e # Exit early if any commands fail
 #
 # - Edit this to change how your program runs locally
 # - Edit .codecrafters/run.sh to change how your program runs remotely
-exec $(stack path --local-install-root)/bin/codecrafters-bittorrent-exe "$@"
+stackInstallRoot=$(cd $(dirname "$0") && stack path --local-install-root) # Fetch the path from within the project directory
+exec "$stackInstallRoot/bin/codecrafters-bittorrent-exe" "$@"

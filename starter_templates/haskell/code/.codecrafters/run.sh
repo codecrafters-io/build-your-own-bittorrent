@@ -8,4 +8,5 @@
 
 set -e # Exit on failure
 
-exec $(stack path --local-install-root)/bin/codecrafters-bittorrent-exe "$@"
+stackInstallRoot=$(cd $(dirname "$0") && stack path --local-install-root) # Fetch the path from within the project directory
+exec "$stackInstallRoot/bin/codecrafters-bittorrent-exe" "$@"

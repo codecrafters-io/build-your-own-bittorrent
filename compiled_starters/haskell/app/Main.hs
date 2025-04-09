@@ -7,7 +7,7 @@ import System.Environment
 import System.Exit
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy as LB
-import System.IO (hSetBuffering, stdout, stderr,  BufferMode (NoBuffering))
+import System.IO (hPutStrLn, hSetBuffering, stdout, stderr,  BufferMode (NoBuffering))
 
 decodeBencodedValue :: ByteString -> ByteString
 decodeBencodedValue encodedValue
