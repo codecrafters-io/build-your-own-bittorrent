@@ -327,7 +327,7 @@ stages:
       $ ./your_bittorrent.sh info sample.torrent
       ```
 
-      and here’s the output it expects:
+      The expected output should look like this:
 
       ```
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
@@ -354,7 +354,7 @@ stages:
       ```
       $ ./your_bittorrent.sh info sample.torrent
       ```
-      and here’s the output it expects:
+      The expected output should look like this:
       ```
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
       Length: 92063
@@ -384,7 +384,7 @@ stages:
       ```
       $ ./your_bittorrent.sh info sample.torrent
       ```
-      and here's the output it expects:
+      The expected output should look like this:
       ```
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
       Length: 92063
@@ -446,7 +446,7 @@ stages:
       ```
       $ ./your_bittorrent.sh peers sample.torrent
       ```
-      and here’s the output it expects:
+      The expected output should look like this:
       ```
       165.232.41.73:51556
       165.232.38.164:51493
@@ -477,7 +477,7 @@ stages:
       ```
       $ ./your_bittorrent.sh handshake sample.torrent <peer_ip>:<peer_port>
       ```
-      and here’s the output it expects:
+      The expected output should look like this:
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       ```
@@ -609,7 +609,7 @@ stages:
       $ ./your_bittorrent.sh magnet_parse <magnet-link>
       ```
 
-      and here's the output it expects:
+      The expected output should look like this:
 
       ```bash
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
@@ -682,7 +682,7 @@ stages:
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
 
-      and here's the output it expects:
+      The expected output should look like this:
 
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
@@ -769,7 +769,7 @@ stages:
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
 
-      and here's the output it expects:
+      The expected output should look like this:
 
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
@@ -826,7 +826,7 @@ stages:
       $ ./your_bittorrent.sh magnet_handshake <magnet-link>
       ```
 
-      and here's the output it expects:
+      The expected output should look like this:
 
       ```
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
@@ -989,7 +989,7 @@ stages:
       $ ./your_bittorrent.sh magnet_info <magnet-link>
       ```
 
-      and here's the output it expects:
+      The expected output should look like this:
 
       ```
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
