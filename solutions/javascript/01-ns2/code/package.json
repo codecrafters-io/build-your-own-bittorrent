@@ -1,6 +1,13 @@
 {
   "name": "@codecrafters/bittorrent",
   "version": "1.0.0",
-  "type": "module",
-  "dependencies": {}
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+      "": {
+          "name": "@codecrafters/build-your-own-bittorrent",
+          "version": "1.0.0",
+          "license": "MIT"
+      }
+  }
 }
