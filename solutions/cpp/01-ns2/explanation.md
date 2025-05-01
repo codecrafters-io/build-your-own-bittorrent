@@ -1,4 +1,4 @@
-The entry point for your BitTorrent implementation is in `src/Main.cpp`.
+The entry point for your BitTorrent implementation is in `src/main.cpp`.
 
 Study and uncomment the relevant code: 
 
