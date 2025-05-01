@@ -8,7 +8,7 @@
      defer std.process.argsFree(allocator, args);
 
      if (args.len < 3) {
-         try stdout.print("Usage: your_bittorrent.zig <command> <args>\n", .{});
+         try stdout.print("Usage: your_program.sh <command> <args>\n", .{});
          std.process.exit(1);
      }
 

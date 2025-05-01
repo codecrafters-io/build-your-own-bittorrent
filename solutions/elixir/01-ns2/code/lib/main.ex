@@ -8,7 +8,7 @@ defmodule Bittorrent.CLI do
               IO.puts("Unknown command: #{command}")
               System.halt(1)
           [] ->
-              IO.puts("Usage: your_bittorrent.sh <command> <args>")
+              IO.puts("Usage: your_program.sh <command> <args>")
               System.halt(1)
       end
   end

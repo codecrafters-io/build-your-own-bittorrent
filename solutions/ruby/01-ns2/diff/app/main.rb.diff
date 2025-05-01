@@ -2,7 +2,7 @@
  require 'json'
 
  if ARGV.length < 2
-   puts "Usage: your_bittorrent.sh <command> <args>"
+   puts "Usage: your_program.sh <command> <args>"
    exit(1)
  end
 
