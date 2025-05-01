@@ -1,4 +1,4 @@
-The entry point for your BitTorrent implementation is in `lib/bittorrent.ex`.
+The entry point for your BitTorrent implementation is in `lib/main.ex`.
 
 Study and uncomment the relevant code: 
 
