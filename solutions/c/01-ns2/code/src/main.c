@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
  	setbuf(stderr, NULL);
 
     if (argc < 3) {
-        fprintf(stderr, "Usage: your_bittorrent.sh <command> <args>\n");
+        fprintf(stderr, "Usage: your_program.sh <command> <args>\n");
         return 1;
     }
 

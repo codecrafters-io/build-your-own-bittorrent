@@ -26,7 +26,7 @@ main = do
     args <- getArgs
     if length args < 2
         then do 
-            putStrLn "Usage: your_bittorrent.sh <command> <args>"
+            putStrLn "Usage: your_program.sh <command> <args>"
             exitWith (ExitFailure 1)
         else return ()
 

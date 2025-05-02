@@ -166,7 +166,7 @@ stages:
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh decode 5:hello
+      $ ./your_program.sh decode 5:hello
       "hello"
       ```
     # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
@@ -185,7 +185,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh decode i52e
+      $ ./your_program.sh decode i52e
       52
       ```
 
@@ -220,7 +220,7 @@ stages:
 
       Here’s how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh decode l5:helloi52ee
+      $ ./your_program.sh decode l5:helloi52ee
       [“hello”,52]
       ```
 
@@ -255,7 +255,7 @@ stages:
 
       Here’s how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh decode d3:foo3:bar5:helloi52ee
+      $ ./your_program.sh decode d3:foo3:bar5:helloi52ee
       {"foo":"bar","hello":52}
       ```
 
@@ -324,7 +324,7 @@ stages:
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh info sample.torrent
+      $ ./your_program.sh info sample.torrent
       ```
 
       The expected output should look like this:
@@ -352,7 +352,7 @@ stages:
 
       Here’s how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh info sample.torrent
+      $ ./your_program.sh info sample.torrent
       ```
       The expected output should look like this:
       ```
@@ -382,7 +382,7 @@ stages:
 
       Here's how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh info sample.torrent
+      $ ./your_program.sh info sample.torrent
       ```
       The expected output should look like this:
       ```
@@ -444,7 +444,7 @@ stages:
 
       Here’s how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh peers sample.torrent
+      $ ./your_program.sh peers sample.torrent
       ```
       The expected output should look like this:
       ```
@@ -475,7 +475,7 @@ stages:
 
       Here’s how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh handshake sample.torrent <peer_ip>:<peer_port>
+      $ ./your_program.sh handshake sample.torrent <peer_ip>:<peer_port>
       ```
       The expected output should look like this:
       ```
@@ -483,7 +483,7 @@ stages:
       ```
       (Exact value will be different as it is randomly generated.)
 
-      **Note**: To get a peer IP & port to test this locally, run `./your_bittorrent.sh peers sample.torrent` and pick any peer from the list.
+      **Note**: To get a peer IP & port to test this locally, run `./your_program.sh peers sample.torrent` and pick any peer from the list.
     marketing_md: |-
       In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
@@ -541,7 +541,7 @@ stages:
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh download_piece -o /tmp/test-piece sample.torrent <piece_index>
+      $ ./your_program.sh download_piece -o /tmp/test-piece sample.torrent <piece_index>
       ```
 
       The tester will validate that the piece was downloaded correctly.
@@ -563,7 +563,7 @@ stages:
       Here’s how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh download -o /tmp/test.txt sample.torrent
+      $ ./your_program.sh download -o /tmp/test.txt sample.torrent
       ```
 
       The tester will validate that the file was downloaded correctly.
@@ -606,7 +606,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_parse <magnet-link>
+      $ ./your_program.sh magnet_parse <magnet-link>
       ```
 
       The expected output should look like this:
@@ -662,7 +662,7 @@ stages:
       To test your program, we'll introduce a new command in this stage: `magnet_handshake`. Here's how it works:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      $ ./your_program.sh magnet_handshake <magnet-link>
       Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
       ```
 
@@ -679,7 +679,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      $ ./your_program.sh magnet_handshake <magnet-link>
       ```
 
       The expected output should look like this:
@@ -766,7 +766,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      $ ./your_program.sh magnet_handshake <magnet-link>
       ```
 
       The expected output should look like this:
@@ -823,7 +823,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_handshake <magnet-link>
+      $ ./your_program.sh magnet_handshake <magnet-link>
       ```
 
       The expected output should look like this:
@@ -896,7 +896,7 @@ stages:
       To test your program, we'll introduce a new command in this stage: `magnet_info`. Here's how it works:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      $ ./your_program.sh magnet_info <magnet-link>
       Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
       Length: 92063
       Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
@@ -925,7 +925,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      $ ./your_program.sh magnet_info <magnet-link>
       ```
 
       There's no expected output at this stage, the tester will just assert if it received a correct metadata request. We'll
@@ -986,7 +986,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh magnet_info <magnet-link>
+      $ ./your_program.sh magnet_info <magnet-link>
       ```
 
       The expected output should look like this:
@@ -1021,7 +1021,7 @@ stages:
       To test your program, we'll introduce a new command in this stage: `magnet_download_piece`. Here's how it works:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet-link> 0
+      $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet-link> 0
       ```
 
       This is similar to the `download_piece` command you've worked on previously, just that it takes a magnet link instead of a .torrent file path.
@@ -1041,7 +1041,7 @@ stages:
       Here's how the tester will execute your program:
 
       ```
-      $ ./your_bittorrent.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
+      $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
       ```
 
       The tester will validate that the piece was downloaded correctly.
@@ -1064,7 +1064,7 @@ stages:
       To test your program, we'll introduce a new command in this stage: `magnet_download`. Here's how it works:
 
       ```bash
-      $ ./your_bittorrent.sh magnet_download -o /tmp/sample <magnet-link>
+      $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
       ```
 
       This is similar to the `magnet_download_piece` command from the previous stage, just that it downloads the entire file instead of a single piece. You'll
@@ -1074,7 +1074,7 @@ stages:
 
       Here's how the tester will execute your program:
       ```
-      $ ./your_bittorrent.sh magnet_download -o /tmp/sample <magnet-link>
+      $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
       ```
 
       The tester will validate that the file was downloaded correctly.
