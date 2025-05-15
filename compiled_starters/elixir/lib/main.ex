@@ -1,4 +1,4 @@
-defmodule Bittorrent.CLI do
+defmodule CLI do
   def main(argv) do
       case argv do
           ["decode" | [encoded_str | _]] ->
