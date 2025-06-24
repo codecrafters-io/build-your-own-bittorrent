@@ -546,7 +546,10 @@ stages:
 
       The tester will validate that the piece was downloaded correctly.
 
-      **Optional:** To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent.
+      ### Notes
+      - TCP responses may return partial data for a block, so be sure to accumulate reads until the full block is received.
+      - **Optional:** To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent.
+
     marketing_md: |-
       In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
