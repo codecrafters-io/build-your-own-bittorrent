@@ -148,28 +148,6 @@ stages:
     difficulty: very_easy
 
     # The instructions for your stage. Markdown supported. Shown on the course page.
-    description_md: |-
-      [Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced *Bee-encode*) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
-
-      Bencode supports four data types:
-      - strings
-      - integers
-      - arrays
-      - dictionaries
-
-      In this stage, we'll focus on decoding strings.
-
-      Strings are encoded as `<length>:<contents>`. For example, the string `"hello"` is encoded as `"5:hello"`.
-
-      You'll implement a `decode` command which takes a bencoded value as input and prints the decoded value as JSON.
-
-      Here’s how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh decode 5:hello
-      "hello"
-      ```
-    # A description of this stage that is used on the course overview page and other marketing material. Markdown supported.
     marketing_md: |-
       [Bencode](https://en.wikipedia.org/wiki/Bencode) is a binary serialization format used in BitTorrent protocol. In this stage, you’ll decode a bencoded string.
 
@@ -177,33 +155,6 @@ stages:
     concept_slugs: ["bencode"]
     name: "Decode bencoded integers"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll extend the `decode` command to support bencoded integers.
-
-      Integers are encoded as `i<number>e`. For example, `52` is encoded as `i52e` and `-52` is encoded as `i-52e`.
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh decode i52e
-      52
-      ```
-
-      {{#lang_is_go}}
-      If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-      {{/lang_is_go}}
-      {{#lang_is_python}}
-      If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-      {{/lang_is_python}}
-      {{#lang_is_rust}}
-      If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
-      {{/lang_is_rust}}
-      {{#lang_is_java}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_java}}
-      {{#lang_is_kotlin}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_kotlin}}
     marketing_md: |-
       In this stage, you’ll decode a bencoded integer.
 
@@ -211,34 +162,6 @@ stages:
     concept_slugs: ["bencode"]
     name: "Decode bencoded lists"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll extend the `decode` command to support bencoded lists.
-
-      Lists are encoded as `l<bencoded_elements>e`.
-
-      For example, `["hello", 52]` would be encoded as `l5:helloi52ee`. Note that there are no separators between the elements.
-
-      Here’s how the tester will execute your program:
-      ```
-      $ ./your_program.sh decode l5:helloi52ee
-      [“hello”,52]
-      ```
-
-      {{#lang_is_go}}
-      If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-      {{/lang_is_go}}
-      {{#lang_is_python}}
-      If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-      {{/lang_is_python}}
-      {{#lang_is_rust}}
-      If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
-      {{/lang_is_rust}}
-      {{#lang_is_java}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_java}}
-      {{#lang_is_kotlin}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_kotlin}}
     marketing_md: |-
       In this stage, you’ll decode a bencoded list.
 
@@ -246,332 +169,48 @@ stages:
     concept_slugs: ["bencode"]
     name: "Decode bencoded dictionaries"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll extend the `decode` command to support bencoded dictionaries.
-
-      A dictionary is encoded as `d<key1><value1>...<keyN><valueN>e`. `<key1>`, `<value1>` etc. correspond to the bencoded keys & values. The keys are sorted in lexicographical order and must be strings.
-
-      For example, `{"hello": 52, "foo":"bar"}` would be encoded as: `d3:foo3:bar5:helloi52ee` (note that the keys were reordered).
-
-      Here’s how the tester will execute your program:
-      ```
-      $ ./your_program.sh decode d3:foo3:bar5:helloi52ee
-      {"foo":"bar","hello":52}
-      ```
-
-      {{#lang_is_go}}
-      If you'd prefer to use a library for this stage, [bencode-go](https://github.com/jackpal/bencode-go) is available for you to use.
-      {{/lang_is_go}}
-      {{#lang_is_python}}
-      If you'd prefer to use a library for this stage, [bencode.py](https://pypi.org/project/bencode.py/) is available for you to use.
-      {{/lang_is_python}}
-      {{#lang_is_rust}}
-      If you'd prefer to use a library crate for this stage, [serde-bencode](https://github.com/toby/serde-bencode/) is available for you to use.
-      {{/lang_is_rust}}
-      {{#lang_is_java}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_java}}
-      {{#lang_is_kotlin}}
-      If you'd prefer to use a library for this stage, [bencode](https://github.com/dampcake/bencode) parser is available for you to use.
-      {{/lang_is_kotlin}}
     marketing_md: |-
       In this stage, you’ll decode a bencoded dictionary.
 
   - slug: "ow9"
     name: "Parse torrent file"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll parse a torrent file and print information about the torrent.
-
-      A torrent file (also known as a [metainfo file](https://www.bittorrent.org/beps/bep_0003.html#metainfo-files)) contains a bencoded dictionary with the following keys and values:
-
-      - `announce`:
-          - URL to a "tracker", which is a central server that keeps track of peers participating in the sharing of a torrent.
-      - `info`:
-          - A dictionary with keys:
-              - `length`: size of the file in bytes, for single-file torrents
-              - `name`: suggested name to save the file / directory as
-              - `piece length`: number of bytes in each piece
-              - `pieces`: concatenated SHA-1 hashes of each piece
-
-      {{#lang_is_java}}
-      **Note**: .torrent files contain bytes that aren’t valid UTF-16 characters. You’ll run into problems if you try to read the contents of this file as a `String`. Use `byte[]` instead.
-      {{/lang_is_java}}
-      {{#lang_is_kotlin}}
-      **Note**: .torrent files contain bytes that aren’t valid UTF-16 characters. You’ll run into problems if you try to read the contents of this file as a `String`. Use `byte[]` instead.
-      {{/lang_is_kotlin}}
-      {{#lang_is_rust}}
-      **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `&[u8]` or `Vec<u8>` instead.
-      {{/lang_is_rust}}
-      {{#lang_is_elixir}}
-      **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. You'll run into problems if you try to read the contents of this file as a `String`. Use `binary` instead, see `IO.iodata_to_binary()`.
-      {{/lang_is_elixir}}
-
-      {{^lang_is_java}}
-      {{^lang_is_kotlin}}
-      {{^lang_is_rust}}
-      {{^lang_is_elixir}}
-      **Note:** .torrent files contain bytes that aren’t valid UTF-8 characters. If the language you're using treats strings as a sequence of unicode characters (like Python's [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)), you'll need to use a byte sequence (like Python's [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) instead.
-      {{/lang_is_elixir}}
-      {{/lang_is_rust}}
-      {{/lang_is_kotlin}}
-      {{/lang_is_java}}
-
-      **Note**: The `info` dictionary looks slightly different for multi-file torrents. For this challenge, we'll only implement support for single-file torrents.
-
-      In this stage, we'll focus on extracting the tracker URL and the length of the file (in bytes).
-
-      Here’s how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh info sample.torrent
-      ```
-
-      The expected output should look like this:
-
-      ```
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Length: 92063
-      ```
     marketing_md: |-
       In this stage, you’ll parse a .torrent file and extract information about the torrent.
 
   - slug: "rb2"
     name: "Calculate info hash"
     difficulty: medium
-    description_md: |-
-      Info hash is a unique identifier for a torrent file. It's used when talking to trackers or peers.
-
-      In this stage, you'll calculate the info hash for a torrent file and print it in hexadecimal format.
-
-      To calculate the info hash, you'll need to:
-
-      - Extract the `info` dictionary from the torrent file after parsing
-      - Bencode the contents of the `info` dictionary
-      - Calculate the SHA-1 hash of this bencoded dictionary
-
-      Here’s how the tester will execute your program:
-      ```
-      $ ./your_program.sh info sample.torrent
-      ```
-      The expected output should look like this:
-      ```
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Length: 92063
-      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-      ```
     marketing_md: |-
       In this stage, you'll calculate a unique identifier for a torrent, known as info hash, used in communication with trackers and peers.
 
   - slug: "bf7"
     name: "Piece hashes"
     difficulty: easy
-    description_md: |-
-      In a torrent, a file is split into equally-sized parts called **pieces**. A piece is usually 256 KB or 1 MB in size.
-
-      Each piece is assigned a SHA-1 hash value. On public networks, there may be malicious peers that send fake data. These hash values allow us to verify the integrity of each piece that we'll download.
-
-      Piece length and piece hashes are specified in the `info` dictionary of the torrent file under the following keys:
-
-      - `piece length`: number of bytes in each piece, an integer
-      - `pieces`: concatenated SHA-1 hashes of each piece (20 bytes each), a string
-
-      The [BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) has more information about these keys.
-
-      In this stage, the tester will expect your program to print piece length and a list of piece hashes in hexadecimal format.
-
-      Here's how the tester will execute your program:
-      ```
-      $ ./your_program.sh info sample.torrent
-      ```
-      The expected output should look like this:
-      ```
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Length: 92063
-      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-      Piece Length: 32768
-      Piece Hashes:
-      e876f67a2a8886e8f36b136726c30fa29703022d
-      6e2275e604a0766656736e81ff10b55204ad8d35
-      f00d937a0213df1982bc8d097227ad9e909acc17
-      ```
     marketing_md: |-
       In this stage, you'll extract hash values for each piece of the file. On public networks, there may be malicious peers sending fake data. Piece hashes will help us ensure the integrity of downloaded pieces.
 
   - slug: "fi9"
     name: "Discover peers"
     difficulty: medium
-    description_md: |-
-      Trackers are central servers that maintain information about peers participating in the sharing and downloading of a torrent.
-
-      In this stage, you'll make a GET request to a HTTP tracker to discover peers to download the file from.
-
-      ### Tracker GET request
-
-      You'll need to make a request to the tracker URL you extracted in the previous stage, and include these query params:
-
-      - `info_hash`: the info hash of the torrent
-          - 20 bytes long, will need to be URL encoded
-          - **Note**: this is **NOT** the hexadecimal representation, which is 40 bytes long
-      - `peer_id`: a unique identifier for your client
-          - A string of length 20 that you get to pick.
-      - `port`: the port your client is listening on
-          - You can set this to `6881`, you will not have to support this functionality during this challenge.
-      - `uploaded`: the total amount uploaded so far
-          - Since your client hasn't uploaded anything yet, you can set this to `0`.
-      - `downloaded`: the total amount downloaded so far
-          - Since your client hasn't downloaded anything yet, you can set this to `0`.
-      - `left`: the number of bytes left to download
-          - Since you client hasn't downloaded anything yet, this'll be the total length of the file (you've extracted this value from the torrent file in previous stages)
-      - `compact`: whether the peer list should use the [compact representation](https://www.bittorrent.org/beps/bep_0023.html)
-          - For the purposes of this challenge, set this to `1`.
-          - The compact representation is more commonly used in the wild, the non-compact representation is mostly supported for backward-compatibility.
-
-      Read [the BitTorrent Protocol Specification](https://www.bittorrent.org/beps/bep_0003.html#trackers) for more information about these query parameters.
-
-      ### Tracker response
-
-      The tracker's response will be a bencoded dictionary with two keys:
-
-      - `interval`:
-          - An integer, indicating how often your client should make a request to the tracker.
-          - You can ignore this value for the purposes of this challenge.
-      - `peers`.
-          - A string, which contains list of peers that your client can connect to.
-          - Each peer is represented using 6 bytes. The first 4 bytes are the peer's IP address and the last 2 bytes are the peer's port number.
-
-      ---
-
-      Here’s how the tester will execute your program:
-      ```
-      $ ./your_program.sh peers sample.torrent
-      ```
-      The expected output should look like this:
-      ```
-      165.232.41.73:51556
-      165.232.38.164:51493
-      165.232.35.114:51476
-      ```
     marketing_md: |-
       In this stage, you’ll interact with a tracker, a central server that keeps track of peers participating in the sharing of a torrent. You'll make a GET request to a HTTP tracker to discover peers from whom you can download the file.
 
   - slug: "ca4"
     name: "Peer handshake"
     difficulty: medium
-    description_md: |-
-      In this stage, you’ll establish a TCP connection with a peer and complete a handshake.
-
-      The handshake is a message consisting of the following parts as described in the [peer protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol):
-
-      1. length of the protocol string (BitTorrent protocol) which is `19` (1 byte)
-      2. the string `BitTorrent protocol` (19 bytes)
-      3. eight reserved bytes, which are all set to zero (8 bytes)
-      4. sha1 infohash (20 bytes) (**NOT** the hexadecimal representation, which is 40 bytes long)
-      5. peer id (20 bytes) (generate 20 random byte values)
-
-      After we send a handshake to our peer, we should receive a handshake back in the same format.
-
-      Your program should print the hexadecimal representation of the peer id you've received during the handshake.
-
-      Here’s how the tester will execute your program:
-      ```
-      $ ./your_program.sh handshake sample.torrent <peer_ip>:<peer_port>
-      ```
-      The expected output should look like this:
-      ```
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      ```
-      (Exact value will be different as it is randomly generated.)
-
-      **Note**: To get a peer IP & port to test this locally, run `./your_program.sh peers sample.torrent` and pick any peer from the list.
     marketing_md: |-
       In this stage, you’ll establish a TCP connection with a peer and complete a handshake according to [BitTorrent Peer Protocol](https://www.bittorrent.org/beps/bep_0003.html#peer-protocol)
 
   - slug: "nd2"
     name: "Download a piece"
     difficulty: hard
-    description_md: |-
-      In this stage, you'll download one piece and save it to disk. In the next stage we'll combine these pieces into a file.
-
-      To download a piece, your program will need to send [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to a peer. The overall flow looks like this:
-
-      - Read the torrent file to get the tracker URL
-          - you've done this in previous stages
-      - Perform the tracker GET request to get a list of peers
-          - you've done this in previous stages
-      - Establish a TCP connection with a peer, and perform a handshake
-          - you've done this in previous stages
-      - Exchange multiple [peer messages](https://www.bittorrent.org/beps/bep_0003.html#peer-messages) to download the file
-          - **This is the part you'll implement in this stage**
-
-      ### Peer Messages
-
-      Peer messages consist of a message length prefix (4 bytes), message id (1 byte) and a payload (variable size).
-
-      Here are the peer messages you'll need to exchange once the handshake is complete:
-
-      - Wait for a `bitfield` message from the peer indicating which pieces it has
-          - The message id for this message type is `5`.
-          - You can read and ignore the payload for now, the tracker we use for this challenge ensures that all peers have all pieces available.
-      - Send an `interested` message
-          - The message id for `interested` is `2`.
-          - The payload for this message is empty.
-      - Wait until you receive an `unchoke` message back
-          - The message id for `unchoke` is `1`.
-          - The payload for this message is empty.
-      - Break the piece into blocks of 16 kiB (16 * 1024 bytes) and send a `request` message for each block
-          - The message id for `request` is `6`.
-          - The payload for this message consists of:
-              - `index`: the zero-based piece index
-              - `begin`: the zero-based byte offset within the piece
-                  - This'll be `0` for the first block, `2^14` for the second block, 2*2^14 for the third block etc.
-              - `length`: the length of the block in bytes
-                  - This'll be `2^14` (16 * 1024) for all blocks except the last one.
-                  - The last block will contain `2^14` bytes or less, you'll need calculate this value using the piece length.
-      - Wait for a `piece` message for each block you've requested
-          - The message id for `piece` is `7`.
-          - The payload for this message consists of:
-              - `index`: the zero-based piece index
-              - `begin`: the zero-based byte offset within the piece
-              - `block`: the data for the piece, usually `2^14` bytes long
-
-      After receiving blocks and combining them into pieces, you'll want to check the integrity of each piece by comparing its hash
-      with the piece hash value found in the torrent file.
-
-      Here’s how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh download_piece -o /tmp/test-piece sample.torrent <piece_index>
-      ```
-
-      The tester will validate that the piece was downloaded correctly.
-
-      ### Notes
-      - TCP responses may return partial data for a block, so be sure to accumulate reads until the full block is received.
-      - **Optional:** To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having 5 requests pending at once, to avoid a delay between blocks being sent.
-
     marketing_md: |-
       In this stage, you'll connect to a peer and download a piece of the file. You'll download the piece in blocks, which you'll later combine and verify using SHA-1, a cryptographic hash value.
 
   - slug: "jv8"
     name: "Download the whole file"
     difficulty: hard
-    description_md: |-
-      In this stage, you’ll download the entire file and save it to disk.
-
-      You can start with using a single peer to download all the pieces. You’ll need to download all the pieces, verify their integrity using piece hashes, and combine them to assemble the file.
-
-      ### Tests
-
-      Here’s how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh download -o /tmp/test.txt sample.torrent
-      ```
-
-      The tester will validate that the file was downloaded correctly.
-
-      **Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
     marketing_md: |-
       In this stage, you'll download the entire file. You'll download all the pieces, verify them using SHA-1 and save them to disk.
 
@@ -579,51 +218,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Parse magnet link"
     difficulty: easy
-    description_md: |-
-      Welcome to the BitTorrent Magnet Links extension! In this extension, you'll add support for downloading files using magnet links.
-
-      In this stage, you will parse a magnet link and print out the info hash and tracker URL.
-
-      ### Magnet links
-
-      [Magnet links](https://www.bittorrent.org/beps/bep_0009.html) allow users to download files from peers without needing a torrent file.
-
-      For example, here's a magnet link:
-      ```
-      magnet:?xt=urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165&dn=magnet1.gif&tr=http%3A%2F%2Fbittorrent-test-tracker.codecrafters.io%2Fannounce
-      ```
-
-      Unlike .torrent files, magnet links don't contain information like file length, piece length and piece hashes. They only include the bare minimum
-      information necessary to discover peers. A client can then request the rest of the information from peers using the [metadata exchange protocol](https://www.bittorrent.org/beps/bep_0009.html#metadata-exchange). You'll implement this in later stages.
-
-      These are the query parameters in a magnet link:
-
-      - `xt`: `urn:btih:` followed by the 40-char hex-encoded info hash (example: `urn:btih:ad42ce8109f54c99613ce38f9b4d87e70f24a165`)
-      - `dn`: The name of the file to be downloaded (example: `magnet1.gif`)
-      - `tr`: The tracker URL (example: `http://bittorrent-test-tracker.codecrafters.io/announce`)
-
-      [This Wikipedia article](https://en.wikipedia.org/wiki/Magnet_URI_scheme) has more information about the magnet link format.
-
-      ### Magnet link example
-
-      Here's how the tester will execute your program:
-
-      ```bash
-      $ ./your_program.sh magnet_parse <magnet-link>
-      ```
-
-      The expected output should look like this:
-
-      ```bash
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-      ```
-
-      ### Notes
-
-      - We'll be using v1 of [magnet URI format](https://www.bittorrent.org/beps/bep_0009.html#magnet-uri-format). v2 is not widely used yet.
-      - `xt` (info hash) is the only required parameter, all others are optional.
-      - A magnet link can contain multiple tracker URLs, but for the purposes of this challenge it'll only contain one.
     marketing_md: |-
       In this stage, you'll extract information from a magnet link.
 
@@ -631,71 +225,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Announce extension support"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll modify the handshake message to indicate that your client supports extensions.
-
-      ### Extension handshake
-
-      Exchanging torrent metadata between peers wasn't originally part of the standard BitTorrent protocol, it was introduced as
-      an [extension](https://www.bittorrent.org/beps/bep_0009.html). This extension uses BitTorrent's [extension protocol](https://www.bittorrent.org/beps/bep_0010.html) that is designed to add
-      functionality without breaking backward-compatibility.
-
-      During the "Peer handshake" stage, the handshake message includes eight reserved bytes (64 bits), all set to zero. To signal
-      support for extensions, a client must set the 20th bit from the right (counting starts at 0) in the reserved bytes to 1.
-
-      In Hex, here's how the reserved bytes will look like after setting the 20th bit from the right to 1:
-
-      ```bash
-      00 00 00 00 00 10 00 00
-      ```
-
-      (`10` in hex is `16` in decimal, which is `00010000` in binary)
-
-      When looking at individual bits, here's how it'll look like (left side truncated):
-
-      ```bash
-      .... 00010000 00000000 00000000
-              ^ 20th bit from the right, counting starts at 0
-      ```
-
-      All the other reserved bits will stay zero.
-
-      ### The `magnet_handshake` command
-
-      To test your program, we'll introduce a new command in this stage: `magnet_handshake`. Here's how it works:
-
-      ```bash
-      $ ./your_program.sh magnet_handshake <magnet-link>
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      ```
-
-      Your program will need to:
-
-      - Parse the magnet link to get the tracker URL
-      - Perform the tracker GET request to get a list of peers
-      - Establish a TCP connection with a peer, and perform a handshake
-        - In this handshake, your program will need to set the correct reserved bit to indicate support for extensions
-      - Print the peer ID received during the handshake
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh magnet_handshake <magnet-link>
-      ```
-
-      The expected output should look like this:
-
-      ```
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      ```
-
-      Tester will also assert that correct bit is set in the reserved bytes of the handshake message.
-
-      ### Notes
-
-      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally. You may need to surround links with double quotes to escape special characters in terminal.
     marketing_md: |-
       In this stage, you'll announce to other clients that you support extensions.
 
@@ -703,93 +232,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Send extension handshake"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll send back a list of extensions that your client supports.
-
-      ### Extension IDs & handshake
-
-      Each peer maintains a mapping of extension names to IDs. The same extension name might map to different IDs on different peers (but it'll always remain stable for a given peer).
-
-      To communicate with other peers using the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata), your peer will
-      need to know the ID that the other peer uses for this extension. The name for the metadata extension is `ut_metadata`. To get the ID,
-      your peer will need to send an [extension handshake](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) message and
-      wait for the corresponding handshake message back from the peer.
-
-      The extension handshake message contains a dictionary like this:
-
-      ```json
-      {
-        "m": {
-          "ut_metadata": 16,
-          ... (other extension names and IDs)
-        }
-      }
-      ```
-
-      In the example above, `16` is the ID that the peer uses for the metadata extension. This is just an example, you can use any value you want for this ID.
-
-      Your program will need to send the extension handshake message soon after receiving the bitfield message. Overall, the flow will look like this:
-
-      - Establish a TCP connection with a peer
-      - Send the base handshake message
-      - Receive the base handshake message
-      - Send the bitfield message (safe to ignore in this challenge)
-      - Receive the bitfield message
-      - If the peer supports extensions (based on the reserved bit in the base handshake):
-        - Send the extension handshake message
-        - Receive the extension handshake message
-
-      Note that the extension handshake message is only sent if the other peer supports extensions (indicated by the reserved bit in the base handshake). This
-      is how backward compatibility is maintained with peers that don't support extensions.
-
-      We'll implement sending extension handshake messages in this stage. Receiving extension handshake messages will be implemented in the next stage.
-
-      ### Extension handshake format
-
-      Extension messages follow the standard BitTorrent message format:
-
-      - message length prefix (4 bytes)
-      - message id (1 byte)
-        - This will be 20 for all messages implemented by extensions
-      - payload (variable size)
-
-      The payload will be structured as follows:
-
-      - extension message id (1 byte)
-        - This will be 0 for the extension handshake
-      - bencoded dictionary (variable size)
-        - This will contain a key "m" with another dictionary as its value.
-        - The inner dictionary maps supported extension names to their corresponding message IDs.
-        - For example, the inner dictionary contents might be `{"ut_metadata": 1, "ut_pex": 2}`, indicating that your peer supports the "ut_metadata" and "ut_pex" extensions with IDs 1 and 2 respectively.
-
-      The extension name we're interested in is "ut_metadata", which corresponds to the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#ut_metadata).
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh magnet_handshake <magnet-link>
-      ```
-
-      The expected output should look like this:
-
-      ```
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      ```
-
-      The expected output is same as last stage. In this stage, the tester will additionaly verify that:
-
-      - An extension handshake message is received.
-      - The extension handshake message contains a dictionary that looks like this: `{"m": {"ut_metadata": <PICK YOUR ID>}}`.
-      - The ID corresponding to `ut_metadata` is between 1 and 255 (it needs to be represented as an 8-bit unsigned integer, that isn't 0)
-
-      ### Notes
-
-      - Your program must only send an extension handshake **if** the peer supports extensions
-        - To know whether a peer supports the extension protocol, you'll need to look at the reserved bytes in the base handshake message
-      - The extension handshake message is defined in [handshake section](https://www.bittorrent.org/beps/bep_0010.html#handshake-message) of extension protocol doc.
-
     marketing_md: |-
       In this stage, you'll send the list of extensions your client supports.
 
@@ -797,52 +239,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Receive extension handshake"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll add support for receiving the extension handshake message back.
-
-      ### Extension handshake (part 2)
-
-      In the previous stage, your client sent an extension handshake message to the other peer. In this stage, you'll
-      add support for receiving the peer's extension handshake message back.
-
-      The message will follow the same structure as the one you sent in the previous stage. The payload dictionary
-      will contain the following keys: `{"m": {"ut_metadata": <PEER'S ID>}}`.
-
-      Your program will need to store the ID for the `ut_metadata` extension and print it out. This'll be used in later stages to send extension messages specific to the `ut_metadata` extension.
-
-      To recap, the overall flow will look like this:
-
-      - Establish a TCP connection with a peer
-      - Send the base handshake message
-      - Receive the base handshake message
-      - Send the bitfield message (safe to ignore in this challenge)
-      - Receive the bitfield message
-      - If the peer supports extensions (based on the reserved bit in the base handshake):
-        - Send the extension handshake message (previous stage)
-        - Receive the extension handshake message (**this stage**)
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```bash
-      $ ./your_program.sh magnet_handshake <magnet-link>
-      ```
-
-      The expected output should look like this:
-
-      ```
-      Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
-      Peer Metadata Extension ID: 123
-      ```
-
-      The `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the extension handshake message.
-
-      ### Notes
-
-      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally. You may need to surround links with double quotes to escape special characters in terminal.
-      - Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
-
     marketing_md: |-
       In this stage, you'll receive the list of extensions your peer supports.
 
@@ -850,93 +246,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Request metadata"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll request torrent metadata from a peer using the metadata extension.
-
-      ### Metadata extension messages
-
-      As mentioned earlier, a magnet link doesn't contain all the information found in a .torrent file, such as file length, piece length and piece hashes.
-
-      To fetch these additional details, your client will need to use messages defined by the [metadata extension](https://www.bittorrent.org/beps/bep_0009.html#extension-message).
-
-      The metadata extension supports the following message types:
-
-      - `request` (msg_type: 0)
-        - Requests a piece of metadata from the peer
-      - `data` (msg_type: 1)
-        - Sends a piece of metadata to the peer
-      - `reject` (msg_type: 2)
-        - Signals that the peer doesn't have the piece of metadata that was requested
-
-      `msg_type` is an identifier for message types within the metadata extension.
-
-      Metadata is stored in "pieces", which are 16kiB chunks. For the purposes of this challenge, you can assume that the entire metadata for a torrent fits in a single piece.
-
-      You'll implement sending the `request` message (msg_type: 0) in this stage. We'll look at other `msg_type` values in later stages.
-
-      ### The metadata `request` message
-
-      As seen above, the `request` message is part of the metadata extension.
-
-      Note that this `request` message is different from the request message (ID: 6) in the base [BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html).
-
-      This message follows the standard BitTorrent extension message format:
-
-      - message length prefix (4 bytes)
-      - message id (1 byte)
-          - This will be 20, since this is a message implemented by an extension
-      - payload (variable size)
-          - extension message id (1 byte)
-              - This will be the peer's metadata extension ID, which you received during the extension handshake
-          - bencoded dictionary (variable size)
-              - This dictionary will look like this: `{'msg_type': 0, 'piece': 0}` (encoded as a bencoded dictionary)
-              - `msg_type` will be 0 since this is a `request` message
-              - `piece` is the zero-based piece index of the metadata being requested
-                  - Since we're only requesting one piece in this challenge, this will always be 0
-
-      ### The `magnet_info` command
-
-      To test your program, we'll introduce a new command in this stage: `magnet_info`. Here's how it works:
-
-      ```bash
-      $ ./your_program.sh magnet_info <magnet-link>
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Length: 92063
-      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-      Piece Length: 32768
-      Piece Hashes:
-      6e2275e604a0766656736e81ff10b55204ad8d35
-      e876f67a2a8886e8f36b136726c30fa29703022d
-      f00d937a0213df1982bc8d097227ad9e909acc17
-      ```
-
-      To fetch this info, your program will need to:
-
-      - Parse the magnet link to get the tracker URL
-      - Perform the tracker GET request to get a list of peers
-      - Establish a TCP connection with a peer, and perform a handshake
-      - Perform the base handshake
-      - Send the bitfield message (can be ignored in this challenge)
-      - Receive the bitfield message
-      - Perform the extension handshake
-      - Send the metadata request message (**This stage**)
-      - Receive the metadata message (later stages)
-      - Print out the data received, as per the format above.
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```bash
-      $ ./your_program.sh magnet_info <magnet-link>
-      ```
-
-      There's no expected output at this stage, the tester will just assert if it received a correct metadata request. We'll
-      verify the output in later stages.
-
-      ### Notes
-
-      - If metadata is larger than 16kb, you would need to request multiple pieces, but for the purposes of this challenge there will only be one piece.
     marketing_md: |-
       In this stage, you'll request torrent metadata from a peer.
 
@@ -944,71 +253,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Receive metadata"
     difficulty: easy
-    description_md: |-
-      In this stage, you'll receive torrent metadata from a peer.
-
-      ### The metadata `data` message
-
-      The `data` message is the response to the `request` message that your peer sent in the previous stage.
-
-      It contains the actual metadata, which you'll need to download the file.
-
-      This message follows the standard BitTorrent extension message format:
-
-      - message length prefix (4 bytes)
-      - message id (1 byte)
-        - This will be 20, since this is a message implemented by an extension
-      - payload (variable size)
-          - extension message id (1 byte)
-            - This will be your peer's metadata extension ID, which you sent as part of the extension handshake
-          - bencoded dictionary (variable size)
-            - This dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
-            - `msg_type` will be 1, since this is a `data` message
-            - `piece` will be 0, since we're only requesting one piece in this challenge
-            - `total_size` will be the length of the metadata piece
-          - metadata piece contents (variable size)
-
-      The "metadata piece contents" is what you're interested in. When these pieces are combined, they'll form a bencoded dictionary that
-      looks something like this (presented as JSON for readability):
-
-      ```
-      {
-        "piece length": 262144,
-        "pieces": "<hash1><hash2>...",
-        "name": "debian-12.3.0-amd64-netinst.iso",
-        "length": 67108864
-      }
-      ```
-
-      This is same as the [info dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) in a .torrent file, which you've seen in previous stages.
-
-      You should be able to compute the hash of this and validate it against the info hash present in the magnet link.
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh magnet_info <magnet-link>
-      ```
-
-      The expected output should look like this:
-
-      ```
-      Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-      Length: 92063
-      Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-      Piece Length: 32768
-      Piece Hashes:
-      6e2275e604a0766656736e81ff10b55204ad8d35
-      e876f67a2a8886e8f36b136726c30fa29703022d
-      f00d937a0213df1982bc8d097227ad9e909acc17
-      ```
-
-      ### Notes
-
-      - For this challenge, all torrents we use will have a single metadata piece (i.e. it'll fit in one 16kiB chunk).
-      - You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
     marketing_md: |-
       In this stage, you'll receive torrent metadata from a peer.
 
@@ -1016,42 +260,6 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Download a piece"
     difficulty: hard
-    description_md: |-
-      In this stage, you'll download one piece and save it to disk using a magnet link.
-
-      ### The `magnet_download_piece` command
-
-      To test your program, we'll introduce a new command in this stage: `magnet_download_piece`. Here's how it works:
-
-      ```bash
-      $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet-link> 0
-      ```
-
-      This is similar to the `download_piece` command you've worked on previously, just that it takes a magnet link instead of a .torrent file path.
-
-      For this command, the overall flow you need to implement will look like this:
-
-      - Parse magnet link to get the tracker URL
-      - Perform the tracker GET request to get the list of peers
-      - Establish a TCP connection with a peer, perform a base handshake
-      - Perform the extension handshake
-      - Get the info dictionary using the metadata extension (send `request` message, get `data` message)
-      - Download blocks of the piece (same as the `download_piece` command from previous stages)
-      - Save the piece to disk
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-
-      ```
-      $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
-      ```
-
-      The tester will validate that the piece was downloaded correctly.
-
-      ### Notes
-
-      - To test your program locally, you can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
     marketing_md: |-
       In this stage, you'll download one piece and save it to disk using a magnet link.
 
@@ -1059,32 +267,5 @@ stages:
     primary_extension_slug: "magnet-links"
     name: "Download the whole file"
     difficulty: hard
-    description_md: |-
-      In this stage, you'll download an entire file and save it to disk using a magnet link.
-
-      ### The `magnet_download` command
-
-      To test your program, we'll introduce a new command in this stage: `magnet_download`. Here's how it works:
-
-      ```bash
-      $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
-      ```
-
-      This is similar to the `magnet_download_piece` command from the previous stage, just that it downloads the entire file instead of a single piece. You'll
-      need to download all the pieces and then concatenate them in order to get the complete file.
-
-      ### Tests
-
-      Here's how the tester will execute your program:
-      ```
-      $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
-      ```
-
-      The tester will validate that the file was downloaded correctly.
-
-      ### Notes
-
-      - To test your program locally, you can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
-      - To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having upto 5 requests pending at once to avoid a delay between blocks being sent.
     marketing_md: |-
       In this stage, you'll download the entire file and save it to disk using a magnet link.
