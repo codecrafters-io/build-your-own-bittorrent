@@ -7,6 +7,7 @@ Study and uncomment the relevant code:
 const encodedStr = args[2];
 const decodedStr = decodeBencode(encodedStr) catch {
     try stdout.print("Invalid encoded value\n", .{});
+    try stdout.flush();
     std.process.exit(1);
 };
 var string = std.ArrayList(u8).init(allocator);

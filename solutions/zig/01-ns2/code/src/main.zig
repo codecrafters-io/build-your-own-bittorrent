@@ -1,6 +1,8 @@
 const std = @import("std");
-const stdout = std.io.getStdOut().writer();
 const allocator = std.heap.page_allocator;
+var stdout_buffer: [1024]u8 = undefined;
+var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);
+const stdout = &stdout_writer.interface;
 
 pub fn main() !void {
     const args = try std.process.argsAlloc(allocator);
@@ -8,6 +10,7 @@ pub fn main() !void {
 
     if (args.len < 3) {
         try stdout.print("Usage: your_program.sh <command> <args>\n", .{});
+        try stdout.flush();
         std.process.exit(1);
     }
 
@@ -17,12 +20,14 @@ pub fn main() !void {
         const encodedStr = args[2];
         const decodedStr = decodeBencode(encodedStr) catch {
             try stdout.print("Invalid encoded value\n", .{});
+            try stdout.flush();
             std.process.exit(1);
         };
         var string = std.ArrayList(u8).init(allocator);
         try std.json.stringify(decodedStr.*, .{}, string.writer());
         const jsonStr = try string.toOwnedSlice();
         try stdout.print("{s}\n", .{jsonStr});
+        try stdout.flush();
     }
 }
 
@@ -35,6 +40,7 @@ fn decodeBencode(encodedValue: []const u8) !*const []const u8 {
         return &encodedValue[firstColon.? + 1 ..];
     } else {
         try stdout.print("Only strings are supported at the moment\n", .{});
+        try stdout.flush();
         std.process.exit(1);
     }
 }
