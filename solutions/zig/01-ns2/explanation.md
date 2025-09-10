@@ -4,15 +4,16 @@ Study and uncomment the relevant code:
 
 ```zig
 // Uncomment this block to pass the first stage
+
 const encodedStr = args[2];
 const decodedStr = decodeBencode(encodedStr) catch {
-    try stdout.print("Invalid encoded value\n", .{});
+    std.debug.print("Invalid encoded value\n", .{});
     std.process.exit(1);
 };
-var string = std.ArrayList(u8).init(allocator);
-try std.json.stringify(decodedStr.*, .{}, string.writer());
-const jsonStr = try string.toOwnedSlice();
-try stdout.print("{s}\n", .{jsonStr});
+var stringify = std.json.Stringify{ .writer = stdout };
+try stringify.write(decodedStr);
+try stdout.writeAll("\n");
+try stdout.flush();
 ```
 
 Push your changes to pass the first stage:
