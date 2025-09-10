@@ -1,17 +1,17 @@
-@@ -1,50 +1,46 @@
+@@ -1,48 +1,43 @@
  const std = @import("std");
- const allocator = std.heap.page_allocator;
- var stdout_buffer: [1024]u8 = undefined;
- var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);
- const stdout = &stdout_writer.interface;
 
  pub fn main() !void {
+     const allocator = std.heap.page_allocator;
      const args = try std.process.argsAlloc(allocator);
      defer std.process.argsFree(allocator, args);
 
+     var stdout_buffer: [1024]u8 = undefined;
+     var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);
+     const stdout = &stdout_writer.interface;
+
      if (args.len < 3) {
-         try stdout.print("Usage: your_program.sh <command> <args>\n", .{});
-         try stdout.flush();
+         try stdout.writeAll("Usage: your_program.sh <command> <args>\n");
          std.process.exit(1);
      }
 
@@ -22,40 +22,37 @@
 -        std.debug.print("Logs from your program will appear here\n", .{});
 -
 -        // Uncomment this block to pass the first stage
+-        //
 -        // const encodedStr = args[2];
 -        // const decodedStr = decodeBencode(encodedStr) catch {
--        //     try stdout.print("Invalid encoded value\n", .{});
--        //     try stdout.flush();
+-        //     std.debug.print("Invalid encoded value\n", .{});
 -        //     std.process.exit(1);
 -        // };
--        // var string = std.ArrayList(u8).init(allocator);
--        // try std.json.stringify(decodedStr.*, .{}, string.writer());
--        // const jsonStr = try string.toOwnedSlice();
--        // try stdout.print("{s}\n", .{jsonStr});
+-        // var stringify = std.json.Stringify{ .writer = stdout };
+-        // try stringify.write(decodedStr);
+-        // try stdout.writeAll("\n");
+-        // try stdout.flush();
 +        const encodedStr = args[2];
 +        const decodedStr = decodeBencode(encodedStr) catch {
-+            try stdout.print("Invalid encoded value\n", .{});
-+            try stdout.flush();
++            std.debug.print("Invalid encoded value\n", .{});
 +            std.process.exit(1);
 +        };
-+        var string = std.ArrayList(u8).init(allocator);
-+        try std.json.stringify(decodedStr.*, .{}, string.writer());
-+        const jsonStr = try string.toOwnedSlice();
-+        try stdout.print("{s}\n", .{jsonStr});
-         try stdout.flush();
++        var stringify = std.json.Stringify{ .writer = stdout };
++        try stringify.write(decodedStr);
++        try stdout.writeAll("\n");
++        try stdout.flush();
      }
  }
 
- fn decodeBencode(encodedValue: []const u8) !*const []const u8 {
+ fn decodeBencode(encodedValue: []const u8) ![]const u8 {
      if (encodedValue[0] >= '0' and encodedValue[0] <= '9') {
          const firstColon = std.mem.indexOf(u8, encodedValue, ":");
          if (firstColon == null) {
              return error.InvalidArgument;
          }
-         return &encodedValue[firstColon.? + 1 ..];
+         return encodedValue[firstColon.? + 1 ..];
      } else {
-         try stdout.print("Only strings are supported at the moment\n", .{});
-         try stdout.flush();
+         std.debug.print("Only strings are supported at the moment\n", .{});
          std.process.exit(1);
      }
  }
