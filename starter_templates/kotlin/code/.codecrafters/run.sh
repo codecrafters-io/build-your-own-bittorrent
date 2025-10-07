@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-exec java -jar /tmp/codecrafters-build-bittorrent-kotlin/build-your-own-bittorrent.jar "$@"
+exec /tmp/codecrafters-build-bittorrent-kotlin/distributions/app/bin/app "$@"

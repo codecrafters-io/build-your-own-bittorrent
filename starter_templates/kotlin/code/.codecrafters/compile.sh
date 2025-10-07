@@ -8,4 +8,7 @@
 
 set -e # Exit on failure
 
-mvn -B package -Ddir=/tmp/codecrafters-build-bittorrent-kotlin
+gradle distTar
+cd /tmp/codecrafters-build-bittorrent-kotlin/distributions
+rm -rf app
+tar -xvf app.tar
