@@ -1,12 +1,15 @@
-[Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced *Bee-encode*) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
+In this stage, you'll add support for decoding [Bencoded](https://en.wikipedia.org/wiki/Bencode) strings.
+
+### Bencode
+
+[Bencode](https://en.wikipedia.org/wiki/Bencode) (pronounced _Bee-encode_) is a serialization format used in [the BitTorrent protocol](https://www.bittorrent.org/beps/bep_0003.html). It is used in torrent files and in communication between trackers and peers.
 
 Bencode supports four data types:
+
 - strings
 - integers
 - arrays
 - dictionaries
-
-In this stage, we'll focus on decoding strings.
 
 Strings are encoded as `<length>:<contents>`. For example, the string `"hello"` is encoded as `"5:hello"`.
 
