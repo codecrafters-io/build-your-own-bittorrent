@@ -38,7 +38,7 @@
 
              raise TypeError(f"Type not serializable: {type(data)}")
 
--        # Uncomment this block to pass the first stage
+-        # TODO: Uncomment the code below to pass the first stage
 -        # print(json.dumps(decode_bencode(bencoded_value), default=bytes_to_str))
 +        print(json.dumps(decode_bencode(bencoded_value), default=bytes_to_str))
      else:

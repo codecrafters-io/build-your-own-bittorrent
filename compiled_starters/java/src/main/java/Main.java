@@ -10,7 +10,7 @@ public class Main {
     
     String command = args[0];
     if("decode".equals(command)) {
-      //  Uncomment this block to pass the first stage
+      //  TODO: Uncomment the code below to pass the first stage
       //  String bencodedValue = args[1];
       //  String decoded;
       //  try {
