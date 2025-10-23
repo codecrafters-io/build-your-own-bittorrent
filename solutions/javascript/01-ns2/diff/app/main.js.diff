@@ -26,7 +26,7 @@
 +  if (command === "decode") {
 +    const bencodedValue = process.argv[3];
 
--  // Uncomment this block to pass the first stage
+-  // Uncomment the code below to pass the first stage
 -  // if (command === "decode") {
 -  //   const bencodedValue = process.argv[3];
 -  //
