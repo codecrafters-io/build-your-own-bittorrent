@@ -24,7 +24,7 @@ if command == "decode"
     # You can use print statements as follows for debugging, they'll be visible when running tests.
     $stderr.puts "Logs from your program will appear here"
     
-    # Uncomment the code below to pass the first stage the first stage
+    # Uncomment this block to pass the first stage
     # encoded_str = ARGV[1]
     # decoded_str = decode_bencode(encoded_str)
     # puts JSON.generate(decoded_str)

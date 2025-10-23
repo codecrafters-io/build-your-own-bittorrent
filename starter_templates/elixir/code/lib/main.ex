@@ -5,7 +5,7 @@ defmodule CLI do
               # You can use print statements as follows for debugging, they'll be visible when running tests.
               IO.puts(:stderr, "Logs from your program will appear here!")
 
-              # Uncomment the code below to pass the first stage the first stage
+              # Uncomment this block to pass the first stage
               # decoded_str = Bencode.decode(encoded_str)
               # IO.puts(Jason.encode!(decoded_str))
           [command | _] ->

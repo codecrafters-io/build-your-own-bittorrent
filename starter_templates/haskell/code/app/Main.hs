@@ -35,7 +35,7 @@ main = do
         "decode" -> do
             -- You can use print statements as follows for debugging, they'll be visible when running tests.
             hPutStrLn stderr "Logs from your program will appear here!"
-            -- Uncomment the code below to pass the first stage stage 1
+            -- Uncomment this block to pass stage 1
             -- let encodedValue = args !! 1
             -- let decodedValue = decodeBencodedValue(B.pack encodedValue)
             -- let jsonValue = encode(B.unpack decodedValue)

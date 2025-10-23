@@ -46,7 +46,7 @@ func main() {
 	command := os.Args[1]
 
 	if command == "decode" {
-		// Uncomment the code below to pass the first stage the first stage
+		// Uncomment this block to pass the first stage
 		//
 		// bencodedValue := os.Args[2]
 		//
