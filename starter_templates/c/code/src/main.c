@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     	// You can use print statements as follows for debugging, they'll be visible when running tests.
         fprintf(stderr, "Logs from your program will appear here!\n");
             
-        // Uncomment this block to pass the first stage
+        // Uncomment the code below to pass the first stage the first stage
         // const char* encoded_str = argv[2];
         // char* decoded_str = decode_bencode(encoded_str);
         // printf("\"%s\"\n", decoded_str);
