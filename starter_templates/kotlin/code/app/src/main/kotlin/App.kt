@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val command = args[0]
     when (command) {
         "decode" -> {
-            // Uncomment this block to pass the first stage
+            // TODO: Uncomment the code below to pass the first stage
             // val bencodedValue = args[1]
             // val decoded = decodeBencode(bencodedValue)
             // println(gson.toJson(decoded))
