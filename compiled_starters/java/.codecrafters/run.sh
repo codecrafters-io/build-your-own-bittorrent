@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-exec java -jar /tmp/codecrafters-build-bittorrent-java/codecrafters-bittorrent.jar "$@"
+exec java --enable-preview -jar /tmp/codecrafters-build-bittorrent-java/codecrafters-bittorrent.jar "$@"
