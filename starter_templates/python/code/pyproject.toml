@@ -1,0 +1,8 @@
+[project]
+name = "codecrafters-bittorrent"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "bencode-py>=4.0.0",
+    "requests>=2.32.5",
+]
