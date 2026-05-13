@@ -15,11 +15,10 @@ Protocol, pipelining and more.
 
 The entry point for your BitTorrent implementation is in
 `src/main/scala/codecrafters_bittorrent/App.scala`. Study and uncomment the
-relevant code, and push your changes to pass the first stage:
+relevant code, then run the command below to execute the tests on our servers:
 
 ```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
+codecrafters submit
 ```
 
 Time to move on to the next stage!
@@ -31,5 +30,5 @@ Note: This section is for stages 2 and beyond.
 1. Ensure you have `scala-cli` installed locally
 1. Run `./your_program.sh` to run your program, which is implemented in
    `src/main/scala/codecrafters_bittorrent/App.scala`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+1. Run `codecrafters submit` to submit your solution to CodeCrafters. Test
+   output will be streamed to your terminal.
