@@ -61,6 +61,8 @@ concept_slugs: ["bencode"]
 languages:
   - slug: "c"
     release_status: "beta"
+  - slug: "clojure"
+    release_status: "beta"
   - slug: "cpp"
     release_status: "beta"
   - slug: "csharp"
