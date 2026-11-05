@@ -18,6 +18,6 @@
   (let [[command bencoded-value] args]
     (if (= command "decode")
       (do
-        (println (json/write-str (decode-bencode bencoded-value)))
+        (println (json/write-str (decode-bencode bencoded-value) :escape-slash false))
         )
       (println "Unknown command:" command))))

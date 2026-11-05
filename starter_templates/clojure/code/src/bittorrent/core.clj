@@ -22,6 +22,6 @@
     (if (= command "decode")
       (do
         ;; TODO: Uncomment the code below to pass the first stage
-        ;; (println (json/write-str (decode-bencode bencoded-value)))
+        ;; (println (json/write-str (decode-bencode bencoded-value) :escape-slash false))
         )
       (println "Unknown command:" command))))
