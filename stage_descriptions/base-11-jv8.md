@@ -1,15 +1,26 @@
-In this stage, you’ll download the entire file and save it to disk.
+Your client can download and verify a piece. In this stage, you'll assemble all
+the pieces into the complete file and save it to disk.
 
-You can start with using a single peer to download all the pieces. You’ll need to download all the pieces, verify their integrity using piece hashes, and combine them to assemble the file.
+### Assembling the file
+
+A single peer is sufficient for this stage. Keep the piece-download and hash
+checks you already implemented. Assemble pieces by their zero-based indexes,
+even if they arrive in a different order. The final file must contain exactly
+the `length` bytes declared in the info dictionary, including the shorter final
+piece.
 
 ### Tests
 
-Here’s how the tester will execute your program:
+Here's how the tester will execute your program:
 
 ```
 $ ./your_program.sh download -o /tmp/test.txt sample.torrent
 ```
 
-The tester will validate that the file was downloaded correctly.
+The tester checks the saved file's size and SHA-1 hash. Write file contents to
+the `-o` path and exit with code `0` on success.
 
-**Optional:** To improve download speeds, you can download from multiple peers at once. You could have a work queue consisting of each piece that needs to be downloaded. Your worker (connection with a peer) could pick a piece from the work queue, attempt to download it, check the integrity, and write the downloaded piece into a buffer. Any failure (network issue, hashes not matching, peer not having the piece etc.) would put the piece back into the work queue to be tried again.
+### Notes
+
+- Downloading from several peers at once is optional. The required piece
+  ordering and hash checks stay the same.

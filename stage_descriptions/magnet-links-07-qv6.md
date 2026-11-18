@@ -1,35 +1,42 @@
-In this stage, you'll download one piece and save it to disk using a magnet link.
+You can now obtain the same info dictionary from a peer that you previously read
+from a torrent file. In this stage, you'll use a magnet link to download and
+save one file piece.
 
-### The `magnet_download_piece` command
+### Downloading a file piece
 
-To test your program, we'll introduce a new command in this stage: `magnet_download_piece`. Here's how it works:
+The `magnet_download_piece` command takes a magnet link in place of the
+torrent-file argument to `download_piece`:
 
 ```bash
 $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet-link> 0
 ```
 
-This is similar to the `download_piece` command you've worked on previously, just that it takes a magnet link instead of a .torrent file path.
+Obtain and verify the info dictionary using your existing tracker discovery,
+peer handshake and metadata exchange. Its `piece length`, `length` and `pieces`
+fields supply the same information your file-piece downloader previously read
+from disk.
 
-For this command, the overall flow you need to implement will look like this:
+The final argument selects a file piece. It is separate from the metadata piece
+index: metadata piece `0` contains the info dictionary, while file piece `0`
+contains the beginning of the file.
 
-- Parse magnet link to get the tracker URL
-- Perform the tracker GET request to get the list of peers
-- Establish a TCP connection with a peer, perform a base handshake
-- Perform the extension handshake
-- Get the info dictionary using the metadata extension (send `request` message, get `data` message)
-- Download blocks of the piece (same as the `download_piece` command from previous stages)
-- Save the piece to disk
+Reuse your `interested`/`unchoke` exchange, file-block requests and piece-hash
+checks. Preserve the shorter-final-piece behavior and write only the requested
+piece's raw bytes to the `-o` path.
 
 ### Tests
 
-Here's how the tester will execute your program:
+The tester executes:
 
 ```
 $ ./your_program.sh magnet_download_piece -o /tmp/test-piece-0 <magnet_link> 0
 ```
 
-The tester will validate that the piece was downloaded correctly.
+It checks the saved piece's length and SHA-1 hash. Exit with code `0` after the
+correct piece has been saved.
 
 ### Notes
 
-- To test your program locally, you can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
+- You can use the
+  [sample magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
+  to test your program locally.

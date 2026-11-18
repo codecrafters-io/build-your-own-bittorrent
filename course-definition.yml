@@ -34,10 +34,11 @@ release_status: "live"
 # >
 # > Along the way, you'll learn about TCP servers, the Redis Protocol and more.
 description_md: |-
-  BitTorrent is a peer-to-peer file sharing protocol used for distributing large amounts of data. In this challenge, you'll
-  build a BitTorrent client that's capable of downloading a publicly available file using the BitTorrent protocol.
+  How can a downloader check that a piece received from another computer belongs to the file it wants?
 
-  Along the way, you'll learn about the BitTorrent protocol, .torrent files more.
+  BitTorrent divides files into pieces and records a hash for each one. A client checks downloaded bytes against those hashes before assembling the file. You'll build a client that reads a .torrent file, finds other clients called peers through a tracker server, and downloads a complete single file.
+
+  Along the way, you'll work with binary serialization, TCP message boundaries and byte-level integrity checks. The Magnet Links extension then retrieves the file's metadata from peers, letting your downloader start without a .torrent file.
 
 # This is shown on the catalog. Plaintext only, recommended length ~10 words.
 #
