@@ -1,26 +1,39 @@
-In this stage, you'll download an entire file and save it to disk using a magnet link.
+Your magnet-based downloader can retrieve one file piece. In this stage, you'll
+download every piece, verify the data and save the complete file.
 
-### The `magnet_download` command
+### The magnet download command
 
-To test your program, we'll introduce a new command in this stage: `magnet_download`. Here's how it works:
+`magnet_download` takes a magnet link and an output path:
 
 ```bash
 $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
 ```
 
-This is similar to the `magnet_download_piece` command from the previous stage, just that it downloads the entire file instead of a single piece. You'll
-need to download all the pieces and then concatenate them in order to get the complete file.
+Use the verified metadata to download all file pieces. Check each piece against
+its hash, then assemble them in piece-index order. The final file must contain
+exactly the number of bytes declared by `length`, including the shorter final
+piece.
+
+This reuses the complete-file assembly behavior from `download`. The change is
+how your client obtains the info dictionary before transferring file data.
 
 ### Tests
 
-Here's how the tester will execute your program:
+The tester executes:
+
 ```
 $ ./your_program.sh magnet_download -o /tmp/sample <magnet-link>
 ```
 
-The tester will validate that the file was downloaded correctly.
+It checks the saved file's length and SHA-1 hash. Exit with code `0` after
+saving the complete file to the `-o` path.
 
 ### Notes
 
-- To test your program locally, you can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
-- To improve download speeds, you can consider pipelining your requests. [BitTorrent Economics Paper](http://bittorrent.org/bittorrentecon.pdf) recommends having upto 5 requests pending at once to avoid a delay between blocks being sent.
+- You can use the
+  [sample magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
+  to test your program locally.
+- Pipelining block requests is optional. Keeping several requests in flight can
+  avoid waiting for a round trip between blocks. The
+  [BitTorrent economics paper](http://bittorrent.org/bittorrentecon.pdf)
+  discusses this technique.

@@ -1,30 +1,36 @@
-In this stage, you'll receive torrent metadata from a peer.
+Your client requests metadata from a peer. In this stage, you'll receive and
+verify that metadata, then print the information needed to download the file.
 
-### The metadata `data` message
+### The metadata data message
 
-The `data` message is the response to the `request` message that your peer sent in the previous stage.
+A metadata `data` message responds to your metadata request. Its outer framing
+is:
 
-It contains the actual metadata, which you'll need to download the file.
+| Field                 | Size     | Value                                                   |
+| --------------------- | -------- | ------------------------------------------------------- |
+| Message length        | 4 bytes  | Big-endian count of all following bytes in this message |
+| BitTorrent message ID | 1 byte   | `20`                                                    |
+| Extension message ID  | 1 byte   | Your client's advertised `ut_metadata` ID               |
+| Header dictionary     | Variable | Bencoded `msg_type`, `piece` and `total_size` fields    |
+| Metadata bytes        | Variable | The requested chunk of the encoded info dictionary      |
 
-This message follows the standard BitTorrent extension message format:
+For a data message, `msg_type` is `1` and `piece` is the requested metadata
+index, `0` here. The `total_size` is the total metadata size in bytes, excluding
+the header dictionary.
 
-- message length prefix (4 bytes)
-- message id (1 byte)
-  - This will be 20, since this is a message implemented by an extension
-- payload (variable size)
-    - extension message id (1 byte)
-      - This will be your peer's metadata extension ID, which you sent as part of the extension handshake
-    - bencoded dictionary (variable size)
-      - This dictionary will look like this: `{'msg_type': 1, 'piece': 0, 'total_size': XXXX}`
-      - `msg_type` will be 1, since this is a `data` message
-      - `piece` will be 0, since we're only requesting one piece in this challenge
-      - `total_size` will be the length of the metadata piece
-    - metadata piece contents (variable size)
+The header dictionary and metadata bytes follow each other without a separator.
+Decode one complete Bencoded dictionary to find where the header ends. Its first
+`e` might close an integer, so it does not identify the end of the dictionary.
+The remaining bytes are the metadata chunk.
 
-The "metadata piece contents" is what you're interested in. When these pieces are combined, they'll form a bencoded dictionary that
-looks something like this (presented as JSON for readability):
+### Verifying the info dictionary
 
-```
+The metadata is the encoded
+[info dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary),
+rather than a complete `.torrent` file. It has fields like these, shown as JSON
+with placeholders for the binary piece hashes:
+
+```json
 {
   "piece length": 262144,
   "pieces": "<hash1><hash2>...",
@@ -33,32 +39,42 @@ looks something like this (presented as JSON for readability):
 }
 ```
 
-This is same as the [info dictionary](https://www.bittorrent.org/beps/bep_0003.html#info-dictionary) in a .torrent file, which you've seen in previous stages.
+The challenge's metadata fits in piece `0`. Check SHA-1 of the exact received
+metadata bytes against the info hash from the magnet link. Hashing the decoded
+object or its JSON display would give a different result.
 
-You should be able to compute the hash of this and validate it against the info hash present in the magnet link.
+Once verified, decode the info dictionary to obtain the file length, piece
+length and ordered piece hashes. The tracker URL still comes from the magnet
+link.
 
 ### Tests
 
-Here's how the tester will execute your program:
+The tester executes:
 
 ```
 $ ./your_program.sh magnet_info <magnet-link>
 ```
 
-The expected output should look like this:
+For the `magnet1.gif` link introduced earlier, the output is:
 
 ```
 Tracker URL: http://bittorrent-test-tracker.codecrafters.io/announce
-Length: 92063
-Info Hash: d69f91e6b2ae4c542468d1073a71d4ea13879a7f
-Piece Length: 32768
+Length: 636505
+Info Hash: ad42ce8109f54c99613ce38f9b4d87e70f24a165
+Piece Length: 262144
 Piece Hashes:
-6e2275e604a0766656736e81ff10b55204ad8d35
-e876f67a2a8886e8f36b136726c30fa29703022d
-f00d937a0213df1982bc8d097227ad9e909acc17
+3b46a96d9bc3716d1b75da91e6d753a793ad1cef
+eda417cb5c1cdbf841125c412da0bec9db8301f3
+422f45b1052e2d45da3e2a6516e1bb1f1db00733
 ```
+
+Use the supplied link and received metadata to produce these fields. Keep the
+labels and the original piece-hash order.
 
 ### Notes
 
-- For this challenge, all torrents we use will have a single metadata piece (i.e. it'll fit in one 16kiB chunk).
-- You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally.
+- All metadata used in this extension fits in one 16 KiB chunk. A single
+  metadata chunk can describe many file pieces.
+- You can use the
+  [sample magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
+  to test your program locally.

@@ -1,44 +1,44 @@
-In this stage, you'll add support for receiving the extension handshake message back.
+Each peer chooses the extension IDs it accepts. In this stage, you'll read the
+remote peer's extension handshake and print its metadata extension ID.
 
-### Extension handshake (part 2)
+### Reading the peer's mapping
 
-In the previous stage, your client sent an extension handshake message to the other peer. In this stage, you'll
-add support for receiving the peer's extension handshake message back.
+The remote peer's extension handshake uses the same framing as yours: outer
+BitTorrent message ID `20`, extension ID `0`, then a Bencoded dictionary. Its
+`m` dictionary contains `{"ut_metadata": <PEER'S ID>}`.
 
-The message will follow the same structure as the one you sent in the previous stage. The payload dictionary
-will contain the following keys: `{"m": {"ut_metadata": <PEER'S ID>}}`.
+Keep the two directions separate. The ID you advertised tells the peer which ID
+to use for messages sent to you. The ID in the peer's handshake tells you which
+ID to use for messages sent to that peer. For example, you might advertise `16`
+while the peer advertises `123`.
 
-Your program will need to store the ID for the `ut_metadata` extension and print it out. This'll be used in later stages to send extension messages specific to the `ut_metadata` extension.
-
-To recap, the overall flow will look like this:
-
-- Establish a TCP connection with a peer
-- Send the base handshake message
-- Receive the base handshake message
-- Send the bitfield message (safe to ignore in this challenge)
-- Receive the bitfield message
-- If the peer supports extensions (based on the reserved bit in the base handshake):
-  - Send the extension handshake message (previous stage)
-  - Receive the extension handshake message (**this stage**)
+Continue the exchange you already perform: ordinary handshake, received
+bitfield, then extension handshake when the peer supports extensions. This stage
+adds reading the peer's mapping. Use its `ut_metadata` value rather than
+assuming it matches yours.
 
 ### Tests
 
-Here's how the tester will execute your program:
+The tester executes:
 
 ```bash
 $ ./your_program.sh magnet_handshake <magnet-link>
 ```
 
-The expected output should look like this:
+The expected output has this form:
 
 ```
 Peer ID: 0102030405060708090a0b0c0d0e0f1011121314
 Peer Metadata Extension ID: 123
 ```
 
-The `Peer Metadata Extension ID` will be randomly generated, you'll need to fetch it from the dictionary in the extension handshake message.
+Both values come from the peer. Its metadata extension ID is chosen randomly for
+the test, so `123` is only an example.
 
 ### Notes
 
-- You can use [these magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt) to test your program locally. You may need to surround links with double quotes to escape special characters in terminal.
-- Extension IDs need to be stored for every peer, as different peers may use different IDs for the same extension.
+- You can use the
+  [sample magnet links](https://github.com/codecrafters-io/bittorrent-test-seeder/blob/main/torrent_files/magnet_links.txt)
+  locally. Quote the link when passing it to your shell.
+- Keep extension IDs per peer. Different peers can use different IDs for the
+  same extension.
